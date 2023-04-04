@@ -396,6 +396,8 @@ public class DCL_Manager : MonoBehaviour
 
             /**ya que encontro el mainfile ahora busca el hash de ese mainfile en la lista de content **/
 
+
+            Debug.Log("mainFile " + mainFile);
             string hashWearable = FindHashWearableByFile (mainFile);
           
 
@@ -444,11 +446,19 @@ public class DCL_Manager : MonoBehaviour
                     show_hair = false;
                 }
             }
+            //ese glb
+            if (mainFile.Contains(".glb"))
+            {
+                glbLoaderObj.idWearable = hashWearable;
+                glbLoaderObj.StartGLBLoader();
+            }
+            else
+            {
+                glbLoaderObj.idWearable = hashWearable;
+                glbLoaderObj.StartGLBLoaderFinished();
+            }
 
-           
-
-            glbLoaderObj.idWearable = hashWearable;
-            glbLoaderObj.StartGLBLoader();
+            //
         }
         else
         {

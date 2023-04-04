@@ -45,6 +45,17 @@ public class DCL_GLBLoader : MonoBehaviour
 
     }
 
+
+    public void StartGLBLoaderFinished()
+    {
+        skinnedMEshBones.InicioUpdateBonesComplete();
+    }
+
+
+
+
+
+
     private IEnumerator LoadGLB()
     {
 
