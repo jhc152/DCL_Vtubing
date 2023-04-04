@@ -14,6 +14,8 @@ using TMPro;
 using System.IO;
 using UnityEditor;
 
+using Newtonsoft.Json;
+
 [Serializable]
 public class WearablesEncontrado
 {
@@ -25,6 +27,22 @@ public class WearablesEncontrado
 
     //public JSONNode dataWearablePoint;
 
+}
+
+
+[Serializable]
+public enum AvatarGenero{ Unknow, Male, Female}
+
+
+
+[Serializable ]
+public class AvatarInfo
+{
+    public AvatarGenero genero = AvatarGenero.Unknow;
+    public string generoStr = "";
+    public Color eyes = Color.white; //Eyebrows_MAT
+    public Color hair = Color.white; //Hair_MAT
+    public Color skin = Color.white; //AvatarSkin_MAT
 }
 
 
@@ -52,7 +70,10 @@ public class DCL_Manager : MonoBehaviour
     [HideInInspector]
     public JSONNode dataProfileAvatarWearables;
 
-    private string genero = "Male";
+    /*almacena la info del avatar*/
+    public AvatarInfo avatarInfo = new AvatarInfo();
+
+
 
     public List<WearablesEncontrado> WearableListProfiles = new List<WearablesEncontrado>();
 
@@ -71,9 +92,20 @@ public class DCL_Manager : MonoBehaviour
     //el objeto que tiene los bones dentro del fbx
     public Transform rootBoneFBX;
 
+    //el objeto del vrm full
+    public GameObject vrm_full;
     //el objeto interno dentro del vrm donde se almacenaran los meshes importados
     public GameObject vrm_meshes_container;
 
+
+    public SkinnedMeshRenderer vrm_hair_male;
+    public SkinnedMeshRenderer vrm_hair_female;
+    public SkinnedMeshRenderer vrm_head;
+
+
+    bool show_hair = false;
+    bool show_head = false;
+    bool show_body = false;
 
     public TMP_InputField inputHashUser;
 
@@ -101,12 +133,21 @@ public class DCL_Manager : MonoBehaviour
     }
 
 
+    
+    //////////////////////////////// ------------------------             PASO 1               ----------------------------------------------
+    
 
-
-
+    /* TRAER PERFIL DE USUARIO*/
 
     public void LoadProfile()
+
     {
+
+        show_hair = true;
+        show_head = true;
+        show_body = true;
+
+
         WearablesComplete = 0;
 
         if (!loadingProfile)
@@ -114,37 +155,36 @@ public class DCL_Manager : MonoBehaviour
             loadingProfile = true;
             hashUsser = inputHashUser.text;
 
+
+            /*DESTRUYE OBJETOS POR SI HABIA*/
             foreach (Transform hijo in ParentDCLLoaders)
             {
                 Destroy(hijo.gameObject);
             }
 
 
+            /* PRENDE EL FBX TEMPORAL Y DESTRUYE SUS HIJOS*/
             fbx.SetActive(true);
-
             foreach (Transform hijo in fbx_meshes_container.transform)
             {
                 Destroy(hijo.gameObject);
             }
-            
 
 
+            /* PRENDE EL VRM FINAL Y DESTRUYE SUS HIJOS*/
             foreach (Transform hijo in vrm_meshes_container.transform)
             {
                 Destroy(hijo.gameObject);
             }
 
-
-            
-
-
+            /*este es el que reimporta falso , el que no ayuda a cargar los glbs en vrm*/
             GameObject VRMObjectOld = GameObject.Find("VRM");
             if(VRMObjectOld!= null)
             {
                 Destroy(VRMObjectOld);
             }
 
-
+            /*ahora si empieza el get del usuario de decentraland**/
             StartCoroutine(GetProfile(hashUsser)); 
         }
     }
@@ -159,7 +199,7 @@ public class DCL_Manager : MonoBehaviour
 
 
     /// <summary>
-    /// Fetch user profile from decentraland catalys 
+    /// Fetch user profile from decentraland catalyst 
     /// </summary>
     /// <param name="address">hash user</param>
     /// <returns></returns>
@@ -170,20 +210,48 @@ public class DCL_Manager : MonoBehaviour
         yield return www.SendWebRequest();
         if (www.result == UnityWebRequest.Result.Success)
         {           
-            string responseText = www.downloadHandler.text;
-            var jsonString = System.Text.Encoding.UTF8.GetString(
-                               www.downloadHandler.data,
-                               3,
-                               www.downloadHandler.data.Length - 3);
+           // string responseText = www.downloadHandler.text;
+            //var jsonString = System.Text.Encoding.UTF8.GetString(www.downloadHandler.data, 3,www.downloadHandler.data.Length - 3);
 
             dataProfile = JSON.Parse(System.Text.Encoding.UTF8.GetString(www.downloadHandler.data));
 
             dataProfileAvatar = dataProfile["avatars"][0]["avatar"];
             dataProfileAvatarWearables = dataProfile["avatars"][0]["avatar"]["wearables"];
 
-            //Debug.Log(dataProfile["avatars"][0][2]);
-            //Debug.Log(dataProfileAvatarWearables);
-            //Debug.Log(dataProfileAvatarWearables.Count);
+
+            Debug.Log(dataProfileAvatar["bodyShape"]);
+
+            /*guardando la info del avatar*/
+
+
+            /* PRIMERO EL GENERO */
+            string dataProfileAvatarBodyShape = dataProfileAvatar["bodyShape"];
+
+            if (dataProfileAvatarBodyShape.Contains("Male"))
+            {
+                Debug.Log("El string contiene 'Male'");
+                avatarInfo.genero = AvatarGenero.Male;
+                avatarInfo.generoStr = "Male" ;
+            }
+            if (dataProfileAvatarBodyShape.Contains("Female"))
+            {
+                Debug.Log("El string contiene 'Female'");
+                avatarInfo.genero = AvatarGenero.Female;
+                avatarInfo.generoStr = "Female";
+            }
+
+
+            /*CreateColorByRGB*/
+
+            //Dictionary<string, object> colorData = JsonConvert.DeserializeObject<Dictionary<string, object>>(dataProfileAvatar["hair"]["color"]);
+            avatarInfo.hair = CreateColorByRGB("hair");
+            avatarInfo.eyes = CreateColorByRGB("eyes");
+            avatarInfo.skin = CreateColorByRGB("skin");
+
+
+
+
+
             GetListOfWearablesAndCheck();
         }
         else
@@ -195,6 +263,22 @@ public class DCL_Manager : MonoBehaviour
 
     }
 
+
+
+   /* sacando los colres necesarios del data*/
+    Color CreateColorByRGB(string tipo)
+    {
+        var colorData = dataProfileAvatar[tipo]["color"];      
+        float r = (float)(double)colorData["r"].AsDouble;
+        float g = (float)(double)colorData["g"].AsDouble;
+        float b = (float)(double)colorData["b"].AsDouble;
+        float a = (float)(double)colorData["a"].AsDouble;   
+        return  new Color(r, g, b,a);       
+
+    }
+
+
+    /*si el wearable sera omitido o no*/
 
     #region CheckWearableString
     private bool CheckWearableString(string wearableProfile)
@@ -268,12 +352,101 @@ public class DCL_Manager : MonoBehaviour
         {
 
             string responseText = www.downloadHandler.text;
-            var jsonString = System.Text.Encoding.UTF8.GetString( www.downloadHandler.data, 3, www.downloadHandler.data.Length - 3);
+            //var jsonString = System.Text.Encoding.UTF8.GetString( www.downloadHandler.data, 3, www.downloadHandler.data.Length - 3);
             dataWearablePointer = JSON.Parse(System.Text.Encoding.UTF8.GetString(www.downloadHandler.data));
 
-            string hashWearable = FindHashWearable(dataWearablePointer);
+
+
+            /////https://peer.decentraland.org/content/entities/wearables/?pointer=urn:decentraland:matic:collections-v2:0x7a80e0b9992d1a5d2a10082d30ed653b9ac061f0:0
+            /**data == metadata.data ***/
+            /**tags == metadata.tags ***/
+            /**replaces == metadata.replaces ***/
+            /**hides == metadata.hides ***/
+            /**category == metadata.category ***/
+
+
+            /**representations == metadata.representations ***/
+            /**bodyShapes == metadata.representations.bodyShapes ***/  //genero buscar el genero del avatar
+            /**mainFile == metadata.representations.mainFile ***/  //mainFile para buscarlo en el array de  metadata.content.file y sacar el hash
+            /**overrideHides == metadata.representations.overrideHides ***/ //
+            /**overrideReplaces == metadata.representations.overrideReplaces ***/
+
+
+
+
+            JSONNode metadataWearableCurrent =  dataWearablePointer[0]["metadata"]["data"];          
+
+            JSONNode representationsWearableCurrent = metadataWearableCurrent["representations"];
+
+          
+
+            /**buscando el correspondiente al genero y saca su mainfile*/
+            string mainFile = "";
+            string bodyShapeTmp = "";
+            for (int i = 0; i < representationsWearableCurrent.Count; i++)
+            {
+                bodyShapeTmp = representationsWearableCurrent[i]["bodyShapes"][0];                
+                if (bodyShapeTmp.Contains(avatarInfo.generoStr))
+                {
+                    //encontro la representacion basada en el genero del avatar male-female y saca su mainfile 
+                    mainFile = representationsWearableCurrent[i]["mainFile"];
+                    break;
+                }
+            }
+
+            /**ya que encontro el mainfile ahora busca el hash de ese mainfile en la lista de content **/
+
+            string hashWearable = FindHashWearableByFile (mainFile);
+          
+
+
+
+
+            //Debug.Log("_hash:: "+ hashWearable);
+            //Debug.Break();
+
+
+
+
+
+            ///aui ya se obtiene el hash del avatar
+
+           // string hashWearable = FindHashWearable(dataWearablePointer);
+
+
+
             //setea el objeto que contiene el wearable en si
             DCL_GLBLoader glbLoaderObj = WearableListProfiles[indexOnList].WearableContent.transform.GetComponent<DCL_GLBLoader>();
+
+           
+            glbLoaderObj.info_replaces = metadataWearableCurrent["replaces"];
+            glbLoaderObj.info_hides = metadataWearableCurrent["hides"];
+            glbLoaderObj.info_tags = metadataWearableCurrent["tags"];
+            glbLoaderObj.info_category = metadataWearableCurrent["category"];
+
+
+
+            /*checando los hide de cabeza y o pelo*/
+            string hideCurrent = "";
+
+            for (int i = 0; i < metadataWearableCurrent["hides"].Count; i++)
+            {
+                hideCurrent = metadataWearableCurrent["hides"][i];
+                if (hideCurrent ==  "head")
+                {
+                    Debug.Log("<color=yellow>Debe ocultar la cabeza</color>");
+                    show_head = false;
+                }
+
+                if (hideCurrent == "hair")
+                {
+                    Debug.Log("<color=yellow>Debe ocultar el pelo</color>");
+                    show_hair = false;
+                }
+            }
+
+           
+
             glbLoaderObj.idWearable = hashWearable;
             glbLoaderObj.StartGLBLoader();
         }
@@ -312,7 +485,24 @@ public class DCL_Manager : MonoBehaviour
     }
     #endregion
 
+    public string FindHashWearableByFile(string mainfile)
+    {
+        string hashToReturn = "";
+        string fileName = "";        
+        for (int i = 0; i < dataWearablePointer[0]["content"].Count; i++)
+        {
+            fileName = dataWearablePointer[0]["content"][i]["file"];            
+            if (fileName == mainfile)
+            {
+                Debug.Log(dataWearablePointer[0]["content"][i]["hash"]);
+                hashToReturn = dataWearablePointer[0]["content"][i]["hash"];
+                break;
+            }
+        }
 
+        Debug.Log("_________________________________");
+        return hashToReturn;
+    }
 
 
     public VRMRuntimeExporter vRMRuntimeExporter;
@@ -347,7 +537,7 @@ public class DCL_Manager : MonoBehaviour
         GameObject vrm_hips = await BuscarObjetoPorNombre(vrm_armature, "hips");
 
 
-        Debug.Log("asdasdasdasd-----");
+        Debug.Log("VRM LOADED COMPLETE-----");
         
 
         //paso todos los meshe que trae el vrm
@@ -357,6 +547,59 @@ public class DCL_Manager : MonoBehaviour
         {
             updateSkinnedMesh.InicioUpdateBonesVRMtoVRM(meshRenderer[i].transform, meshRenderer[i], vrm_hips.transform);
         }
+
+
+
+
+        /*colorizando */
+
+        
+
+        SkinnedMeshRenderer[] meshRendererFull = vrm_full.GetComponentsInChildren<SkinnedMeshRenderer>();
+
+        
+        for (int j = 0; j < meshRendererFull.Length; j++)
+        {
+            Material[] materialsInMeshCurrent = meshRendererFull[j].materials;
+            Debug.Log(meshRendererFull[j].name, meshRendererFull[j]);
+
+            for (int i = 0; i < materialsInMeshCurrent.Length; i++)
+            {
+                if (materialsInMeshCurrent[i].name.Contains ("AvatarSkin_MAT"))
+                {
+                    // Cambiar el color del material
+                    materialsInMeshCurrent[i].color = avatarInfo.skin;
+
+                }
+
+                 if (materialsInMeshCurrent[i].name.Contains("Hair_MAT"))
+                {
+                    // Cambiar el color del material
+                    materialsInMeshCurrent[i].color = avatarInfo.hair;
+                }
+
+
+
+                materialsInMeshCurrent[i].SetFloat("_Mode", 2f);
+
+                // Establecer el valor de Cutoff para definir el umbral de transparencia
+                float cutoffValue = 0.5f; // por ejemplo, un valor de 0.5f para un umbral de transparencia del 50%
+                materialsInMeshCurrent[i].SetFloat("_Cutoff", cutoffValue);
+
+
+
+                materialsInMeshCurrent[i].SetOverrideTag("RenderType", "TransparentCutout");
+
+
+
+            }
+
+            // Asignar los materiales modificados al SkinnedMeshRenderer
+            meshRendererFull[j].materials = materialsInMeshCurrent;
+        }
+
+
+
 
 
 
@@ -370,6 +613,8 @@ public class DCL_Manager : MonoBehaviour
             Debug.Log("No se encontró el objeto");
         }
 
+
+        ActivandoMeshes();
 
         CompleteProfileAvatar();
 
@@ -409,8 +654,30 @@ public class DCL_Manager : MonoBehaviour
 
     public void ExportVRMFnct()
     {
-        vRMRuntimeExporter.ExportandoUser();     
+        vRMRuntimeExporter.ExportandoUser();    
 
+
+    }
+
+
+    public void ActivandoMeshes()
+    {
+        //activando meshes en el vrm
+
+        vrm_hair_male.enabled = false;
+        vrm_hair_female.enabled = false;
+
+        if (avatarInfo.genero == AvatarGenero.Male)
+        {
+            vrm_hair_male.enabled = show_hair;
+        }
+
+        if (avatarInfo.genero == AvatarGenero.Female)
+        {
+            vrm_hair_female.enabled = show_hair;
+        }
+
+        vrm_head.enabled = show_hair;
 
     }
 

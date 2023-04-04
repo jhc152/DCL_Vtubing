@@ -318,6 +318,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136666908}
   m_CullTransparentMesh: 1
+--- !u!137 &154777400 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2465442963671142492, guid: f4bf8f872c1241b4bbf15aab9f3f6bdd, type: 3}
+  m_PrefabInstance: {fileID: 1013053965}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &179831066 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2617939299189981766, guid: e108f6f1146789c44a85f7d0b945413f, type: 3}
@@ -732,6 +737,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!137 &677401366 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4179431282042937225, guid: f4bf8f872c1241b4bbf15aab9f3f6bdd, type: 3}
+  m_PrefabInstance: {fileID: 1013053965}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &692834102 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6786477609056082771, guid: e108f6f1146789c44a85f7d0b945413f, type: 3}
@@ -746,6 +756,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8248398677133921951, guid: e108f6f1146789c44a85f7d0b945413f, type: 3}
   m_PrefabInstance: {fileID: 1362947726}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &748929374 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 277319023858898339, guid: f4bf8f872c1241b4bbf15aab9f3f6bdd, type: 3}
+  m_PrefabInstance: {fileID: 1013053965}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &763980640 stripped
 Transform:
@@ -1146,6 +1161,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 525881738}
     m_Modifications:
     - target: {fileID: 277319023858898339, guid: f4bf8f872c1241b4bbf15aab9f3f6bdd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 277319023858898339, guid: f4bf8f872c1241b4bbf15aab9f3f6bdd, type: 3}
       propertyPath: m_DirtyAABB
       value: 0
       objectReference: {fileID: 0}
@@ -1218,6 +1237,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2465442963671142492, guid: f4bf8f872c1241b4bbf15aab9f3f6bdd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465442963671142492, guid: f4bf8f872c1241b4bbf15aab9f3f6bdd, type: 3}
       propertyPath: m_DirtyAABB
       value: 0
       objectReference: {fileID: 0}
@@ -1246,6 +1269,10 @@ PrefabInstance:
       value: DCL_Full-AvatarVRM
       objectReference: {fileID: 0}
     - target: {fileID: 2683560932577755529, guid: f4bf8f872c1241b4bbf15aab9f3f6bdd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2683560932577755529, guid: f4bf8f872c1241b4bbf15aab9f3f6bdd, type: 3}
       propertyPath: m_DirtyAABB
       value: 0
       objectReference: {fileID: 0}
@@ -1272,6 +1299,10 @@ PrefabInstance:
     - target: {fileID: 2683560932577755529, guid: f4bf8f872c1241b4bbf15aab9f3f6bdd, type: 3}
       propertyPath: m_AABB.m_Extent.z
       value: 0.18609709
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179431282042937225, guid: f4bf8f872c1241b4bbf15aab9f3f6bdd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4179431282042937225, guid: f4bf8f872c1241b4bbf15aab9f3f6bdd, type: 3}
       propertyPath: m_DirtyAABB
@@ -1314,6 +1345,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5884911742359703418, guid: f4bf8f872c1241b4bbf15aab9f3f6bdd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5884911742359703418, guid: f4bf8f872c1241b4bbf15aab9f3f6bdd, type: 3}
       propertyPath: m_DirtyAABB
       value: 0
       objectReference: {fileID: 0}
@@ -1340,6 +1375,10 @@ PrefabInstance:
     - target: {fileID: 5884911742359703418, guid: f4bf8f872c1241b4bbf15aab9f3f6bdd, type: 3}
       propertyPath: m_AABB.m_Extent.z
       value: 0.1732899
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612103288158957325, guid: f4bf8f872c1241b4bbf15aab9f3f6bdd, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6612103288158957325, guid: f4bf8f872c1241b4bbf15aab9f3f6bdd, type: 3}
       propertyPath: m_IsActive
@@ -1607,7 +1646,7 @@ GameObject:
   - component: {fileID: 1297965808}
   - component: {fileID: 1297965807}
   m_Layer: 0
-  m_Name: sdasd
+  m_Name: tobloom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1685,7 +1724,7 @@ Transform:
   m_GameObject: {fileID: 1297965806}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.5, y: 0.5, z: 10}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2286,13 +2325,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hashUsser: 0x7e22d9514a99793E80D4FB5E3A9Dfd4931F47c4c
+  avatarInfo:
+    genero: 0
+    generoStr: 
+    eyes: {r: 1, g: 1, b: 1, a: 1}
+    hair: {r: 1, g: 1, b: 1, a: 1}
+    skin: {r: 1, g: 1, b: 1, a: 1}
   WearableListProfiles: []
   PrefabDCLLoader: {fileID: 4315184999919298879, guid: 1e495b3706f036d40a72c2bc752a0b5c, type: 3}
   ParentDCLLoaders: {fileID: 1256707630}
   fbx: {fileID: 2020176972}
   fbx_meshes_container: {fileID: 2110089392}
   rootBoneFBX: {fileID: 1536546627}
+  vrm_full: {fileID: 614425305}
   vrm_meshes_container: {fileID: 1250627685}
+  vrm_hair_male: {fileID: 748929374}
+  vrm_hair_female: {fileID: 154777400}
+  vrm_head: {fileID: 677401366}
   inputHashUser: {fileID: 767572820}
   updateSkinnedMesh: {fileID: 2085102752}
   loadingProfile: 0

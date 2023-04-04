@@ -71,8 +71,8 @@ public class UpdateSkinnedMeshBones : MonoBehaviour
     public void InicioUpdateBonesVRMtoVRM(Transform _skinnedTransormCurrent, SkinnedMeshRenderer _targetSkin,  Transform _rootBone)
     {
 
-        Debug.Log("_targetSkin " + _targetSkin.name, _targetSkin.gameObject);
-        Debug.Log("_rootBone " + _rootBone.name, _rootBone.gameObject);
+       // Debug.Log("_targetSkin " + _targetSkin.name, _targetSkin.gameObject);
+       // Debug.Log("_rootBone " + _rootBone.name, _rootBone.gameObject);
       
         _UpdateBones(_rootBone, _targetSkin);
 

@@ -4,14 +4,24 @@ using GLTFast;
 using System.Collections;
 using System.IO;
 using System;
+using SimpleJSON;
 
 public class DCL_GLBLoader : MonoBehaviour
 {
 
     public string idWearable = "QmYNsLEX6eF9yWYoF49LB8oqC4Lb45FTkLAf9cBdi469d2";
+
+    public JSONNode info_tags;
+    public JSONNode info_replaces;
+    public JSONNode info_hides;
+    public JSONNode info_category;
+
+
     string url = $"https://peer.decentraland.org/content/contents/";
 
     public  UpdateSkinnedMeshBones skinnedMEshBones;
+
+
 
    
 
@@ -93,6 +103,7 @@ public class DCL_GLBLoader : MonoBehaviour
 
 
                 Material newMaterial = new Material(Shader.Find("Standard"));
+                newMaterial.name = meshRenderer[i].material.name;
 
 
 
@@ -178,7 +189,7 @@ public class DCL_GLBLoader : MonoBehaviour
                 newMaterial.SetInt("_ZWrite", (int)meshRenderer[i].material.GetFloat("_ZWrite"));
 
 
-                 newMaterial.SetFloat("_Mode", (float)meshRenderer[i].material.GetFloat("_Mode"));
+                 newMaterial.SetFloat("_Mode", (float)meshRenderer[i].material.GetFloat("_CullMode"));
 
 
                 //Shader shader = meshRenderer[i].material.shader;
@@ -188,7 +199,7 @@ public class DCL_GLBLoader : MonoBehaviour
 
                newMaterial.renderQueue = renderType;
 
-                Debug.Log("<color=yellow> ----------------    </color>" + renderType);
+               // Debug.Log("<color=yellow> ----------------    </color>" + renderType, gameObject);
 
                 if (renderType <= 2000)
                 {
@@ -208,7 +219,7 @@ public class DCL_GLBLoader : MonoBehaviour
                     newMaterial.DisableKeyword("_ALPHABLEND_ON");
                     newMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
                     newMaterial.renderQueue = 2450;
-                    newMaterial.SetOverrideTag("RenderType", "TransparentCutout");
+                    newMaterial.SetOverrideTag("RenderType", "Cutout");
 
                 }
 
@@ -244,15 +255,28 @@ public class DCL_GLBLoader : MonoBehaviour
 
 
 
-                newMaterial.SetOverrideTag("RenderType", "Transparent");
+             //  newMaterial.SetOverrideTag("RenderType", "Transparent");
+
+
+                //Color roughnessColor = new Color(1f, 1f, 1f, 1f); // El cuarto valor es la opacidad (alpha)
+                //roughnessColor.g = 1f - (float)meshRenderer[i].material.GetFloat("roughnessFactor"); // El canal verde (G) controla la rugosidad
+
+            
+
+                newMaterial.SetFloat("_Metallic", (float)meshRenderer[i].material.GetFloat("roughnessFactor"));
 
 
 
 
+                newMaterial.SetFloat("_Mode", 2f);
+
+                // Establecer el valor de Cutoff para definir el umbral de transparencia
+                float cutoffValue = 0.5f; // por ejemplo, un valor de 0.5f para un umbral de transparencia del 50%
+                newMaterial.SetFloat("_Cutoff", cutoffValue);
 
 
 
-
+                newMaterial.SetOverrideTag("RenderType", "TransparentCutout");
 
 
 
@@ -338,7 +362,7 @@ public class DCL_GLBLoader : MonoBehaviour
            
             //Debug.Break();           
 
-           skinnedMEshBones.InicioUpdateBones();
+            skinnedMEshBones.InicioUpdateBones();
 
            
 
