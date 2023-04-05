@@ -186,11 +186,6 @@ public class DCL_GLBLoader : MonoBehaviour
 
 
 
-
-
-
-
-
                 /******sacando mas parametros del original****/
 
 
@@ -200,7 +195,7 @@ public class DCL_GLBLoader : MonoBehaviour
                 newMaterial.SetInt("_ZWrite", (int)meshRenderer[i].material.GetFloat("_ZWrite"));
 
 
-                 newMaterial.SetFloat("_Mode", (float)meshRenderer[i].material.GetFloat("_CullMode"));
+                newMaterial.SetFloat("_Mode", (float)meshRenderer[i].material.GetFloat("_CullMode"));
 
 
                 //Shader shader = meshRenderer[i].material.shader;
@@ -230,7 +225,7 @@ public class DCL_GLBLoader : MonoBehaviour
                     newMaterial.DisableKeyword("_ALPHABLEND_ON");
                     newMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
                     newMaterial.renderQueue = 2450;
-                    newMaterial.SetOverrideTag("RenderType", "Cutout");
+                    newMaterial.SetOverrideTag("RenderType", "TransparentCutout");
 
                 }
 
@@ -265,32 +260,14 @@ public class DCL_GLBLoader : MonoBehaviour
                 }
 
 
-
-             //  newMaterial.SetOverrideTag("RenderType", "Transparent");
-
-
-                //Color roughnessColor = new Color(1f, 1f, 1f, 1f); // El cuarto valor es la opacidad (alpha)
-                //roughnessColor.g = 1f - (float)meshRenderer[i].material.GetFloat("roughnessFactor"); // El canal verde (G) controla la rugosidad
-
-            
-
                 newMaterial.SetFloat("_Metallic", (float)meshRenderer[i].material.GetFloat("roughnessFactor"));
 
-
-
-
-                newMaterial.SetFloat("_Mode", 2f);
+                //newMaterial.SetFloat("_Mode", 2f);
 
                 // Establecer el valor de Cutoff para definir el umbral de transparencia
-                float cutoffValue = 0.5f; // por ejemplo, un valor de 0.5f para un umbral de transparencia del 50%
-                newMaterial.SetFloat("_Cutoff", cutoffValue);
-
-
-
-                newMaterial.SetOverrideTag("RenderType", "TransparentCutout");
-
-
-
+                //float cutoffValue = 0.5f; // por ejemplo, un valor de 0.5f para un umbral de transparencia del 50%
+                //newMaterial.SetFloat("_Cutoff", cutoffValue);
+                //newMaterial.SetOverrideTag("RenderType", "TransparentCutout");
 
 
 
@@ -321,23 +298,18 @@ public class DCL_GLBLoader : MonoBehaviour
                     // Blit the pixels on texture to the RenderTexture
                     Graphics.Blit(texture2DEmmisisve, tmpEmmisive);
 
-
                     // Backup the currently set RenderTexture
                     RenderTexture previousEmmisive = RenderTexture.active;
-
 
                     // Set the current RenderTexture to the temporary one we created
                     RenderTexture.active = tmpEmmisive;
 
-
                     // Create a new readable Texture2D to copy the pixels to it
                     myTexture2DEmmissive = new Texture2D(texture2DEmmisisve.width, texture2DEmmisisve.height);
-
 
                     // Copy the pixels from the RenderTexture to the new Texture
                     myTexture2DEmmissive.ReadPixels(new Rect(0, 0, tmpEmmisive.width, tmpEmmisive.height), 0, 0);
                     myTexture2DEmmissive.Apply();
-
 
                     // Reset the active RenderTexture
                     RenderTexture.active = previousEmmisive;
@@ -345,17 +317,11 @@ public class DCL_GLBLoader : MonoBehaviour
                     // Release the temporary RenderTexture
                     RenderTexture.ReleaseTemporary(tmpEmmisive);
 
-
                     /*************************************/
-
-                    // Obtener el factor emissive                  
-
-                    //// Obtener la textura emissive       
-                    
-                 
+                    // Obtener el factor emissive  
+                    //// Obtener la textura emissive                   
                     newMaterial.SetColor("_EmissionColor", (Color)meshRenderer[i].material.GetColor("emissiveFactor") * 8 );
-                    newMaterial.SetTexture("_EmissionMap", myTexture2DEmmissive);
-                    // 
+                    newMaterial.SetTexture("_EmissionMap", myTexture2DEmmissive);                   
 
                 }
 

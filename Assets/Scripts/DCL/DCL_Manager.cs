@@ -571,7 +571,7 @@ public class DCL_Manager : MonoBehaviour
         for (int j = 0; j < meshRendererFull.Length; j++)
         {
             Material[] materialsInMeshCurrent = meshRendererFull[j].materials;
-            Debug.Log(meshRendererFull[j].name, meshRendererFull[j]);
+            //Debug.Log(meshRendererFull[j].name, meshRendererFull[j]);
 
             for (int i = 0; i < materialsInMeshCurrent.Length; i++)
             {
@@ -590,15 +590,116 @@ public class DCL_Manager : MonoBehaviour
 
 
 
-                materialsInMeshCurrent[i].SetFloat("_Mode", 2f);
+                //materialsInMeshCurrent[i].SetFloat("_Mode", 2f);
 
-                // Establecer el valor de Cutoff para definir el umbral de transparencia
-                float cutoffValue = 0.5f; // por ejemplo, un valor de 0.5f para un umbral de transparencia del 50%
-                materialsInMeshCurrent[i].SetFloat("_Cutoff", cutoffValue);
+                //// Establecer el valor de Cutoff para definir el umbral de transparencia
+                //float cutoffValue = 0.5f; // por ejemplo, un valor de 0.5f para un umbral de transparencia del 50%
+                //materialsInMeshCurrent[i].SetFloat("_Cutoff", cutoffValue);
 
 
 
-                materialsInMeshCurrent[i].SetOverrideTag("RenderType", "TransparentCutout");
+                // materialsInMeshCurrent[i].SetOverrideTag("RenderType", "Transparent");
+
+
+
+
+
+
+
+                /******/
+
+                //materialsInMeshCurrent[i].SetInt("_SrcBlend", (int)meshRenderer[i].material.GetFloat("_SrcBlend"));
+                //materialsInMeshCurrent[i].SetInt("_DstBlend", (int)meshRenderer[i].material.GetFloat("_DstBlend"));
+                //materialsInMeshCurrent[i].SetInt("_ZWrite", (int)meshRenderer[i].material.GetFloat("_ZWrite"));
+
+
+                //materialsInMeshCurrent[i].SetFloat("_Mode", (float)meshRenderer[i].material.GetFloat("_Mode"));
+
+
+                //int renderType = meshRenderer[i].material.renderQueue;
+
+                //materialsInMeshCurrent[i].renderQueue = renderType;
+
+              
+
+                //if (renderType <= 2000)
+                //{
+
+                //    materialsInMeshCurrent[i].SetInt("_ZWrite", 1);
+                //    materialsInMeshCurrent[i].DisableKeyword("_ALPHATEST_ON");
+                //    materialsInMeshCurrent[i].DisableKeyword("_ALPHABLEND_ON");
+                //    materialsInMeshCurrent[i].DisableKeyword("_ALPHAPREMULTIPLY_ON");
+                //    materialsInMeshCurrent[i].renderQueue = -1;
+                //}
+                //else if (renderType <= 2450)
+
+
+                //{
+                //    materialsInMeshCurrent[i].SetInt("_ZWrite", 1);
+                //    materialsInMeshCurrent[i].EnableKeyword("_ALPHATEST_ON");
+                //    materialsInMeshCurrent[i].DisableKeyword("_ALPHABLEND_ON");
+                //    materialsInMeshCurrent[i].DisableKeyword("_ALPHAPREMULTIPLY_ON");
+                //    materialsInMeshCurrent[i].renderQueue = 2450;
+                //    materialsInMeshCurrent[i].SetOverrideTag("RenderType", "TransparentCutout");
+
+                //}
+
+
+                //else if (renderType <= 3000)
+
+
+                //{
+                //    materialsInMeshCurrent[i].SetInt("_ZWrite", 0);
+                //    materialsInMeshCurrent[i].DisableKeyword("_ALPHATEST_ON");
+                //    materialsInMeshCurrent[i].EnableKeyword("_ALPHABLEND_ON");
+                //    materialsInMeshCurrent[i].DisableKeyword("_ALPHAPREMULTIPLY_ON");
+                //    materialsInMeshCurrent[i].renderQueue = 3000;
+                //    materialsInMeshCurrent[i].SetOverrideTag("RenderType", "Transparent");
+
+                //}
+
+
+                //else
+
+
+                //{
+                //    materialsInMeshCurrent[i].SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+                //    materialsInMeshCurrent[i].SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+                //    materialsInMeshCurrent[i].SetInt("_ZWrite", 0);
+                //    materialsInMeshCurrent[i].DisableKeyword("_ALPHATEST_ON");
+                //    materialsInMeshCurrent[i].DisableKeyword("_ALPHABLEND_ON");
+                //    materialsInMeshCurrent[i].EnableKeyword("_ALPHAPREMULTIPLY_ON");
+                //    materialsInMeshCurrent[i].renderQueue = 3000;
+                //    materialsInMeshCurrent[i].SetOverrideTag("RenderType", "Transparent");
+
+                //}
+
+
+
+
+
+
+
+                //materialsInMeshCurrent[i].SetFloat("_Metallic", (float)meshRenderer[i].material.GetFloat("_Metallic"));
+
+
+                /*****/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

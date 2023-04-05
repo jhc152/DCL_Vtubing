@@ -203,21 +203,21 @@ Avatar:
           m_AxesId: -1
         - m_ParentId: 93
           m_AxesId: -1
-        - m_ParentId: 93
+        - m_ParentId: 90
+          m_AxesId: -1
+        - m_ParentId: 95
           m_AxesId: -1
         - m_ParentId: 90
           m_AxesId: -1
-        - m_ParentId: 90
+        - m_ParentId: 97
           m_AxesId: -1
         - m_ParentId: 90
           m_AxesId: -1
-        - m_ParentId: 90
-          m_AxesId: -1
-        - m_ParentId: 90
+        - m_ParentId: 99
           m_AxesId: -1
         - m_ParentId: 0
           m_AxesId: -1
-        m_ID: 00000000b28d6c7d96397c7493ffca065b83b536af900c4401dcde5631ab1039559cce285d803f1e11c214e7797ca7c9e31789a25e2f297385bad4e6d3789024582124028b83548d001d2a764ddc2b860dc320fff2300f25f25b1467cdcd1c67fddaa159140764fd6dab565a36e1c04a5af07a04d8cfa565bc040437f6472e98abe6a3d3bbf4e941f3b5a35c428cbbe84ae04e199c9790075a19d26cf69767fe2b35655d678feba68109b408c770d11872ff1b1d70eb497d9558a009e49c2bae80c1a09244bd96e796df79a8f89b1688e8de8b494a2a5b34454170a10f5e7365709490c56a28a5685547bba41782543925290604cb8fbc0ad83ffea67f2a1c6a14991ecaf5c21e5c554405ec784b2dcca233b37726e5b9e13d52b0ae0a74c8535f62a6186a029d277343cc68d4a11c97fe5eb9bd219d08e6000efb7e67a2c00aaf73ebb9d9c741028532dbee895affd06333f4846e352ebe978debd3817ec11858aabb0a9e8a151ba26a1ebdd11e87df4c0b942d1e174ab39b70d7af2121de36b021db05913b1728d26159d3c6059d0e297ee0bd1574531b
+        m_ID: 00000000b28d6c7d96397c7493ffca065b83b536af900c4401dcde5631ab1039559cce285d803f1e11c214e7797ca7c9e31789a25e2f297385bad4e6d3789024582124028b83548d001d2a764ddc2b860dc320fff2300f25f25b1467cdcd1c67fddaa159140764fd6dab565a36e1c04a5af07a04d8cfa565bc040437f6472e98abe6a3d3bbf4e941f3b5a35c428cbbe84ae04e199c9790075a19d26cf69767fe2b35655d678feba68109b408c770d11872ff1b1d70eb497d9558a009e49c2bae80c1a09244bd96e796df79a8f89b1688e8de8b494a2a5b34454170a10f5e7365709490c56a28a5685547bba41782543925290604cb8fbc0ad83ffea67f2a1c6a14991ecaf5c21e5c554405ec784b2dcca233b37726e5b9e13d52b0ae0a74c8535f62a6186a029d277343cc68d4a11c97fe5eb9bd219d08e6000efb7e67a2c00aaf73ebb9d9c741028532dbee895affd06333f4846e352ebe978debd3817ec11858aabb0a9e8a151ba26a1ebdc0b4372a2bde538b328d9be5a807ad583edc58d3d9ccc6a5968322bc624c6dd31a5d7f14f25e756b1574531b
         m_AxesArray: []
     m_AvatarSkeletonPose:
       data:
@@ -837,7 +837,7 @@ Avatar:
         - t: {x: 0, y: 0, z: -0}
           q: {x: -0, y: -0, z: 0, w: 1}
           s: {x: 1, y: 1, z: 1}
-    m_SkeletonNameIDArray: 00000000b28d6c7d2fa9e37ecfeecf92b7b344fbb4bd50b453d611209cf6f3a700ff6b7cdd91b52cfe99b092e1b63aad03fb45ca32957d1175a6fed15d1d3da2b2160edf5391a86a67e647a37362eeb60d1baa42c8f21d6c4899f0f5c83e9e38323b5b17481117e56d73dce7441626ce860914f473190a1e2f680a275a52e7ac40e6842165abc367701adc660fe245be181b451e899f48bfaa05f85b18caff46afd451b3d730d723516c61bea5b4d42f9da4bf68828b355760c64a3051a872eb169bf12b3570ce42d12b0125b0b878b5847f45c719c80ff86e26a5b8abcf12962ba4ff0f2b174ee7d1a2597322bbf6ab0e4ed31d272b2934e5341b0e9030dac1ccf1084330f806e223db8bdb0696cc9d1327d39ceccb9561fb82477ae335a9f1c938f7a17bf7f0bccce95e49341907fcb2f563dacf1e3561a098f39542d58cf2368edd3047db3114d1430f16b06eefd2c3a5fc6f21e8830855b3d2ca24e63eee326adfc953f7edb6a26a1ebd91007fd9861ecc908a60e57791ff89182bae8081523007aa0f4f61223070857cb16355520711ac661574531b
+    m_SkeletonNameIDArray: 00000000b28d6c7d2fa9e37ecfeecf92b7b344fbb4bd50b453d611209cf6f3a700ff6b7cdd91b52cfe99b092e1b63aad03fb45ca32957d1175a6fed15d1d3da2b2160edf5391a86a67e647a37362eeb60d1baa42c8f21d6c4899f0f5c83e9e38323b5b17481117e56d73dce7441626ce860914f473190a1e2f680a275a52e7ac40e6842165abc367701adc660fe245be181b451e899f48bfaa05f85b18caff46afd451b3d730d723516c61bea5b4d42f9da4bf68828b355760c64a3051a872eb169bf12b3570ce42d12b0125b0b878b5847f45c719c80ff86e26a5b8abcf12962ba4ff0f2b174ee7d1a2597322bbf6ab0e4ed31d272b2934e5341b0e9030dac1ccf1084330f806e223db8bdb0696cc9d1327d39ceccb9561fb82477ae335a9f1c938f7a17bf7f0bccce95e49341907fcb2f563dacf1e3561a098f39542d58cf2368edd3047db3114d1430f16b06eefd2c3a5fc6f21e8830855b3d2ca24e63eee326adfc953f7edb6a26a1ebdeedb7bf1ecc6f933729363e3a922c925aaabf717591b72afbc7b844beeee29dab3f375c21b5e44211574531b
     m_Human:
       data:
         serializedVersion: 2
@@ -1605,6 +1605,7 @@ Avatar:
     878389834: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/index.proximal.R/index.intermediate.R/index.distal.R/index.distal.R_end/index.distal.R_end_end/index.distal.R_end_end_end
     3425520504: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/ring.proximal.R/ring.intermediate.R
     2101996400: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R
+    3156378518: Meshes/Wings.003
     4268201974: Armature/hips/spine/chest/chest_end/shoulder.L/upper_arm.L/lower_arm.L/hand.L/thumb.proximal.L/thumb.intermediate.L
     2460008832: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/index.proximal.R
     4251191060: Armature/hips/spine/chest/chest_end/shoulder.L/upper_arm.L/lower_arm.L/hand.L/little.proximal.L/little.intermediate.L/little.distal.L/little.distal.L_end/little.distal.L_end_end/little.distal.L_end_end_end
@@ -1615,6 +1616,7 @@ Avatar:
     1405645834: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/ring.proximal.R/ring.intermediate.R/ring.distal.R/ring.distal.R_end/ring.distal.R_end_end/ring.distal.R_end_end_end
     1141674159: Armature/hips/spine/chest/chest_end
     488374130: Armature/hips/spine/chest/chest_end/shoulder.R
+    343891226: Meshes/LPM-SOAboots
     2922093796: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R
     416379079: Armature/hips/spine/chest/chest_end/shoulder.L/upper_arm.L/lower_arm.L/hand.L/thumb.proximal.L/thumb.intermediate.L/thumb.distal.L/thumb.distal.L_end/thumb.distal.L_end_end/thumb.distal.L_end_end_end
     113966995: Armature/hips/spine
@@ -1622,7 +1624,6 @@ Avatar:
     2763736917: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/little.proximal.R/little.intermediate.R/little.distal.R/little.distal.R_end/little.distal.R_end_end
     458454037: secondary
     2371126155: Armature/hips/spine/chest/chest_end/shoulder.L/upper_arm.L/lower_arm.L/hand.L/index.proximal.L/Index.intermediate.L/index.distal.L/index.distal.L_end
-    920527137: Meshes/coat_low/Mesh.059_2
     917865307: Armature/hips/spine/chest
     4280337165: Armature/hips/spine/chest/chest_end/shoulder.L/upper_arm.L/lower_arm.L/hand.L/little.proximal.L
     3904605250: Armature/hips/spine/chest/chest_end/shoulder.L/upper_arm.L/lower_arm.L/hand.L/ring.proximal.L/ring.intermediate.L/ring.distal.L/ring.distal.L_end
@@ -1633,13 +1634,11 @@ Avatar:
     2230596451: Armature/hips/upper_leg.R
     3391002900: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/middle.proximal.R/middle.intermediate.R/middle.distal.R/middle.distal.R_end/middle.distal.R_end_end
     3872701061: Armature/hips/spine/chest/chest_end/shoulder.L/upper_arm.L/lower_arm.L/hand.L/index.proximal.L
-    3007977246: Meshes/coat_low
-    245171654: Meshes/Sphere
-    3185606185: Meshes/Sphere.001
+    1802854130: Meshes/LPM-SOAboots/Mesh.001_1
+    3547155554: "Meshes/Wings.003/\u7F51\u683C.004_1"
     3383196793: Armature/hips/spine/chest/chest_end/shoulder.L/upper_arm.L
     1554232819: Armature/hips/spine/chest/chest_end/shoulder.L/upper_arm.L/lower_arm.L/hand.L/ring.proximal.L/ring.intermediate.L/ring.distal.L
     2283183096: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/index.proximal.R/index.intermediate.R/index.distal.R/index.distal.R_end
-    3750174417: Meshes/M_Head_BaseMesh
     0: 
     3555429783: Armature/hips/upper_leg.R/lower_leg.R/foot.R
     180129739: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/middle.proximal.R/middle.intermediate.R
@@ -1648,6 +1647,7 @@ Avatar:
     3506395785: Armature/hips/upper_leg.L/lower_leg.L/foot.L/toes.L/toes.L_end/toes.L_end_end
     35922264: Armature/hips/spine/chest/chest_end/shoulder.L/upper_arm.L/lower_arm.L/hand.L/index.proximal.L/Index.intermediate.L/index.distal.L
     2826559382: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/index.proximal.R/index.intermediate.R/index.distal.R
+    708293824: Meshes/Circle.005
     1705365464: Armature/hips/spine/chest/chest_end/shoulder.L/upper_arm.L/lower_arm.L/hand.L/middle.proximal.L/middle.intermediate.L/middle.distal.L/middle.distal.L_end
     4007342725: Armature/hips/upper_leg.L/lower_leg.L/foot.L/toes.L/toes.L_end
     161503381: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R
@@ -1655,48 +1655,48 @@ Avatar:
     961839639: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/little.proximal.R/little.intermediate.R/little.distal.R/little.distal.R_end/little.distal.R_end_end/little.distal.R_end_end_end
     2008232866: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/ring.proximal.R/ring.intermediate.R/ring.distal.R
     1702059535: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/little.proximal.R/little.intermediate.R
-    2950131867: Meshes/coat_low/Mesh.059_1
     621752562: Armature/hips/spine/chest/chest_end/shoulder.L/upper_arm.L/lower_arm.L/hand.L/little.proximal.L/little.intermediate.L
     3190699374: Armature/hips/upper_leg.R/lower_leg.R
     3550733995: Armature/hips/spine/chest/chest_end/shoulder.L/upper_arm.L/lower_arm.L/hand.L/ring.proximal.L
     3119215535: Armature/hips/upper_leg.L/lower_leg.L/foot.L
     1825708378: Armature/hips/spine/chest/chest_end/shoulder.L/upper_arm.L/lower_arm.L/hand.L/thumb.proximal.L
-    764676940: Meshes/Cube
     2930790973: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/ring.proximal.R/ring.intermediate.R/ring.distal.R/ring.distal.R_end/ring.distal.R_end_end
     1758217075: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/thumb.proximal.R/thumb.intermediate.R/thumb.distal.R
-    672611217: Meshes/Male Hair version
     3876897297: Armature/hips/spine/chest/chest_end/shoulder.L
     1457445889: Armature/hips/spine/chest/chest_end/neck
     1729387506: Armature/hips/spine/chest/chest_end/shoulder.L/upper_arm.L/lower_arm.L/hand.L/little.proximal.L/little.intermediate.L/little.distal.L
-    98247088: Meshes/pants_low.001
+    3852176690: Meshes/puffer_high.001
     37865433: Armature/hips/upper_leg.L/lower_leg.L/foot.L/toes.L
     1233903336: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/index.proximal.R/index.intermediate.R/index.distal.R/index.distal.R_end/index.distal.R_end_end
     2104266162: Armature
     3959768149: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/ring.proximal.R
     1982471424: Armature/hips/spine/chest/chest_end/shoulder.L/upper_arm.L/lower_arm.L/hand.L/index.proximal.L/Index.intermediate.L/index.distal.L/index.distal.L_end/index.distal.L_end_end
     3859324193: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/thumb.proximal.R/thumb.intermediate.R/thumb.distal.R/thumb.distal.R_end/thumb.distal.R_end_end/thumb.distal.R_end_end_end
-    3545850322: Meshes/NurbsPath.002
     507478109: Armature/hips/spine/chest/chest_end/neck/head/head_end/head_end_end
     2535236052: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/thumb.proximal.R/thumb.intermediate.R/thumb.distal.R/thumb.distal.R_end
     3314586736: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/little.proximal.R/little.intermediate.R/little.distal.R
     1780230783: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/middle.proximal.R/middle.intermediate.R/middle.distal.R/middle.distal.R_end
     454396574: Armature/hips/upper_leg.R/lower_leg.R/foot.R/toes.R/toes.R_end/toes.R_end_end
+    3545816126: Meshes/Object_4
     1932078942: Armature/hips/spine/chest/chest_end/shoulder.L/upper_arm.L/lower_arm.L/hand.L
     180396647: Armature/hips/upper_leg.L/lower_leg.L
     2251021389: Armature/hips/spine/chest/chest_end/shoulder.L/upper_arm.L/lower_arm.L/hand.L/index.proximal.L/Index.intermediate.L/index.distal.L/index.distal.L_end/index.distal.L_end_end/index.distal.L_end_end_end
     413557343: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/thumb.proximal.R
     2130382336: Armature/hips/upper_leg.L
     1545519861: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/middle.proximal.R/middle.intermediate.R/middle.distal.R/middle.distal.R_end/middle.distal.R_end_end/middle.distal.R_end_end_end
+    2337529387: Meshes/F_Head_BaseMesh.001
     664601194: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/thumb.proximal.R/thumb.intermediate.R
     180071000: Armature/hips/upper_leg.R/lower_leg.R/foot.R/toes.R/toes.R_end
     1755654250: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/little.proximal.R/little.intermediate.R/little.distal.R/little.distal.R_end
     1515629421: Armature/hips/spine/chest/chest_end/shoulder.L/upper_arm.L/lower_arm.L/hand.L/middle.proximal.L
     2726893539: Armature/hips/spine/chest/chest_end/shoulder.L/upper_arm.L/lower_arm.L
+    2781269209: Meshes/Object_4/jeans_1
     424599626: Armature/hips/spine/chest/chest_end/shoulder.L/upper_arm.L/lower_arm.L/hand.L/ring.proximal.L/ring.intermediate.L/ring.distal.L/ring.distal.L_end/ring.distal.L_end_end
     126916508: Armature/hips/spine/chest/chest_end/shoulder.L/upper_arm.L/lower_arm.L/hand.L/ring.proximal.L/ring.intermediate.L/ring.distal.L/ring.distal.L_end/ring.distal.L_end_end/ring.distal.L_end_end_end
     2801680344: Armature/hips/spine/chest/chest_end/shoulder.R/upper_arm.R/lower_arm.R/hand.R/middle.proximal.R/middle.intermediate.R/middle.distal.R
     415334017: Armature/hips/upper_leg.R/lower_leg.R/foot.R/toes.R
     3172887202: Meshes
+    1487734696: Meshes/puffer_high.001/Mesh.007_1
   m_HumanDescription:
     serializedVersion: 3
     m_Human:
@@ -2572,52 +2572,52 @@ Avatar:
       m_Position: {x: 0, y: 0, z: -0}
       m_Rotation: {x: -0, y: -0, z: 0, w: 1}
       m_Scale: {x: 1, y: 1, z: 1}
-    - m_Name: M_Head_BaseMesh
+    - m_Name: Circle.005
       m_ParentName: 
       m_Position: {x: 0, y: 0, z: 0}
       m_Rotation: {x: -0, y: -0, z: -0, w: 1}
       m_Scale: {x: 1, y: 1, z: 1}
-    - m_Name: Cube
+    - m_Name: F_Head_BaseMesh.001
       m_ParentName: 
       m_Position: {x: 0, y: 0, z: 0}
       m_Rotation: {x: -0, y: -0, z: -0, w: 1}
       m_Scale: {x: 1, y: 1, z: 1}
-    - m_Name: coat_low
+    - m_Name: puffer_high.001
       m_ParentName: 
       m_Position: {x: 0, y: 0, z: 0}
       m_Rotation: {x: -0, y: -0, z: -0, w: 1}
       m_Scale: {x: 1, y: 1, z: 1}
-    - m_Name: Mesh.059_1
+    - m_Name: Mesh.007_1
       m_ParentName: 
       m_Position: {x: 0, y: 0, z: 0}
       m_Rotation: {x: -0, y: -0, z: -0, w: 1}
       m_Scale: {x: 1, y: 1, z: 1}
-    - m_Name: Mesh.059_2
+    - m_Name: Object_4
       m_ParentName: 
       m_Position: {x: 0, y: 0, z: 0}
       m_Rotation: {x: -0, y: -0, z: -0, w: 1}
       m_Scale: {x: 1, y: 1, z: 1}
-    - m_Name: pants_low.001
+    - m_Name: jeans_1
       m_ParentName: 
       m_Position: {x: 0, y: 0, z: 0}
       m_Rotation: {x: -0, y: -0, z: -0, w: 1}
       m_Scale: {x: 1, y: 1, z: 1}
-    - m_Name: Male Hair version
+    - m_Name: Wings.003
       m_ParentName: 
       m_Position: {x: 0, y: 0, z: 0}
       m_Rotation: {x: -0, y: -0, z: -0, w: 1}
       m_Scale: {x: 1, y: 1, z: 1}
-    - m_Name: NurbsPath.002
+    - m_Name: "\u7F51\u683C.004_1"
       m_ParentName: 
       m_Position: {x: 0, y: 0, z: 0}
       m_Rotation: {x: -0, y: -0, z: -0, w: 1}
       m_Scale: {x: 1, y: 1, z: 1}
-    - m_Name: Sphere
+    - m_Name: LPM-SOAboots
       m_ParentName: 
       m_Position: {x: 0, y: 0, z: 0}
       m_Rotation: {x: -0, y: -0, z: -0, w: 1}
       m_Scale: {x: 1, y: 1, z: 1}
-    - m_Name: Sphere.001
+    - m_Name: Mesh.001_1
       m_ParentName: 
       m_Position: {x: 0, y: 0, z: 0}
       m_Rotation: {x: -0, y: -0, z: -0, w: 1}
