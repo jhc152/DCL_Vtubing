@@ -23,7 +23,7 @@ if '%errorlevel%' NEQ '0' (
 :gotAdmin
     pushd "%CD%"
     CD /D "%~dp0"
-	set "UCCAPNAME=VRigUnity Video Capture"
+	set "UCCAPNAME=DCL Vtubing Camera"
     echo Installing capture device named '%UCCAPNAME%' ...
     regsvr32 "UnityCaptureFilter32bit.dll" "/i:UnityCaptureName=%UCCAPNAME%"
     regsvr32 "UnityCaptureFilter64bit.dll" "/i:UnityCaptureName=%UCCAPNAME%"

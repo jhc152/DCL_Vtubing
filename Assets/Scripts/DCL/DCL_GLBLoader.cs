@@ -95,19 +95,22 @@ public class DCL_GLBLoader : MonoBehaviour
             );
         if (success)
         {
-            //Debug.Log("sdasdasd");
-            success = await gltf.InstantiateMainSceneAsync(transform);          
-           
+            
+            success = await gltf.InstantiateMainSceneAsync(transform);                    
 
             SkinnedMeshRenderer[] meshRenderer = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
 
-           // Debug.Log("cuanto en este " + meshRenderer.Length + "    " + gltf.ImageCount);
+
+            /**init setting material*/
+
+
+            Debug.Log("cuanto en este " + meshRenderer.Length + "    " + gltf.ImageCount);
 
             Texture2D myTexture2D;
             Texture2D myTexture2DEmmissive;
 
 
-            bool hayTextura = false;
+            //bool hayTextura = false;
 
             for (int i = 0; i < meshRenderer.Length; i++)
             {
@@ -124,12 +127,12 @@ public class DCL_GLBLoader : MonoBehaviour
                 //la que viene
                 Texture2D texture2D = (Texture2D)meshRenderer[i].material.mainTexture;
 
-                hayTextura = false;
+                //hayTextura = false;
 
 
                 if ((Texture2D)meshRenderer[i].material.mainTexture != null)
                 {
-                    hayTextura = true;
+                    //hayTextura = true;
 
 
                     // Create a temporary RenderTexture of the same size as the texture

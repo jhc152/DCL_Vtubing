@@ -11,4 +11,4 @@ fi
 # Register virtual camera device
 modprobe v4l2loopback \
     exclusive_caps=1 \
-    card_label="VRigUnity Video Capture"
+    card_label="DCL Vtubing Camera"

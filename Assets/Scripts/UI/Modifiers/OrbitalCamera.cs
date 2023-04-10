@@ -58,27 +58,64 @@ namespace HardCoded.VRigUnity {
 				Depth -= Input.mouseScrollDelta.y / 10.0f;
 
 				if (Input.GetMouseButtonDown(0)) {
-					if (IsControlDown) {
-						dragType = Type.Rotating;
-					} else if (IsShiftDown) {
-						dragType = Type.Panning;
-					} else {
-						dragType = Type.None;
-					}
+
+					dragType = Type.Rotating;
+					//if (IsControlDown) {
+					//	dragType = Type.Rotating;
+					//} else if (IsShiftDown) {
+					//	dragType = Type.Panning;
+					//} else {
+					//	dragType = Type.None;
+					//}
 
 					lastMouseDrag = Input.mousePosition;
 				}
+
+
+				if (Input.GetMouseButtonDown(2))
+				{
+
+					dragType = Type.Panning;
+					//if (IsControlDown)
+					//{
+					//	dragType = Type.Rotating;
+					//}
+					//else if (IsShiftDown)
+					//{
+					//	dragType = Type.Panning;
+					//}
+					//else
+					//{
+					//	dragType = Type.None;
+					//}
+
+					lastMouseDrag = Input.mousePosition;
+				}
+
+
+
+
 			}
 
-			if (Input.GetMouseButtonUp(0)) {
-				dragType = Type.None;
-			}
 
-			if (!Input.GetMouseButton(0) || dragType == Type.None) {
-				return;
-			}
+            //button left 
+            if (Input.GetMouseButtonUp(0))
+            {
+                dragType = Type.None;
+            }
 
-			Vector2 mouse = (lastMouseDrag - Input.mousePosition);
+            //button wheel
+
+            if (Input.GetMouseButtonUp(2))
+            {
+                dragType = Type.None;
+            }
+
+            //if (!Input.GetMouseButton(0) || !Input.GetMouseButton(2) || dragType == Type.None) {
+            //	return;
+            //}
+
+            Vector2 mouse = (lastMouseDrag - Input.mousePosition);
 			lastMouseDrag = Input.mousePosition;
 
 			switch (dragType) {

@@ -73,7 +73,8 @@ namespace HardCoded.VRigUnity {
 				VmcSenderStart = new("vmc_sender.start", "Start Sender VMC"),
 				VmcSenderStop = new("vmc_sender.stop", "Stop Sender VMC"),
 				VmcPort = new("vmc.port", "Port"),
-				HelpText = new("ui.help_text", "Shift to Pan, Ctrl to Rotate"),
+				//HelpText = new("ui.help_text", "Shift to Pan, Ctrl to Rotate"),
+			    HelpText = new("ui.help_text", "Middle Click to Pan, Left Click to Rotate, Wheel to Zoom" ),
 				SettingsButton = new("ui.settings", "Settings"),
 
 				DialogImageFiles = new("dialog.image_files", "Image Files"),
