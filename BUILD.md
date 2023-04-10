@@ -1,4 +1,4 @@
-# VRigUnity
+# DCL Vtubing
 
 ## Setup
 To run the repository locally you need to first download the libraries
