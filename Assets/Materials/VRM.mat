@@ -9,7 +9,9 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: VRM
   m_Shader: {fileID: 4800000, guid: 1a97144e4ad27a04aafd70f7b915cedb, type: 3}
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - MTOON_OUTLINE_COLOR_FIXED
+  - MTOON_OUTLINE_WIDTH_WORLD
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -109,7 +111,7 @@ Material:
     - _OutlineLightingMix: 1
     - _OutlineScaledMaxDistance: 1
     - _OutlineWidth: 0.5
-    - _OutlineWidthMode: 0
+    - _OutlineWidthMode: 1
     - _Parallax: 0.02
     - _ReceiveShadowRate: 1
     - _RimFresnelPower: 1

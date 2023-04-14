@@ -107,6 +107,18 @@ public class DCL_Manager : MonoBehaviour
     bool show_head = false;
     bool show_body = false;
 
+    bool show_lower_body = false; 
+    bool show_upper_body = false;
+    bool show_feet = false;
+
+    //contabilizar cuantos wearables se han cargado su data
+    int WearablesDataCompletes = 0;
+
+
+
+    List<string> hideFull = new List<string>();
+    List<string> replaceFull = new List<string>();
+
     public TMP_InputField inputHashUser;
 
 
@@ -134,6 +146,10 @@ public class DCL_Manager : MonoBehaviour
 
 
     
+
+
+
+
     //////////////////////////////// ------------------------             PASO 1               ----------------------------------------------
     
 
@@ -142,13 +158,21 @@ public class DCL_Manager : MonoBehaviour
     public void LoadProfile()
 
     {
-
+        //resete paraemeters
         show_hair = true;
         show_head = true;
         show_body = true;
 
+        show_lower_body = false;
+        show_upper_body = false;
+        show_feet = false;
+
+        hideFull = new List<string>();
+        replaceFull = new List<string>();
+
 
         WearablesComplete = 0;
+        WearablesDataCompletes = 0;
 
         if (!loadingProfile)
         {
@@ -185,7 +209,45 @@ public class DCL_Manager : MonoBehaviour
             }
 
             /*ahora si empieza el get del usuario de decentraland**/
-            StartCoroutine(GetProfile(hashUsser)); 
+
+
+            /*reiniciando coroutinas*/
+            if(_GetProfile == null)
+            {
+                _GetProfile = GetProfile(hashUsser);
+            }
+            else
+            {
+                StopCoroutine(_GetProfile);
+                _GetProfile = null;
+                _GetProfile = GetProfile(hashUsser);
+            }
+
+            StartCoroutine(_GetProfile);
+        }
+
+
+        //protect to fail reload
+        else
+        {
+            if (_GetProfile != null)
+            {
+                StopCoroutine(_GetProfile);
+                 _GetProfile = null;
+            }
+
+
+            for (int i = 0; i < WearableListProfiles.Count; i++)
+            {
+                if (WearableListProfiles[i].GetWearablePointer != null)
+                {
+                    StopCoroutine(WearableListProfiles[i].GetWearablePointer);
+                }
+            }
+
+            loadingProfile = false;
+            LoadProfile();
+
         }
     }
 
@@ -196,7 +258,7 @@ public class DCL_Manager : MonoBehaviour
     }
 
 
-
+    IEnumerator _GetProfile =  null;
 
     /// <summary>
     /// Fetch user profile from decentraland catalyst 
@@ -206,6 +268,12 @@ public class DCL_Manager : MonoBehaviour
     public IEnumerator GetProfile(string address)
     {
         WearableListProfiles.Clear();
+
+
+
+        WearableListProfiles = new List<WearablesEncontrado>();
+
+
         UnityWebRequest www = UnityWebRequest.Get( API_DCL_PROFILE + address);
         yield return www.SendWebRequest();
         if (www.result == UnityWebRequest.Result.Success)
@@ -244,13 +312,11 @@ public class DCL_Manager : MonoBehaviour
             /*CreateColorByRGB*/
 
             //Dictionary<string, object> colorData = JsonConvert.DeserializeObject<Dictionary<string, object>>(dataProfileAvatar["hair"]["color"]);
+
+            ///colorizando hair eyes skin
             avatarInfo.hair = CreateColorByRGB("hair");
             avatarInfo.eyes = CreateColorByRGB("eyes");
             avatarInfo.skin = CreateColorByRGB("skin");
-
-
-
-
 
             GetListOfWearablesAndCheck();
         }
@@ -285,6 +351,9 @@ public class DCL_Manager : MonoBehaviour
     {
         string textobuscado = "base-avatars";
 
+        //string[] textobuscadoParaOmitir = { "hair", "head", "eyes", "eyebrows", "facial_hair", "mouth", "upper_body", "lower_body", "feet", "hat", "helmet", "mask", "tiara", "top_head", "earring", "eyewear.skin" };
+        string[] textobuscadoParaOmitir = { "eyes", "eyebrows", "facial_hair", "mouth", "mask" };
+
         //a omitir
         //https://docs.decentraland.org/contributor/content/entity-types/wearables/
         //eyes, eyebrows, facial_hair, mouth, mask
@@ -293,7 +362,20 @@ public class DCL_Manager : MonoBehaviour
         if (wearableProfile.Contains(textobuscado))
         {
             // Debug.Log("La cadena buscada se encuentra en el texto");
-            return true;//"La cadena buscada se encuentra en el texto"
+            ///off-chain
+            bool contiene = true;
+            foreach (string texto in textobuscadoParaOmitir)
+            {
+                if (wearableProfile.Contains(texto))
+                {
+                    contiene = true;
+                    break;
+                }
+            }                      
+
+
+            return contiene;//"La cadena buscada se encuentra en el texto"
+            //return true;//"La cadena buscada se encuentra en el texto"
         }
         else
         {
@@ -304,7 +386,7 @@ public class DCL_Manager : MonoBehaviour
     #endregion CheckWearableString
 
 
-
+    public List<WearablesEncontrado> WearableToRemove = new List<WearablesEncontrado>();
 
     #region GetListOfWearablesAndCheck
     public void GetListOfWearablesAndCheck()
@@ -326,6 +408,19 @@ public class DCL_Manager : MonoBehaviour
         }
 
 
+        /*analizar cuales seran eliminados de la lista anates de ser cargados**/
+
+        WearableToRemove = new List<WearablesEncontrado>();
+        for (int i = 0; i < WearableListProfiles.Count; i++)
+        {
+
+        }
+
+
+       
+
+        /*instanciar lo wearabls que si pasaron a ser cargados*/
+
         Quaternion rotat = new Quaternion(0, 0, 0, 0);
         for (int i = 0; i < WearableListProfiles.Count; i++)
         {
@@ -340,7 +435,31 @@ public class DCL_Manager : MonoBehaviour
     #endregion
 
 
+  
 
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void CleanListWearables()
+    {
+        //for (int i = 0; i < WearableListProfiles.Count; i++)
+        //{
+
+        //}
+
+
+        //foreach (WearablesEncontrado obj in WearableListProfiles)
+        //{
+        //    if (obj.transform.position.y < 0)
+        //    {
+        //        objectsToClean.Add(obj);
+        //        WearableListProfiles.Remove(obj);
+        //    }
+        //}
+    }
+
+    List<string> skinHides = new List<string> { "upper_body", "feet", "lower_body", "head", "helmet", "mask", "facial_hair", "mouth", "eyes", "eyewear", "earrings" };
 
     #region GetWearablePointer
     public IEnumerator GetWearablePointer(string wearablePointer, int indexOnList)
@@ -425,8 +544,18 @@ public class DCL_Manager : MonoBehaviour
             glbLoaderObj.info_hides = metadataWearableCurrent["hides"];
             glbLoaderObj.info_tags = metadataWearableCurrent["tags"];
             glbLoaderObj.info_category = metadataWearableCurrent["category"];
+            Debug.Log("<color=green>info_category :  </color>" + glbLoaderObj.info_category);
+
+            string category_cur = metadataWearableCurrent["category"];
 
 
+            if (category_cur == "skin")
+            {
+                hideFull.AddRange(skinHides);
+            }
+
+            glbLoaderObj.mainFile = mainFile;
+            glbLoaderObj.idWearable = hashWearable;
 
             /*checando los hide de cabeza y o pelo*/
             string hideCurrent = "";
@@ -434,6 +563,9 @@ public class DCL_Manager : MonoBehaviour
             for (int i = 0; i < metadataWearableCurrent["hides"].Count; i++)
             {
                 hideCurrent = metadataWearableCurrent["hides"][i];
+                Debug.Log("h___ "+ hideCurrent);
+
+                hideFull.Add(hideCurrent);
                 if (hideCurrent ==  "head")
                 {
                     Debug.Log("<color=yellow>Debe ocultar la cabeza</color>");
@@ -446,16 +578,65 @@ public class DCL_Manager : MonoBehaviour
                     show_hair = false;
                 }
             }
-            //ese glb
-            if (mainFile.Contains(".glb"))
+
+
+
+            for (int i = 0; i < metadataWearableCurrent["replaces"].Count; i++)
             {
-                glbLoaderObj.idWearable = hashWearable;
-                glbLoaderObj.StartGLBLoader();
+                hideCurrent = metadataWearableCurrent["replaces"][i];
+                Debug.Log("r___ " + hideCurrent);
+
+                replaceFull.Add(hideCurrent);
+                if (hideCurrent == "head")
+                {
+                    Debug.Log("<color=yellow>Debe ocultar la cabeza</color>");
+                    show_head = false;
+                }
+
+                if (hideCurrent == "hair")
+                {
+                    Debug.Log("<color=yellow>Debe ocultar el pelo</color>");
+                    show_hair = false;
+                }
+            }
+
+
+            //ocultando feet
+            if(metadataWearableCurrent["category"] == "feet")
+            {
+                show_feet = false;
+            }
+
+            if (metadataWearableCurrent["category"] == "lower_body")
+            {
+                show_lower_body = false;
+            }
+
+            if (metadataWearableCurrent["category"] == "upper_body")
+            {
+                show_upper_body = false;
+            }
+
+
+
+
+            //analizar wearables por caragar
+
+            CheckWearablesHides();
+
+
+            //ese glb
+            if (mainFile.Contains(".glb") || mainFile.Contains(".gltf"))
+            {
+
+                Debug.Log("<color=yellow>mainFile::</color>" + mainFile);
+               // glbLoaderObj.idWearable = hashWearable;
+               // glbLoaderObj.StartGLBLoader();
             }
             else
             {
-                glbLoaderObj.idWearable = hashWearable;
-                glbLoaderObj.StartGLBLoaderFinished();
+              //  glbLoaderObj.idWearable = hashWearable;
+             //   glbLoaderObj.StartGLBLoaderFinished();
             }
 
             //
@@ -468,13 +649,122 @@ public class DCL_Manager : MonoBehaviour
 
     }
 
+
+
+
+    /// <summary>
+    /// analizar los hides y replaces
+    /// </summary>
+    public void CheckWearablesHides()
+    {
+
+        WearablesDataCompletes++;
+        if (WearablesDataCompletes < WearableListProfiles.Count) return; //si aun no termina de cargar todod los datas
+
+       
+
+        replaceFull = replaceFull.Distinct().ToList();
+        hideFull = hideFull.Distinct().ToList();
+        
+       
+
+
+        DCL_GLBLoader glbLoaderObj = null;
+        string categoryCurr = "";
+        List<WearablesEncontrado> wearableToRemove = new List<WearablesEncontrado>();
+        //buscar lo objetos que seran reemplazados y quitarlos de la lista original no cargara realmente el glb
+        foreach (var replace in replaceFull)
+        {
+
+            Debug.Log("<color=magenta>replaceFull</color> " + replace);
+
+            foreach (WearablesEncontrado obj in WearableListProfiles)
+            {
+                glbLoaderObj = obj.WearableContent.transform.GetComponent<DCL_GLBLoader>();
+                categoryCurr = glbLoaderObj.info_category;
+                Debug.Log(categoryCurr);
+
+                if (categoryCurr == replace)
+                {
+                    //WearableListProfiles.Remove(obj);
+                    Debug.Log("debe ocultar replace " + categoryCurr);
+                    //Debug.Break();
+                    wearableToRemove.Add(obj);
+                }
+            }
+        }
+
+        //WearableListProfiles.RemoveAll(obj => wearableToRemove.Contains(obj));
+        //wearableToRemove = new List<WearablesEncontrado>();
+
+        //buscar lo objetos que seran hide y quitarlos de la lista original para no cargara realmente el glb
+        foreach (var hide in hideFull)
+        {
+            Debug.Log("<color=cyan>hideFull</color> " + hide);
+            foreach (WearablesEncontrado obj in WearableListProfiles)
+            {
+                glbLoaderObj = obj.WearableContent.transform.GetComponent<DCL_GLBLoader>();
+                categoryCurr = glbLoaderObj.info_category;
+                Debug.Log(categoryCurr);
+                if (categoryCurr == hide)
+                {
+                    Debug.Log("debe ocultar hide " + categoryCurr);
+                    //Debug.Break();
+                    //WearableListProfiles.Remove(obj);
+                    wearableToRemove.Add(obj);
+                }
+            }
+        }
+
+        Debug.Log(WearableListProfiles.Count);
+        WearableListProfiles.RemoveAll(obj => wearableToRemove.Contains(obj));
+
+        Debug.Log(WearableListProfiles.Count);
+
+        //ahora si con los finales cargarle su glb
+        string mainFileCurr = "";
+        foreach (WearablesEncontrado obj in WearableListProfiles)
+        {
+            glbLoaderObj = obj.WearableContent.transform.GetComponent<DCL_GLBLoader>();
+            mainFileCurr = glbLoaderObj.mainFile;
+            //ese glb
+            if (mainFileCurr.Contains(".glb") || mainFileCurr.Contains(".gltf"))
+            {
+
+                //Debug.Log("<color=yellow>mainFile::</color>" + mainFile);
+                //glbLoaderObj.idWearable = hashWearable;
+                glbLoaderObj.StartGLBLoader();
+            }
+            else
+            {
+                //glbLoaderObj.idWearable = hashWearable;
+                glbLoaderObj.StartGLBLoaderFinished();
+            }
+
+        }
+
+
+
+        
+
+        
+
+
+    }
+
+
+
+
+
+
+
     #endregion
 
 
 
 
     #region FindHashWearable
-    public string FindHashWearable(JSONNode _dataWearablePointer)
+    public string FindHashWearable(JSONNode _dataWearablePointer)//depreciado
     {
         string hashToReturn = "";       
         string fileName = "";
@@ -598,7 +888,7 @@ public class DCL_Manager : MonoBehaviour
 
 
 
-                // materialsInMeshCurrent[i].SetOverrideTag("RenderType", "Transparent");
+                 materialsInMeshCurrent[i].SetOverrideTag("RenderType", "Cutout");
 
 
 
@@ -778,6 +1068,8 @@ public class DCL_Manager : MonoBehaviour
         vrm_hair_male.enabled = false;
         vrm_hair_female.enabled = false;
 
+        Debug.Log("show_hair "+  show_hair + " "+ avatarInfo.genero);
+
         if (avatarInfo.genero == AvatarGenero.Male)
         {
             vrm_hair_male.enabled = show_hair;
@@ -788,7 +1080,7 @@ public class DCL_Manager : MonoBehaviour
             vrm_hair_female.enabled = show_hair;
         }
 
-        vrm_head.enabled = show_hair;
+        vrm_head.enabled = show_head;
 
     }
 
