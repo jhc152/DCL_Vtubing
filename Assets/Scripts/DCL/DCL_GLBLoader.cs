@@ -69,9 +69,7 @@ public class DCL_GLBLoader : MonoBehaviour
         {
             byte[] glbData = request.downloadHandler.data;
 
-            glbDataLoaded = glbData;
-
-            Debug.Log(glbData);
+            glbDataLoaded = glbData;          
             LoadGltfBinaryFromMemory(glbData);
         }
         else
@@ -107,26 +105,16 @@ public class DCL_GLBLoader : MonoBehaviour
 
 
             /**init setting material*/
-
-
             Debug.Log("cuanto en este " + meshRenderer.Length + "    " + gltf.ImageCount);
-
             Texture2D myTexture2D;
             Texture2D myTexture2DEmmissive;
-
 
             //bool hayTextura = false;
 
             for (int i = 0; i < meshRenderer.Length; i++)
             {
-
-
                 Material newMaterial = new Material(Shader.Find("Standard"));
                 newMaterial.name = meshRenderer[i].material.name;
-
-
-
-
                 //Debug.Log(" --- - -- - este " + meshRenderer[i].name, meshRenderer[i].gameObject);
 
                 //la que viene

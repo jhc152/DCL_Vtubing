@@ -17,7 +17,7 @@ Material:
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
   stringTagMap:
-    RenderType: Transparent
+    RenderType: Cutout
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -31,7 +31,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 4d6649690ad01cc40a9822ba0edbc786, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2b4197e65e43a24429a39637bf0adcfd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OutlineWidthTexture:
@@ -75,7 +75,7 @@ Material:
     - _LightColorAttenuation: 0
     - _MToonVersion: 39
     - _OutlineColorMode: 0
-    - _OutlineCullMode: 1
+    - _OutlineCullMode: 10
     - _OutlineLightingMix: 1
     - _OutlineScaledMaxDistance: 1
     - _OutlineWidth: 0.5

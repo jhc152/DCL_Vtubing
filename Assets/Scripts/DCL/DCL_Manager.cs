@@ -99,8 +99,18 @@ public class DCL_Manager : MonoBehaviour
 
 
     public SkinnedMeshRenderer vrm_hair_male;
+    public SkinnedMeshRenderer vrm_lower_body_male;
+    public SkinnedMeshRenderer vrm_upper_body_male;
+    public SkinnedMeshRenderer vrm_feet_male;
+   
     public SkinnedMeshRenderer vrm_hair_female;
+    public SkinnedMeshRenderer vrm_lower_body_female;
+    public SkinnedMeshRenderer vrm_upper_body_female;
+    public SkinnedMeshRenderer vrm_feet_female;
     public SkinnedMeshRenderer vrm_head;
+
+
+
 
 
     bool show_hair = false;
@@ -163,9 +173,9 @@ public class DCL_Manager : MonoBehaviour
         show_head = true;
         show_body = true;
 
-        show_lower_body = false;
-        show_upper_body = false;
-        show_feet = false;
+        show_lower_body = true;
+        show_upper_body = true;
+        show_feet = true;
 
         hideFull = new List<string>();
         replaceFull = new List<string>();
@@ -600,22 +610,22 @@ public class DCL_Manager : MonoBehaviour
                 }
             }
 
+            
+            ////ocultando feet
+            //if(category_cur == "feet")
+            //{
+            //    show_feet = false;
+            //}
 
-            //ocultando feet
-            if(metadataWearableCurrent["category"] == "feet")
-            {
-                show_feet = false;
-            }
+            //if (category_cur == "lower_body")
+            //{
+            //    show_lower_body = false;
+            //}
 
-            if (metadataWearableCurrent["category"] == "lower_body")
-            {
-                show_lower_body = false;
-            }
-
-            if (metadataWearableCurrent["category"] == "upper_body")
-            {
-                show_upper_body = false;
-            }
+            //if (category_cur == "upper_body")
+            //{
+            //    show_upper_body = false;
+            //}
 
 
 
@@ -673,29 +683,20 @@ public class DCL_Manager : MonoBehaviour
         string categoryCurr = "";
         List<WearablesEncontrado> wearableToRemove = new List<WearablesEncontrado>();
         //buscar lo objetos que seran reemplazados y quitarlos de la lista original no cargara realmente el glb
-        foreach (var replace in replaceFull)
-        {
+        //foreach (var replace in replaceFull)
+        //{        
+        //    foreach (WearablesEncontrado obj in WearableListProfiles)
+        //    {
+        //        glbLoaderObj = obj.WearableContent.transform.GetComponent<DCL_GLBLoader>();
+        //        categoryCurr = glbLoaderObj.info_category;
+        //        if (categoryCurr == replace)
+        //        {              
+        //            wearableToRemove.Add(obj);
+        //        }
+        //    }
+        //}
 
-            Debug.Log("<color=magenta>replaceFull</color> " + replace);
-
-            foreach (WearablesEncontrado obj in WearableListProfiles)
-            {
-                glbLoaderObj = obj.WearableContent.transform.GetComponent<DCL_GLBLoader>();
-                categoryCurr = glbLoaderObj.info_category;
-                Debug.Log(categoryCurr);
-
-                if (categoryCurr == replace)
-                {
-                    //WearableListProfiles.Remove(obj);
-                    Debug.Log("debe ocultar replace " + categoryCurr);
-                    //Debug.Break();
-                    wearableToRemove.Add(obj);
-                }
-            }
-        }
-
-        //WearableListProfiles.RemoveAll(obj => wearableToRemove.Contains(obj));
-        //wearableToRemove = new List<WearablesEncontrado>();
+      
 
         //buscar lo objetos que seran hide y quitarlos de la lista original para no cargara realmente el glb
         foreach (var hide in hideFull)
@@ -727,9 +728,29 @@ public class DCL_Manager : MonoBehaviour
         {
             glbLoaderObj = obj.WearableContent.transform.GetComponent<DCL_GLBLoader>();
             mainFileCurr = glbLoaderObj.mainFile;
+            categoryCurr = glbLoaderObj.info_category;
             //ese glb
-            if (mainFileCurr.Contains(".glb") || mainFileCurr.Contains(".gltf"))
+            if (mainFileCurr.Contains(".glb") )
+            //if (mainFileCurr.Contains(".glb") || mainFileCurr.Contains(".gltf"))
             {
+
+                //ocultando feet
+                if (categoryCurr == "feet")
+                {
+                    show_feet = false;
+                }
+
+                if (categoryCurr == "lower_body")
+                {
+                    show_lower_body = false;
+                }
+
+                if (categoryCurr == "upper_body")
+                {
+                    show_upper_body = false;
+                }
+
+
 
                 //Debug.Log("<color=yellow>mainFile::</color>" + mainFile);
                 //glbLoaderObj.idWearable = hashWearable;
@@ -1068,19 +1089,41 @@ public class DCL_Manager : MonoBehaviour
         vrm_hair_male.enabled = false;
         vrm_hair_female.enabled = false;
 
+
+        vrm_lower_body_male.enabled = false;
+        vrm_upper_body_male.enabled = false;
+        vrm_feet_male.enabled = false;
+
+        vrm_hair_female.enabled = false;
+        vrm_lower_body_female.enabled = false;
+        vrm_upper_body_female.enabled = false;
+        vrm_feet_female.enabled = false;
+
+
         Debug.Log("show_hair "+  show_hair + " "+ avatarInfo.genero);
 
         if (avatarInfo.genero == AvatarGenero.Male)
         {
             vrm_hair_male.enabled = show_hair;
+
+            vrm_lower_body_male.enabled = show_lower_body;
+            vrm_upper_body_male.enabled = show_upper_body;
+            vrm_feet_male.enabled = show_feet;
         }
 
         if (avatarInfo.genero == AvatarGenero.Female)
         {
             vrm_hair_female.enabled = show_hair;
+
+            vrm_lower_body_female.enabled = show_lower_body;
+            vrm_upper_body_female.enabled = show_upper_body;
+            vrm_feet_female.enabled = show_feet;
         }
 
         vrm_head.enabled = show_head;
+
+
+
 
     }
 
