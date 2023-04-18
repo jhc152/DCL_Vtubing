@@ -16,6 +16,8 @@ public class DCL_GLBLoader : MonoBehaviour
     public JSONNode info_hides;
     public JSONNode info_category;
 
+    public string mainFile = "";
+
 
     string url = $"https://peer.decentraland.org/content/contents/";
 
@@ -31,6 +33,7 @@ public class DCL_GLBLoader : MonoBehaviour
         if (idWearable != "")
         {
             url += idWearable;
+            Debug.Log("main_file ::: " + mainFile + " url::" + url);
             StartCoroutine(LoadGLB());
 
 
@@ -66,7 +69,7 @@ public class DCL_GLBLoader : MonoBehaviour
         {
             byte[] glbData = request.downloadHandler.data;
 
-            glbDataLoaded = glbData;
+            glbDataLoaded = glbData;          
             LoadGltfBinaryFromMemory(glbData);
         }
         else
@@ -79,7 +82,7 @@ public class DCL_GLBLoader : MonoBehaviour
     private byte[] glbDataLoaded;
 
 
-    async void LoadGltfBinaryFromMemory(byte[] datas)
+    async void LoadGltfBinaryFromMemory2(byte[] datas)
     {
 
         //Material newMaterial = new Material(Shader.Find("Standard"));
@@ -102,26 +105,16 @@ public class DCL_GLBLoader : MonoBehaviour
 
 
             /**init setting material*/
-
-
             Debug.Log("cuanto en este " + meshRenderer.Length + "    " + gltf.ImageCount);
-
             Texture2D myTexture2D;
             Texture2D myTexture2DEmmissive;
-
 
             //bool hayTextura = false;
 
             for (int i = 0; i < meshRenderer.Length; i++)
             {
-
-
                 Material newMaterial = new Material(Shader.Find("Standard"));
                 newMaterial.name = meshRenderer[i].material.name;
-
-
-
-
                 //Debug.Log(" --- - -- - este " + meshRenderer[i].name, meshRenderer[i].gameObject);
 
                 //la que viene
@@ -333,13 +326,13 @@ public class DCL_GLBLoader : MonoBehaviour
                 //seteo del nuevo material
 
                 meshRenderer[i].material = newMaterial;
+                meshRenderer[i].material = SetMaterialStandard (meshRenderer[i]);
+
 
             }
 
 
 
-
-           
             //Debug.Break();           
 
             skinnedMEshBones.InicioUpdateBones();
@@ -351,6 +344,522 @@ public class DCL_GLBLoader : MonoBehaviour
 
         }
     }
+
+
+
+
+
+    public void InicioUpdateBones()
+    {
+        //empezara a pasar los bones de este wearable a
+        skinnedMEshBones.InicioUpdateBones();
+    }
+
+
+
+
+
+
+
+
+    async void LoadGltfBinaryFromMemory(byte[] datas)
+    {              
+
+        // var filePath = "/path/to/file.glb";
+        byte[] data = datas;
+        var gltf = new GltfImport();
+        bool success = await gltf.LoadGltfBinary( data, null );
+
+        if (success)
+        {
+
+            success = await gltf.InstantiateMainSceneAsync(transform);
+            SkinnedMeshRenderer[] meshRenderer = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
+
+            /**init setting material*/
+            //Debug.Log("cuanto en este " + meshRenderer.Length + "    " + gltf.ImageCount);           
+
+            //bool hayTextura = false;
+            for (int i = 0; i < meshRenderer.Length; i++)
+            {
+                //seteo del nuevo material
+                meshRenderer[i].material = SetMaterialMToon(meshRenderer[i]);
+            }
+
+            //Debug.Break();   
+            skinnedMEshBones.InicioUpdateBones();
+
+        }
+    }
+
+
+
+
+
+    public Material SetMaterialStandard(SkinnedMeshRenderer meshRenderer)
+    {
+
+
+        Texture2D myTexture2D;
+        Texture2D myTexture2DEmmissive;
+
+        Material newMaterial = new Material(Shader.Find("Standard"));
+        newMaterial.name = meshRenderer.material.name;
+
+
+
+
+        //Debug.Log(" --- - -- - este " + meshRenderer[i].name, meshRenderer[i].gameObject);
+
+        //la que viene
+        Texture2D texture2D = (Texture2D)meshRenderer.material.mainTexture;
+
+        //hayTextura = false;
+
+
+        if ((Texture2D)meshRenderer.material.mainTexture != null)
+        {
+            //hayTextura = true;
+
+
+            // Create a temporary RenderTexture of the same size as the texture
+            RenderTexture tmp = RenderTexture.GetTemporary(
+                                texture2D.width,
+                                texture2D.height,
+                                0,
+                                RenderTextureFormat.Default,
+                                RenderTextureReadWrite.Linear);
+
+
+            // Blit the pixels on texture to the RenderTexture
+            Graphics.Blit(texture2D, tmp);
+
+
+            // Backup the currently set RenderTexture
+            RenderTexture previous = RenderTexture.active;
+
+
+            // Set the current RenderTexture to the temporary one we created
+            RenderTexture.active = tmp;
+
+
+            // Create a new readable Texture2D to copy the pixels to it
+            myTexture2D = new Texture2D(texture2D.width, texture2D.height);
+
+
+            // Copy the pixels from the RenderTexture to the new Texture
+            myTexture2D.ReadPixels(new Rect(0, 0, tmp.width, tmp.height), 0, 0);
+            myTexture2D.Apply();
+
+
+            // Reset the active RenderTexture
+            RenderTexture.active = previous;
+
+            // Release the temporary RenderTexture
+            RenderTexture.ReleaseTemporary(tmp);
+
+            newMaterial.mainTexture = myTexture2D;//(Texture2D)meshRenderer[i].material.mainTexture;
+                                                  // 
+        }
+
+
+
+
+
+
+
+
+        //get color base
+
+        Color baseColor = meshRenderer.material.GetColor("baseColorFactor");
+        newMaterial.color = baseColor;
+
+
+
+        /******sacando mas parametros del original****/
+
+
+
+        newMaterial.SetInt("_SrcBlend", (int)meshRenderer.material.GetFloat("_SrcBlend"));
+        newMaterial.SetInt("_DstBlend", (int)meshRenderer.material.GetFloat("_DstBlend"));
+        newMaterial.SetInt("_ZWrite", (int)meshRenderer.material.GetFloat("_ZWrite"));
+
+
+        newMaterial.SetFloat("_Mode", (float)meshRenderer.material.GetFloat("_CullMode"));
+
+
+        //Shader shader = meshRenderer[i].material.shader;
+
+        // Obtener el RenderType del shader
+        int renderType = meshRenderer.material.renderQueue;
+
+        newMaterial.renderQueue = renderType;
+
+        // Debug.Log("<color=yellow> ----------------    </color>" + renderType, gameObject);
+
+        if (renderType <= 2000)
+        {
+
+            newMaterial.SetInt("_ZWrite", 1);
+            newMaterial.DisableKeyword("_ALPHATEST_ON");
+            newMaterial.DisableKeyword("_ALPHABLEND_ON");
+            newMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+            // newMaterial.renderQueue = -1;
+        }
+        else if (renderType <= 2450)
+
+
+        {
+            newMaterial.SetInt("_ZWrite", 1);
+            newMaterial.EnableKeyword("_ALPHATEST_ON");
+            newMaterial.DisableKeyword("_ALPHABLEND_ON");
+            newMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+            newMaterial.renderQueue = 2450;
+            newMaterial.SetOverrideTag("RenderType", "TransparentCutout");
+
+        }
+
+
+        else if (renderType <= 3000)
+
+
+        {
+            newMaterial.SetInt("_ZWrite", 0);
+            newMaterial.DisableKeyword("_ALPHATEST_ON");
+            newMaterial.EnableKeyword("_ALPHABLEND_ON");
+            newMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+            newMaterial.renderQueue = 3000;
+            newMaterial.SetOverrideTag("RenderType", "Transparent");
+
+        }
+
+
+        else
+
+
+        {
+            newMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+            newMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+            newMaterial.SetInt("_ZWrite", 0);
+            newMaterial.DisableKeyword("_ALPHATEST_ON");
+            newMaterial.DisableKeyword("_ALPHABLEND_ON");
+            newMaterial.EnableKeyword("_ALPHAPREMULTIPLY_ON");
+            newMaterial.renderQueue = 3000;
+            newMaterial.SetOverrideTag("RenderType", "Transparent");
+
+        }
+
+
+        newMaterial.SetFloat("_Metallic", (float)meshRenderer.material.GetFloat("roughnessFactor"));
+
+        //newMaterial.SetFloat("_Mode", 2f);
+
+        // Establecer el valor de Cutoff para definir el umbral de transparencia
+        //float cutoffValue = 0.5f; // por ejemplo, un valor de 0.5f para un umbral de transparencia del 50%
+        //newMaterial.SetFloat("_Cutoff", cutoffValue);
+        //newMaterial.SetOverrideTag("RenderType", "TransparentCutout");
+
+
+
+
+        /*emision  */
+
+
+
+        newMaterial.EnableKeyword("_EMISSION");
+
+
+        if ((Texture2D)meshRenderer.material.GetTexture("emissiveTexture") != null)
+        {
+
+
+            Texture2D texture2DEmmisisve = (Texture2D)meshRenderer.material.GetTexture("emissiveTexture");
+
+
+            // Create a temporary RenderTexture of the same size as the texture
+            RenderTexture tmpEmmisive = RenderTexture.GetTemporary(
+                                texture2DEmmisisve.width,
+                                texture2DEmmisisve.height,
+                                0,
+                                RenderTextureFormat.Default,
+                                RenderTextureReadWrite.Linear);
+
+
+            // Blit the pixels on texture to the RenderTexture
+            Graphics.Blit(texture2DEmmisisve, tmpEmmisive);
+
+            // Backup the currently set RenderTexture
+            RenderTexture previousEmmisive = RenderTexture.active;
+
+            // Set the current RenderTexture to the temporary one we created
+            RenderTexture.active = tmpEmmisive;
+
+            // Create a new readable Texture2D to copy the pixels to it
+            myTexture2DEmmissive = new Texture2D(texture2DEmmisisve.width, texture2DEmmisisve.height);
+
+            // Copy the pixels from the RenderTexture to the new Texture
+            myTexture2DEmmissive.ReadPixels(new Rect(0, 0, tmpEmmisive.width, tmpEmmisive.height), 0, 0);
+            myTexture2DEmmissive.Apply();
+
+            // Reset the active RenderTexture
+            RenderTexture.active = previousEmmisive;
+
+            // Release the temporary RenderTexture
+            RenderTexture.ReleaseTemporary(tmpEmmisive);
+
+            /*************************************/
+            // Obtener el factor emissive  
+            //// Obtener la textura emissive                   
+            newMaterial.SetColor("_EmissionColor", (Color)meshRenderer.material.GetColor("emissiveFactor") * 8);
+            newMaterial.SetTexture("_EmissionMap", myTexture2DEmmissive);
+
+        }
+
+        return newMaterial;
+
+
+
+    }
+
+
+
+
+
+    public Material SetMaterialMToon(SkinnedMeshRenderer meshRenderer)
+    {
+
+
+        Texture2D myTexture2D;
+        Texture2D myTexture2DEmmissive;
+
+        Material newMaterial = new Material(Shader.Find("VRM/MToon"));
+        newMaterial.name = meshRenderer.material.name;
+
+
+
+
+        //Debug.Log(" --- - -- - este " + meshRenderer[i].name, meshRenderer[i].gameObject);
+
+        //la que viene
+        Texture2D texture2D = (Texture2D)meshRenderer.material.mainTexture;
+
+        //hayTextura = false;
+
+
+        if ((Texture2D)meshRenderer.material.mainTexture != null)
+        {
+            //hayTextura = true;
+
+
+            // Create a temporary RenderTexture of the same size as the texture
+            RenderTexture tmp = RenderTexture.GetTemporary(
+                                texture2D.width,
+                                texture2D.height,
+                                0,
+                                RenderTextureFormat.Default,
+                                RenderTextureReadWrite.Linear);
+
+
+            // Blit the pixels on texture to the RenderTexture
+            Graphics.Blit(texture2D, tmp);
+
+
+            // Backup the currently set RenderTexture
+            RenderTexture previous = RenderTexture.active;
+
+
+            // Set the current RenderTexture to the temporary one we created
+            RenderTexture.active = tmp;
+
+
+            // Create a new readable Texture2D to copy the pixels to it
+            myTexture2D = new Texture2D(texture2D.width, texture2D.height);
+
+
+            // Copy the pixels from the RenderTexture to the new Texture
+            myTexture2D.ReadPixels(new Rect(0, 0, tmp.width, tmp.height), 0, 0);
+            myTexture2D.Apply();
+
+
+            // Reset the active RenderTexture
+            RenderTexture.active = previous;
+
+            // Release the temporary RenderTexture
+            RenderTexture.ReleaseTemporary(tmp);
+
+            newMaterial.mainTexture = myTexture2D;//(Texture2D)meshRenderer[i].material.mainTexture;
+                                                  // 
+        }
+
+
+
+
+
+
+
+
+        //get color base
+
+        Color baseColor = meshRenderer.material.GetColor("baseColorFactor");
+        newMaterial.color = baseColor;
+
+
+
+        /******sacando mas parametros del original****/
+
+
+
+        newMaterial.SetInt("_SrcBlend", (int)meshRenderer.material.GetFloat("_SrcBlend"));
+        newMaterial.SetInt("_DstBlend", (int)meshRenderer.material.GetFloat("_DstBlend"));
+        newMaterial.SetInt("_ZWrite", (int)meshRenderer.material.GetFloat("_ZWrite"));
+
+
+        newMaterial.SetFloat("_Mode", (float)meshRenderer.material.GetFloat("_CullMode"));
+
+
+        //Shader shader = meshRenderer[i].material.shader;
+
+        // Obtener el RenderType del shader
+        int renderType = meshRenderer.material.renderQueue;
+
+        newMaterial.renderQueue = renderType;
+
+        // Debug.Log("<color=yellow> ----------------    </color>" + renderType, gameObject);
+
+        if (renderType <= 2000)
+        {
+
+            newMaterial.SetInt("_ZWrite", 1);
+            newMaterial.DisableKeyword("_ALPHATEST_ON");
+            newMaterial.DisableKeyword("_ALPHABLEND_ON");
+            newMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+            // newMaterial.renderQueue = -1;
+        }
+        else if (renderType <= 2450)
+
+
+        {
+            newMaterial.SetInt("_ZWrite", 1);
+            newMaterial.EnableKeyword("_ALPHATEST_ON");
+            newMaterial.DisableKeyword("_ALPHABLEND_ON");
+            newMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+            newMaterial.renderQueue = 2450;
+            newMaterial.SetOverrideTag("RenderType", "TransparentCutout");
+
+        }
+
+
+        else if (renderType <= 3000)
+
+
+        {
+            newMaterial.SetInt("_ZWrite", 0);
+            newMaterial.DisableKeyword("_ALPHATEST_ON");
+            newMaterial.EnableKeyword("_ALPHABLEND_ON");
+            newMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+            newMaterial.renderQueue = 3000;
+            newMaterial.SetOverrideTag("RenderType", "Transparent");
+
+        }
+
+
+        else
+
+
+        {
+            newMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+            newMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+            newMaterial.SetInt("_ZWrite", 0);
+            newMaterial.DisableKeyword("_ALPHATEST_ON");
+            newMaterial.DisableKeyword("_ALPHABLEND_ON");
+            newMaterial.EnableKeyword("_ALPHAPREMULTIPLY_ON");
+            newMaterial.renderQueue = 3000;
+            newMaterial.SetOverrideTag("RenderType", "Transparent");
+
+        }
+
+
+        newMaterial.SetFloat("_Metallic", (float)meshRenderer.material.GetFloat("roughnessFactor"));
+
+        //newMaterial.SetFloat("_Mode", 2f);
+
+        // Establecer el valor de Cutoff para definir el umbral de transparencia
+        //float cutoffValue = 0.5f; // por ejemplo, un valor de 0.5f para un umbral de transparencia del 50%
+        //newMaterial.SetFloat("_Cutoff", cutoffValue);
+        //newMaterial.SetOverrideTag("RenderType", "TransparentCutout");
+
+
+
+
+        /*emision  */
+
+
+
+        newMaterial.EnableKeyword("_EMISSION");
+
+
+        if ((Texture2D)meshRenderer.material.GetTexture("emissiveTexture") != null)
+        {
+
+
+            Texture2D texture2DEmmisisve = (Texture2D)meshRenderer.material.GetTexture("emissiveTexture");
+
+
+            // Create a temporary RenderTexture of the same size as the texture
+            RenderTexture tmpEmmisive = RenderTexture.GetTemporary(
+                                texture2DEmmisisve.width,
+                                texture2DEmmisisve.height,
+                                0,
+                                RenderTextureFormat.Default,
+                                RenderTextureReadWrite.Linear);
+
+
+            // Blit the pixels on texture to the RenderTexture
+            Graphics.Blit(texture2DEmmisisve, tmpEmmisive);
+
+            // Backup the currently set RenderTexture
+            RenderTexture previousEmmisive = RenderTexture.active;
+
+            // Set the current RenderTexture to the temporary one we created
+            RenderTexture.active = tmpEmmisive;
+
+            // Create a new readable Texture2D to copy the pixels to it
+            myTexture2DEmmissive = new Texture2D(texture2DEmmisisve.width, texture2DEmmisisve.height);
+
+            // Copy the pixels from the RenderTexture to the new Texture
+            myTexture2DEmmissive.ReadPixels(new Rect(0, 0, tmpEmmisive.width, tmpEmmisive.height), 0, 0);
+            myTexture2DEmmissive.Apply();
+
+            // Reset the active RenderTexture
+            RenderTexture.active = previousEmmisive;
+
+            // Release the temporary RenderTexture
+            RenderTexture.ReleaseTemporary(tmpEmmisive);
+
+            /*************************************/
+            // Obtener el factor emissive  
+            //// Obtener la textura emissive                   
+            newMaterial.SetColor("_EmissionColor", (Color)meshRenderer.material.GetColor("emissiveFactor") * 25);
+            newMaterial.SetTexture("_EmissionMap", myTexture2DEmmissive);
+
+        }
+
+        newMaterial.SetFloat("_OutlineWidthMode", 1);
+        newMaterial.SetFloat("_OutlineCullMode", 10);
+
+        newMaterial.SetOverrideTag("RenderType", "Cutout");
+
+       
+        return newMaterial;
+
+
+
+    }
+
+
+
+
+
 
 
     public void DCL_ExportGLB()
