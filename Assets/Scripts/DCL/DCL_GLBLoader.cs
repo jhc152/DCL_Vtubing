@@ -377,7 +377,7 @@ public class DCL_GLBLoader : MonoBehaviour
             SkinnedMeshRenderer[] meshRenderer = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
 
             /**init setting material*/
-            Debug.Log("cuanto en este " + meshRenderer.Length + "    " + gltf.ImageCount);           
+            //Debug.Log("cuanto en este " + meshRenderer.Length + "    " + gltf.ImageCount);           
 
             //bool hayTextura = false;
             for (int i = 0; i < meshRenderer.Length; i++)

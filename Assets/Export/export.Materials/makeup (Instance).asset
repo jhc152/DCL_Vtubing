@@ -7,17 +7,17 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: makeup (Instance)
+  m_Name: Makeup (Instance)
   m_Shader: {fileID: 4800000, guid: 1a97144e4ad27a04aafd70f7b915cedb, type: 3}
   m_ValidKeywords:
-  - _ALPHABLEND_ON
+  - _ALPHATEST_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: 2450
   stringTagMap:
-    RenderType: Transparent
+    RenderType: Cutout
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -70,16 +70,16 @@ Material:
     - _CullMode: 2
     - _Cutoff: 0.5
     - _DebugMode: 0
-    - _DstBlend: 10
+    - _DstBlend: 0
     - _IndirectLightIntensity: 0.1
     - _LightColorAttenuation: 0
     - _MToonVersion: 39
     - _OutlineColorMode: 0
-    - _OutlineCullMode: 1
+    - _OutlineCullMode: 10
     - _OutlineLightingMix: 1
     - _OutlineScaledMaxDistance: 1
     - _OutlineWidth: 0.5
-    - _OutlineWidthMode: 0
+    - _OutlineWidthMode: 1
     - _ReceiveShadowRate: 1
     - _RimFresnelPower: 1
     - _RimLift: 0
@@ -87,11 +87,11 @@ Material:
     - _ShadeShift: 0
     - _ShadeToony: 0.9
     - _ShadingGradeRate: 1
-    - _SrcBlend: 5
+    - _SrcBlend: 1
     - _UvAnimRotation: 0
     - _UvAnimScrollX: 0
     - _UvAnimScrollY: 0
-    - _ZWrite: 0
+    - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

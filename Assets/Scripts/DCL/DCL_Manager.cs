@@ -410,7 +410,7 @@ public class DCL_Manager : MonoBehaviour
             //leyendo los wearables elegibles
             if (!CheckWearableString (wearableCurrent))
             {
-                Debug.Log(wearableCurrent);
+                Debug.Log(API_DCL_WEARABLE_POINTER+wearableCurrent);
                 WearablesEncontrado newWearable = new WearablesEncontrado();
                 newWearable.wearablePointer = wearableCurrent;              
                 WearableListProfiles.Add(newWearable);                            
@@ -526,7 +526,7 @@ public class DCL_Manager : MonoBehaviour
             /**ya que encontro el mainfile ahora busca el hash de ese mainfile en la lista de content **/
 
 
-            Debug.Log("mainFile " + mainFile);
+            //Debug.Log("mainFile " + mainFile);
             string hashWearable = FindHashWearableByFile (mainFile);
           
 
@@ -556,6 +556,18 @@ public class DCL_Manager : MonoBehaviour
             glbLoaderObj.info_category = metadataWearableCurrent["category"];
             Debug.Log("<color=green>info_category :  </color>" + glbLoaderObj.info_category);
 
+            for (int i = 0; i < metadataWearableCurrent["hides"].Count; i++)
+            {
+                Debug.Log(i + " H: " + metadataWearableCurrent["hides"][i]);
+
+            }
+
+            for (int i = 0; i < metadataWearableCurrent["replaces"].Count; i++)
+            {
+                Debug.Log(i + " R: " + metadataWearableCurrent["replaces"][i]);
+
+            }
+
             string category_cur = metadataWearableCurrent["category"];
 
 
@@ -573,7 +585,7 @@ public class DCL_Manager : MonoBehaviour
             for (int i = 0; i < metadataWearableCurrent["hides"].Count; i++)
             {
                 hideCurrent = metadataWearableCurrent["hides"][i];
-                Debug.Log("h___ "+ hideCurrent);
+                //Debug.Log("h___ "+ hideCurrent);
 
                 hideFull.Add(hideCurrent);
                 if (hideCurrent ==  "head")
@@ -594,7 +606,7 @@ public class DCL_Manager : MonoBehaviour
             for (int i = 0; i < metadataWearableCurrent["replaces"].Count; i++)
             {
                 hideCurrent = metadataWearableCurrent["replaces"][i];
-                Debug.Log("r___ " + hideCurrent);
+                //Debug.Log("r___ " + hideCurrent);
 
                 replaceFull.Add(hideCurrent);
                 if (hideCurrent == "head")
@@ -706,7 +718,11 @@ public class DCL_Manager : MonoBehaviour
             {
                 glbLoaderObj = obj.WearableContent.transform.GetComponent<DCL_GLBLoader>();
                 categoryCurr = glbLoaderObj.info_category;
-                Debug.Log(categoryCurr);
+
+              
+
+
+                //Debug.Log(categoryCurr);
                 if (categoryCurr == hide)
                 {
                     Debug.Log("debe ocultar hide " + categoryCurr);
@@ -717,13 +733,15 @@ public class DCL_Manager : MonoBehaviour
             }
         }
 
-        Debug.Log(WearableListProfiles.Count);
+        //Debug.Log(WearableListProfiles.Count);
         WearableListProfiles.RemoveAll(obj => wearableToRemove.Contains(obj));
 
-        Debug.Log(WearableListProfiles.Count);
+        //Debug.Log(WearableListProfiles.Count);
 
         //ahora si con los finales cargarle su glb
         string mainFileCurr = "";
+        string hideCurr ="";
+        string replaceCurr = "";
         foreach (WearablesEncontrado obj in WearableListProfiles)
         {
             glbLoaderObj = obj.WearableContent.transform.GetComponent<DCL_GLBLoader>();
@@ -735,20 +753,34 @@ public class DCL_Manager : MonoBehaviour
             {
 
                 //ocultando feet
-                if (categoryCurr == "feet")
+                if (categoryCurr == "feet")  show_feet = false;               
+                if (categoryCurr == "lower_body") show_lower_body = false;
+                if (categoryCurr == "upper_body") show_upper_body = false;
+
+                //chacndo su hides 
+
+                for (int i = 0; i < glbLoaderObj.info_hides.Count; i++)
                 {
-                    show_feet = false;
+                    hideCurr = glbLoaderObj.info_hides[i];
+                    if (hideCurr == "feet") show_feet = false;
+                    if (hideCurr == "lower_body") show_lower_body = false;
+                    if (hideCurr == "upper_body") show_upper_body = false;
+                    if (hideCurr == "head") show_head = false;
+                    if (hideCurr == "hair") show_hair = false;
+                    
                 }
 
-                if (categoryCurr == "lower_body")
+                for (int i = 0; i < glbLoaderObj.info_replaces.Count; i++)
                 {
-                    show_lower_body = false;
+                    replaceCurr = glbLoaderObj.info_replaces[i];
+                    if (replaceCurr == "feet") show_feet = false;
+                    if (replaceCurr == "lower_body") show_lower_body = false;
+                    if (replaceCurr == "upper_body") show_upper_body = false;
+                    if (replaceCurr == "head") show_head = false;
+                    if (replaceCurr == "hair") show_hair = false;
                 }
 
-                if (categoryCurr == "upper_body")
-                {
-                    show_upper_body = false;
-                }
+
 
 
 
@@ -910,104 +942,6 @@ public class DCL_Manager : MonoBehaviour
 
 
                  materialsInMeshCurrent[i].SetOverrideTag("RenderType", "Cutout");
-
-
-
-
-
-
-
-                /******/
-
-                //materialsInMeshCurrent[i].SetInt("_SrcBlend", (int)meshRenderer[i].material.GetFloat("_SrcBlend"));
-                //materialsInMeshCurrent[i].SetInt("_DstBlend", (int)meshRenderer[i].material.GetFloat("_DstBlend"));
-                //materialsInMeshCurrent[i].SetInt("_ZWrite", (int)meshRenderer[i].material.GetFloat("_ZWrite"));
-
-
-                //materialsInMeshCurrent[i].SetFloat("_Mode", (float)meshRenderer[i].material.GetFloat("_Mode"));
-
-
-                //int renderType = meshRenderer[i].material.renderQueue;
-
-                //materialsInMeshCurrent[i].renderQueue = renderType;
-
-              
-
-                //if (renderType <= 2000)
-                //{
-
-                //    materialsInMeshCurrent[i].SetInt("_ZWrite", 1);
-                //    materialsInMeshCurrent[i].DisableKeyword("_ALPHATEST_ON");
-                //    materialsInMeshCurrent[i].DisableKeyword("_ALPHABLEND_ON");
-                //    materialsInMeshCurrent[i].DisableKeyword("_ALPHAPREMULTIPLY_ON");
-                //    materialsInMeshCurrent[i].renderQueue = -1;
-                //}
-                //else if (renderType <= 2450)
-
-
-                //{
-                //    materialsInMeshCurrent[i].SetInt("_ZWrite", 1);
-                //    materialsInMeshCurrent[i].EnableKeyword("_ALPHATEST_ON");
-                //    materialsInMeshCurrent[i].DisableKeyword("_ALPHABLEND_ON");
-                //    materialsInMeshCurrent[i].DisableKeyword("_ALPHAPREMULTIPLY_ON");
-                //    materialsInMeshCurrent[i].renderQueue = 2450;
-                //    materialsInMeshCurrent[i].SetOverrideTag("RenderType", "TransparentCutout");
-
-                //}
-
-
-                //else if (renderType <= 3000)
-
-
-                //{
-                //    materialsInMeshCurrent[i].SetInt("_ZWrite", 0);
-                //    materialsInMeshCurrent[i].DisableKeyword("_ALPHATEST_ON");
-                //    materialsInMeshCurrent[i].EnableKeyword("_ALPHABLEND_ON");
-                //    materialsInMeshCurrent[i].DisableKeyword("_ALPHAPREMULTIPLY_ON");
-                //    materialsInMeshCurrent[i].renderQueue = 3000;
-                //    materialsInMeshCurrent[i].SetOverrideTag("RenderType", "Transparent");
-
-                //}
-
-
-                //else
-
-
-                //{
-                //    materialsInMeshCurrent[i].SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
-                //    materialsInMeshCurrent[i].SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-                //    materialsInMeshCurrent[i].SetInt("_ZWrite", 0);
-                //    materialsInMeshCurrent[i].DisableKeyword("_ALPHATEST_ON");
-                //    materialsInMeshCurrent[i].DisableKeyword("_ALPHABLEND_ON");
-                //    materialsInMeshCurrent[i].EnableKeyword("_ALPHAPREMULTIPLY_ON");
-                //    materialsInMeshCurrent[i].renderQueue = 3000;
-                //    materialsInMeshCurrent[i].SetOverrideTag("RenderType", "Transparent");
-
-                //}
-
-
-
-
-
-
-
-                //materialsInMeshCurrent[i].SetFloat("_Metallic", (float)meshRenderer[i].material.GetFloat("_Metallic"));
-
-
-                /*****/
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
