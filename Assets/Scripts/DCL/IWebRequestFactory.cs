@@ -1,0 +1,13 @@
+using UnityEngine.Networking;
+
+
+    public interface IWebRequestFactory
+    {
+        /// <summary>
+        /// Create a UnityWebRequest from a given url.
+        /// </summary>
+        /// <param name="url">URL from which to create the request.</param>
+        /// <returns>A UnityWebRequest ready to be used.</returns>
+        UnityWebRequest CreateWebRequest(string url);
+    }
+

@@ -79,6 +79,130 @@ public class DCL_GLBLoader : MonoBehaviour
     }
 
 
+
+    async void LoadGltfBinaryFromMemory(byte[] datas)
+    {
+
+
+        byte[] data = datas;
+
+
+        //GLTFast.Loading.IDownloadProvider downloadProvider = new
+        string baseUri = Path.GetDirectoryName(url); // Extraer la URL de la raíz
+        DCL_DownloaderProvider downloadProvider = new DCL_DownloaderProvider(baseUri);
+
+        var gltf = new GltfImport(downloadProvider);
+        
+        bool success = await gltf.LoadGltfBinary(data, null);
+
+        if (success)
+        {
+
+            var root = gltf.GetSourceRoot();
+
+            Debug.Log("=== GLTFast.GltfImport ===");
+
+           
+
+
+            //for (int i = 0; i < root.textures.Length; i++)
+            //{
+
+            //    Debug.Log("<color=yellow>----+++--</color>");
+            //    Debug.Log("BaseURL: " + gltf.GetSourceTexture(i).GetImageIndex());
+            //    Debug.Log("BaseURL: " + gltf.GetSourceImage(i).uri);
+            //    Debug.Log("<color=yellow>----***--</color>");
+
+
+            //}
+
+
+            Debug.Log("=== ======= ===");
+
+
+
+            success = await gltf.InstantiateMainSceneAsync(transform);
+            SkinnedMeshRenderer[] meshRenderer = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
+
+
+
+            // Obtén la raíz del objeto creado a partir del GLB
+            GameObject rootObject = transform.gameObject;
+
+            // Recorre todos los materiales del objeto y carga las texturas relativas
+            //foreach (Material material in rootObject.GetComponentsInChildren<Material>())
+            //{
+            //    if (material.mainTexture != null && !Path.IsPathRooted(material.mainTexture.name))
+            //    {
+            //        string textureURL = "file://" + Path.Combine(Application.streamingAssetsPath, material.mainTexture.name);
+
+            //        Debug.Log("<color=magenta>archivo local: </color> " + textureURL);
+            //        //using (UnityWebRequest www = UnityWebRequestTexture.GetTexture(textureURL))
+            //        //{
+            //        //    await www.SendWebRequest();
+
+            //        //    if (www.result == UnityWebRequest.Result.Success)
+            //        //    {
+            //        //        Texture2D texture = DownloadHandlerTexture.GetContent(www);
+            //        //        material.mainTexture = texture;
+            //        //    }
+            //        //    else
+            //        //    {
+            //        //        Debug.Log(www.error);
+            //        //    }
+            //        //}
+            //    }
+            //}
+
+
+
+
+
+
+
+
+
+            /**init setting material*/
+            //Debug.Log("cuanto en este " + meshRenderer.Length + "    " + gltf.ImageCount);           
+
+            //bool hayTextura = false;
+            for (int i = 0; i < meshRenderer.Length; i++)
+            {
+                //seteo del nuevo material
+                meshRenderer[i].material = SetMaterialMToon(meshRenderer[i]);
+            }
+
+            //Debug.Break();   
+            skinnedMEshBones.InicioUpdateBones();
+
+            // Carga las texturas del archivo GLB
+            //foreach (var material in importer.Materials)
+            //{
+            //    foreach (var textureInfo in material.Value.TextureInfo)
+            //    {
+            //        // Obtiene la ruta relativa de la textura
+            //        string textureURL = texturePath + Path.GetFileName(textureInfo.Texture.Source);
+
+            //        // Carga la textura desde la URL
+            //        StartCoroutine(LoadTexture(textureURL, texture => {
+            //            // Asigna la textura al material
+            //            material.Value.TextureInfo[0].Texture = texture;
+            //        }));
+            //    }
+            //}
+
+
+        }
+
+        else
+        {
+            Debug.LogError("Failed to load GLB data.");
+        }
+    }
+
+
+
+
     private byte[] glbDataLoaded;
 
 
@@ -360,39 +484,33 @@ public class DCL_GLBLoader : MonoBehaviour
 
 
 
+    public string texturePath = "textures/"; // Reemplaza esto con la ruta relativa a las texturas en el archivo GLB
 
 
-    async void LoadGltfBinaryFromMemory(byte[] datas)
-    {              
 
-        // var filePath = "/path/to/file.glb";
-        byte[] data = datas;
-        var gltf = new GltfImport();
-        bool success = await gltf.LoadGltfBinary( data, null );
 
-        if (success)
+
+    IEnumerator LoadTexture(string textureURL, System.Action<Texture2D> callback)
+    {
+        using (UnityWebRequest www = UnityWebRequestTexture.GetTexture(textureURL))
         {
+            yield return www.SendWebRequest();
 
-            success = await gltf.InstantiateMainSceneAsync(transform);
-            SkinnedMeshRenderer[] meshRenderer = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
-
-            /**init setting material*/
-            //Debug.Log("cuanto en este " + meshRenderer.Length + "    " + gltf.ImageCount);           
-
-            //bool hayTextura = false;
-            for (int i = 0; i < meshRenderer.Length; i++)
+            if (www.result == UnityWebRequest.Result.Success)
             {
-                //seteo del nuevo material
-                meshRenderer[i].material = SetMaterialMToon(meshRenderer[i]);
+                // Crea una nueva textura desde los bytes de la solicitud
+                Texture2D texture = new Texture2D(2, 2);
+                texture.LoadImage(www.downloadHandler.data);
+
+                // Devuelve la textura al llamador
+                callback(texture);
             }
-
-            //Debug.Break();   
-            skinnedMEshBones.InicioUpdateBones();
-
+            else
+            {
+                Debug.Log(www.error);
+            }
         }
     }
-
-
 
 
 

@@ -373,7 +373,7 @@ public class DCL_Manager : MonoBehaviour
         {
             // Debug.Log("La cadena buscada se encuentra en el texto");
             ///off-chain
-            bool contiene = true;
+            bool contiene = false;
             foreach (string texto in textobuscadoParaOmitir)
             {
                 if (wearableProfile.Contains(texto))
