@@ -3551,11 +3551,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6447137187830256556, guid: 32e66da3044252644bf1e8afdfa1867b, type: 3}
   m_PrefabInstance: {fileID: 1393820230}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1144846709 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6447137187830256559, guid: 32e66da3044252644bf1e8afdfa1867b, type: 3}
-  m_PrefabInstance: {fileID: 1393820230}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1144846712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3568,7 +3563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeTrigger: {fileID: 1144846709}
+  volumeTrigger: {fileID: 1816765723}
   volumeLayer:
     serializedVersion: 2
     m_Bits: 2147483647
@@ -4392,6 +4387,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2800000, guid: c9ec463ae343dcb4f86db9781a9462b8, type: 3}
     - target: {fileID: 6447137187830256556, guid: 32e66da3044252644bf1e8afdfa1867b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447137188268379328, guid: 32e66da3044252644bf1e8afdfa1867b, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -6355,8 +6354,8 @@ MonoBehaviour:
       colorBlindnessType: 0
       colorBlindnessStrength: 1
   m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
-  m_ShowToolkit: 0
-  m_ShowCustomSorter: 0
+  m_ShowToolkit: 1
+  m_ShowCustomSorter: 1
   breakBeforeColorGrading: 0
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []

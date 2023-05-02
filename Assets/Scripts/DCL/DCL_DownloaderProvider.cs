@@ -62,20 +62,30 @@ public class DCL_DownloaderProvider : IDownloadProvider, IDisposable
         Texture2D texture = null;
         if (nameFile == "Avatar_FemaleSkinBase.png" || nameFile == "Avatar_MaleSkinBase.png")
         {
-            path = "Assets/Resources/textures/" + nameFile;
-            texture = AssetDatabase.LoadAssetAtPath<Texture2D>(path);
+            //path = "Assets/Resources/textures/" + nameFile;
+            //texture = AssetDatabase.LoadAssetAtPath<Texture2D>(path);
+
+
+            string nameFilWithoutExtension = Path.GetFileNameWithoutExtension(nameFile);
+
+            path = "textures/" + nameFilWithoutExtension;
+            texture = Resources.Load<Texture2D>(path);
+
+
         }
-        else if(nameFile.Contains("AvatarWearables"))
+        else if (nameFile.Contains("AvatarWearables"))
         {
-            path = "Assets/Resources/textures/AvatarWearables_TX.png";
-            texture = AssetDatabase.LoadAssetAtPath<Texture2D>(path);
+            //path = "Assets/Resources/textures/AvatarWearables_TX.png";
+            //texture = AssetDatabase.LoadAssetAtPath<Texture2D>(path);
+
+            path = "textures/AvatarWearables_TX";
+            texture = Resources.Load<Texture2D>(path);
         }
         else
         {
             byte[] textureData = await LoadTextureAsync();
             Texture2D textureByHash = new Texture2D(10,10);// = await LoadTextureAsync(textureData);
-            textureByHash.LoadImage(textureData);
-            // Texture2D textureByHash = await Task.Run(() => CreateTexture2D(textureData));
+            textureByHash.LoadImage(textureData);           
             texture = textureByHash;
         }
 

@@ -80,7 +80,8 @@ public class UnityCapture : MonoBehaviour {
 				renderTexture.Release();
 			}
 
-			renderTexture = new RenderTexture(mainCamera.pixelWidth, mainCamera.pixelHeight, 32, RenderTextureFormat.ARGB32);
+			//renderTexture = new RenderTexture(mainCamera.pixelWidth, mainCamera.pixelHeight, 32, RenderTextureFormat.ARGB32);
+			renderTexture = new RenderTexture(mainCamera.pixelWidth, mainCamera.pixelHeight, 32, RenderTextureFormat.ARGBHalf);
 			captureCamera.targetTexture = renderTexture;
 		}
 	}

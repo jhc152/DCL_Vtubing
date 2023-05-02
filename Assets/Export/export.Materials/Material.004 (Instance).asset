@@ -9,12 +9,13 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Material.004 (Instance)
   m_Shader: {fileID: 4800000, guid: 1a97144e4ad27a04aafd70f7b915cedb, type: 3}
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _ALPHABLEND_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: 3000
   stringTagMap:
     RenderType: Cutout
   disabledShaderPasses: []
@@ -26,11 +27,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 7e00eb887ef7d40429fa230f38939c35, type: 3}
+        m_Texture: {fileID: 2800000, guid: 820ac138ef6185e4c8570ed4ae39cc75, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 87e81bc34876e264ba6dc46d54345371, type: 3}
+        m_Texture: {fileID: 2800000, guid: 89d0604c5698a59489c076c9d3904bbe, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OutlineWidthTexture:
@@ -69,7 +70,7 @@ Material:
     - _CullMode: 2
     - _Cutoff: 0.5
     - _DebugMode: 0
-    - _DstBlend: 0
+    - _DstBlend: 10
     - _IndirectLightIntensity: 0.1
     - _LightColorAttenuation: 0
     - _MToonVersion: 39
@@ -86,14 +87,14 @@ Material:
     - _ShadeShift: 0
     - _ShadeToony: 0.9
     - _ShadingGradeRate: 1
-    - _SrcBlend: 1
+    - _SrcBlend: 5
     - _UvAnimRotation: 0
     - _UvAnimScrollX: 0
     - _UvAnimScrollY: 0
-    - _ZWrite: 1
+    - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 13.427467, g: 13.427467, b: 13.427467, a: 25}
+    - _Color: {r: 1, g: 1, b: 1, a: 0.54181814}
+    - _EmissionColor: {r: 8.7297535, g: 8.7297535, b: 8.7297535, a: 25}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShadeColor: {r: 0.96999997, g: 0.81, b: 0.86, a: 1}
