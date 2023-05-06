@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.Networking;
-//using Siccity.GLTFUtility;
+
 using SimpleJSON;
 using System.Linq;
 using VRM.RuntimeExporterSample;
@@ -22,10 +22,7 @@ public class WearablesEncontrado
     public string wearablePointer;
     [SerializeField]
     public IEnumerator GetWearablePointer;
-
     public GameObject WearableContent;
-
-    //public JSONNode dataWearablePoint;
 
 }
 
@@ -94,6 +91,11 @@ public class DCL_Manager : MonoBehaviour
 
     //el objeto del vrm full
     public GameObject vrm_full;
+
+    //el objeto del vrm full
+    public GameObject vrm_toExport;
+
+
     //el objeto interno dentro del vrm donde se almacenaran los meshes importados
     public GameObject vrm_meshes_container;
 
@@ -148,18 +150,12 @@ public class DCL_Manager : MonoBehaviour
         LoadProfile();
     }
 
-
     public void ReloadProfile()
     {
         LoadProfile();
     }
 
-
-    
-
-
-
-
+     
     //////////////////////////////// ------------------------             PASO 1               ----------------------------------------------
     
 
@@ -168,7 +164,7 @@ public class DCL_Manager : MonoBehaviour
     public void LoadProfile()
 
     {
-        //resete paraemeters
+        //reseteo paraemeters
         show_hair = true;
         show_head = true;
         show_body = true;
@@ -183,6 +179,8 @@ public class DCL_Manager : MonoBehaviour
 
         WearablesComplete = 0;
         WearablesDataCompletes = 0;
+
+        ChangeLayerRecursively(vrm_toExport.transform);
 
         if (!loadingProfile)
         {
@@ -262,6 +260,22 @@ public class DCL_Manager : MonoBehaviour
     }
 
 
+
+    string newLayer = "NoShowToCamera";
+    void ChangeLayerRecursively(Transform targetTransform)
+    {
+        // Cambia la capa del GameObject actual
+        targetTransform.gameObject.layer = LayerMask.NameToLayer(newLayer);
+
+        // Recorre todos los hijos del GameObject actual
+        for (int i = 0; i < targetTransform.childCount; i++)
+        {
+            // Llama recursivamente a ChangeLayerRecursively para cada hijo
+            ChangeLayerRecursively(targetTransform.GetChild(i));
+        }
+    }
+
+
     public void CompleteProfileAvatar()
     {
         loadingProfile = false;
@@ -292,7 +306,6 @@ public class DCL_Manager : MonoBehaviour
             //var jsonString = System.Text.Encoding.UTF8.GetString(www.downloadHandler.data, 3,www.downloadHandler.data.Length - 3);
 
             dataProfile = JSON.Parse(System.Text.Encoding.UTF8.GetString(www.downloadHandler.data));
-
             dataProfileAvatar = dataProfile["avatars"][0]["avatar"];
             dataProfileAvatarWearables = dataProfile["avatars"][0]["avatar"]["wearables"];
 
@@ -928,8 +941,6 @@ public class DCL_Manager : MonoBehaviour
     public void ExportVRMFnct()
     {
         vRMRuntimeExporter.ExportandoUser();    
-
-
     }
 
 
@@ -939,7 +950,6 @@ public class DCL_Manager : MonoBehaviour
 
         vrm_hair_male.enabled = false;
         vrm_hair_female.enabled = false;
-
 
         vrm_lower_body_male.enabled = false;
         vrm_upper_body_male.enabled = false;

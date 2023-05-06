@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4315184999919298865}
   - component: {fileID: 4315184999919298864}
   - component: {fileID: 7523630130191188835}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DCL_GLB_Loader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idWearable: bafybeiboxfaspa6uko7yiad2bdnw4ph3nysq77rmdtv4h224conhmyhfdm
+  hashTexture: 
+  wearableBase: 0
+  mainFile: 
   skinnedMEshBones: {fileID: 7523630130191188835}
+  texturePath: textures/
 --- !u!114 &7523630130191188835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,6 +66,7 @@ MonoBehaviour:
   targetSkin: {fileID: 0}
   rootBone: {fileID: 0}
   fbxParent: {fileID: 0}
+  fbxParent_meshes_container: {fileID: 0}
   rootBoneOriginales: {fileID: 0}
   includeInactive: 0
   dclTVrM: 1
