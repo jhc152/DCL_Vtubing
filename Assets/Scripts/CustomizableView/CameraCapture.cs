@@ -61,10 +61,13 @@ namespace HardCoded.VRigUnity {
 		// TODO: OSX
 		public static void InstallVirtualCamera() {
 			// TODO: Implement
+			System.Diagnostics.Process.Start(Path.Combine(Application.streamingAssetsPath, "v4l2loopback", "Install.sh"));
+    
 		}
 
 		public static void UninstallVirtualCamera() {
 			// TODO: Implement
+			System.Diagnostics.Process.Start(Path.Combine(Application.streamingAssetsPath, "v4l2loopback", "Uninstall.sh"));
 		}
 #endif
 	}

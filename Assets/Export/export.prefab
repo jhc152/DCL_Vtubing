@@ -94,7 +94,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 596377210450234371}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &2477501169793585032
 SkinnedMeshRenderer:
@@ -305,7 +305,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 596377210450234371}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &5166712920561969148
 SkinnedMeshRenderer:
@@ -929,7 +929,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 596377210450234371}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &6979347781364524345
 SkinnedMeshRenderer:
@@ -976,7 +976,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: 4867ddc9f1003e14f865739005acf026, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 5a14f63022f4f0c46af251a681fc0706, type: 2}
   m_Bones:
   - {fileID: 8111112970325224710}
   - {fileID: 7536984506845175310}
@@ -1366,7 +1366,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 596377210450234371}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &7529964818492923821
 SkinnedMeshRenderer:
@@ -1737,7 +1737,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 596377210450234371}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &252334837753288943
 SkinnedMeshRenderer:
@@ -2847,11 +2847,11 @@ MonoBehaviour:
   FirstPersonBone: {fileID: 7050834609628252805}
   FirstPersonOffset: {x: 0, y: 0, z: 0}
   Renderers:
+  - Renderer: {fileID: 252334837753288943}
+    FirstPersonFlag: 0
   - Renderer: {fileID: 9140390766822752107}
     FirstPersonFlag: 0
   - Renderer: {fileID: 7529964818492923821}
-    FirstPersonFlag: 0
-  - Renderer: {fileID: 252334837753288943}
     FirstPersonFlag: 0
   - Renderer: {fileID: 3886801384012240251}
     FirstPersonFlag: 0
@@ -2859,11 +2859,11 @@ MonoBehaviour:
     FirstPersonFlag: 0
   - Renderer: {fileID: 762729329816885796}
     FirstPersonFlag: 0
+  - Renderer: {fileID: 2477501169793585032}
+    FirstPersonFlag: 0
   - Renderer: {fileID: 6979347781364524345}
     FirstPersonFlag: 0
   - Renderer: {fileID: 5166712920561969148}
-    FirstPersonFlag: 0
-  - Renderer: {fileID: 2477501169793585032}
     FirstPersonFlag: 0
 --- !u!114 &5114971884416866076
 MonoBehaviour:
@@ -3136,7 +3136,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 596377210450234371}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &9140390766822752107
 SkinnedMeshRenderer:
@@ -4469,15 +4469,15 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3771615802642584770}
   - {fileID: 7318517523671345578}
   - {fileID: 4456823310720901191}
-  - {fileID: 3771615802642584770}
   - {fileID: 6407436493782866073}
   - {fileID: 2776393989120037433}
   - {fileID: 7755344258243652126}
+  - {fileID: 704699830986114608}
   - {fileID: 862925614615417955}
   - {fileID: 2903935167195202064}
-  - {fileID: 704699830986114608}
   m_Father: {fileID: 4794968916532204715}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
