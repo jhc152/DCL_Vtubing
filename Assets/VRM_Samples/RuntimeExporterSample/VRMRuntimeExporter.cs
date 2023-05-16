@@ -262,9 +262,32 @@ namespace VRM.RuntimeExporterSample
 
 
 
+        //static void ExportUser(GameObject model, bool useNormalize)
+        //{
+        //    var path = FileDialogForWindows.SaveDialog("save VRM", Application.dataPath + "/DCL_vrm.vrm");
+        //    if (string.IsNullOrEmpty(path))
+        //    {
+        //        return;
+        //    }
+
+        //    var bytes = useNormalize ? ExportCustom(model) : ExportSimple(model);
+        //    File.WriteAllBytes(path, bytes);
+        //    Debug.LogFormat("export to {0}", path);
+        //}
+
+
         static void ExportUser(GameObject model, bool useNormalize)
         {
+
+#if UNITY_STANDALONE_WIN
             var path = FileDialogForWindows.SaveDialog("save VRM", Application.dataPath + "/DCL_vrm.vrm");
+             if (!string.IsNullOrEmpty(path))
+            {
+                // Hacer algo con la ruta del archivo seleccionado
+                Debug.Log("Ruta seleccionada: " + path);
+            }
+
+
             if (string.IsNullOrEmpty(path))
             {
                 return;
@@ -273,7 +296,31 @@ namespace VRM.RuntimeExporterSample
             var bytes = useNormalize ? ExportCustom(model) : ExportSimple(model);
             File.WriteAllBytes(path, bytes);
             Debug.LogFormat("export to {0}", path);
+#elif UNITY_STANDALONE_OSX
+            //SaveFileDialog saveFileDialog = new SaveFileDialog();
+            //saveFileDialog.Title = "Save VRM";
+            //saveFileDialog.InitialDirectory = UnityEngine.Application.dataPath;
+            //saveFileDialog.FileName = "DCL_vrm.vrm";
+            //saveFileDialog.DefaultExt = "vrm";
+
+            //if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            //{
+            //    string path = saveFileDialog.FileName;
+            //    // Hacer algo con la ruta del archivo seleccionado
+            //    Debug.Log("Ruta seleccionada: " + path);
+
+            //    var bytes = useNormalize ? ExportCustom(model) : ExportSimple(model);
+            //    File.WriteAllBytes(path, bytes);
+            //    Debug.LogFormat("export to {0}", path);
+            //}
+
+#endif
+
+
+
         }
+
+
 
 
 
