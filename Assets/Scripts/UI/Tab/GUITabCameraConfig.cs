@@ -24,21 +24,30 @@ namespace HardCoded.VRigUnity {
 			reloadContentButton.onClick.RemoveAllListeners();
 			reloadContentButton.onClick.AddListener(ReloadContents);
 
+
+			
+
 			AddDivider(Lang.CameraTabDividerCamera); 
 			sourceField = CreateSetting(Lang.CameraTabSource, builder => {
 				return builder
 					.AddDropdown((elm, value) => {
 						Settings.CameraName = elm.options[value].text;
+
+						Debug.Log("value " + value);
 						imageSource.SelectSource(value);
 						if (!_solution.IsPaused) {
 							_solution.Play();
 						}
 					}, new(), 0, FieldData.None);
 			});
+
+
 			resolutionField = CreateSetting(Lang.CameraTabResolution, builder => {
 				return builder
 					.AddDropdown((elm, value) => {
 						Settings.CameraResolution = elm.options[value].text;
+
+						Debug.Log("value " + value);
 						imageSource.SelectResolution(value);
 						UpdateCustomResolution();
 						if (!_solution.IsPaused) {
@@ -46,6 +55,8 @@ namespace HardCoded.VRigUnity {
 						}
 					}, new(), 0, FieldData.None);
 			});
+
+
 			customResolutionField = CreateSetting(Lang.CameraTabCustomResolution, builder => {
 				return builder
 					.AddToggle((_, value) => { Settings.CameraCustomResolution = value; UpdateCustomResolution(true); }, Settings.CameraCustomResolution, new(24))
@@ -53,6 +64,8 @@ namespace HardCoded.VRigUnity {
 					.AddNumberInput((_, value) => UpdateCustomResolutionTest(0, value, 0), 1, 1080, 144, 360, FieldData.None)
 					.AddNumberInput((_, value) => UpdateCustomResolutionTest(0, 0, value), 1, 30, 30, 30, FieldData.None);
 			});
+
+
 			CreateSetting(Lang.CameraTabIsHorizontallyFlipped, builder => {
 				return builder.AddToggle((_, value) => {
 					Settings.CameraFlipped = value;
@@ -62,6 +75,9 @@ namespace HardCoded.VRigUnity {
 					}
 				}, Settings.CameraFlipped, FieldData.None);
 			});
+
+
+
 			CreateSetting(Lang.CameraTabVirtualCamera, builder => {
 				return builder
 					.AddToggle((_, value) => Settings.Temporary.VirtualCamera = value, Settings.Temporary.VirtualCamera, new(24))
@@ -70,6 +86,8 @@ namespace HardCoded.VRigUnity {
 			});
 
 			AddDivider(Lang.CameraTabDividerEffects);
+
+
 			CreateSetting(Lang.CameraTabCustomBackground, builder => {
 				return builder
 					.AddToggle((_, value) => guiMain.SetShowBackgroundImage(value), Settings.ShowCustomBackground, new(24))
@@ -113,6 +131,8 @@ namespace HardCoded.VRigUnity {
 			int sourceId = imageSource.SelectSourceFromName(Settings.CameraName);
 
 			var options = new List<string>(sourceNames);
+
+		
 			sourceField[0].Dropdown.ClearOptions();
 			sourceField[0].Dropdown.AddOptions(options);
 			sourceField[0].Dropdown.SetValueWithoutNotify(sourceId >= 0 ? sourceId : 0);

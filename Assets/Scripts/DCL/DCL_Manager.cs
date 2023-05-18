@@ -147,7 +147,7 @@ public class DCL_Manager : MonoBehaviour
 
     private void Start()
     {
-        LoadProfile();
+        //LoadProfile();
     }
 
     public void ReloadProfile()
@@ -284,6 +284,9 @@ public class DCL_Manager : MonoBehaviour
 
     IEnumerator _GetProfile =  null;
 
+    public string userId = "";
+    public string unclaimedName = "";
+
     /// <summary>
     /// Fetch user profile from decentraland catalyst 
     /// </summary>
@@ -309,6 +312,13 @@ public class DCL_Manager : MonoBehaviour
             dataProfileAvatar = dataProfile["avatars"][0]["avatar"];
             dataProfileAvatarWearables = dataProfile["avatars"][0]["avatar"]["wearables"];
 
+
+            userId = dataProfile["avatars"][0]["userId"];
+            unclaimedName = dataProfile["avatars"][0]["name"];
+
+            HardCoded.VRigUnity.DCL_UIManager.Instance.SetAccount( userId , unclaimedName);
+
+            
 
             Debug.Log(dataProfileAvatar["bodyShape"]);
 

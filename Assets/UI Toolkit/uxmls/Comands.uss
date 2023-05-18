@@ -1,0 +1,258 @@
+.btn-connect-wallet {
+    width: 346px;
+    height: 38px;
+    top: 75px;
+    position: absolute;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgb(255, 45, 85);
+    align-items: center;
+    justify-content: center;
+    -unity-text-align: middle-center;
+    left: 0;
+    flex-direction: row;
+}
+
+.btn-connect-wallet:hover {
+    width: 346px;
+    height: 38px;
+    top: 75px;
+    position: absolute;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgb(137, 27, 48);
+    align-items: center;
+    justify-content: center;
+    -unity-text-align: middle-center;
+    left: 0;
+    flex-direction: row;
+}
+
+.btn-close-menu {
+    width: 28px;
+    height: 28px;
+    left: 363px;
+    position: absolute;
+    top: 9px;
+    background-color: rgb(0, 0, 0);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-Video {
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    -unity-font-style: normal;
+    width: 172px;
+    height: 17px;
+    -unity-text-align: upper-center;
+    position: absolute;
+    left: 172px;
+    top: 0;
+}
+
+.btn-Video:hover {
+    font-size: 14px;
+    color: rgb(166, 166, 166);
+    -unity-font-style: normal;
+    width: 172px;
+    height: 17px;
+    -unity-text-align: upper-center;
+    position: absolute;
+    left: 172px;
+    top: 0;
+}
+
+.btn-Scene {
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    -unity-font-style: normal;
+    width: 172px;
+    height: 17px;
+    -unity-text-align: upper-center;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.btn-Scene:hover {
+    font-size: 14px;
+    color: rgb(178, 178, 178);
+    -unity-font-style: normal;
+    width: 172px;
+    height: 17px;
+    -unity-text-align: upper-center;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.btn-refresh {
+    width: 80px;
+    height: 28px;
+    position: absolute;
+    left: 263px;
+    background-color: rgb(67, 64, 74);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    top: -5px;
+}
+
+.btn-refresh:hover {
+    width: 80px;
+    height: 28px;
+    position: absolute;
+    left: 263px;
+    background-color: rgb(122, 116, 137);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    top: -5px;
+    -unity-text-outline-color: rgb(63, 63, 63);
+}
+
+.btn-Logout {
+    width: 80px;
+    height: 28px;
+    position: absolute;
+    left: 263px;
+    background-color: rgb(67, 64, 74);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    top: -5px;
+    visibility: visible;
+}
+
+.btn-Logout:hover {
+    width: 80px;
+    height: 28px;
+    position: absolute;
+    left: 263px;
+    background-color: rgb(122, 116, 137);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    top: -5px;
+    visibility: visible;
+}
+
+.btn-close-menu:hover {
+    width: 28px;
+    height: 28px;
+    left: 363px;
+    position: absolute;
+    top: 9px;
+    background-color: rgb(60, 60, 60);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-export {
+    width: 344px;
+    height: 38px;
+    background-color: rgb(255, 255, 255);
+    border-top-left-radius: 19px;
+    border-bottom-left-radius: 19px;
+    border-top-right-radius: 19px;
+    border-bottom-right-radius: 19px;
+}
+
+.btn-export:hover {
+    width: 344px;
+    height: 38px;
+    background-color: rgba(255, 255, 255, 0.65);
+    border-top-left-radius: 19px;
+    border-bottom-left-radius: 19px;
+    border-top-right-radius: 19px;
+    border-bottom-right-radius: 19px;
+}
+
+.btn-upload-image {
+    width: 58px;
+    height: 58px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.btn-upload-image:hover {
+    width: 58px;
+    height: 58px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.44);
+}
+
+.btn-image {
+    width: 58px;
+    height: 58px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.15);
+    left: 78px;
+    position: absolute;
+    background-image: url('project://database/Assets/VtubeAssets/icnocobase.png?fileID=2800000&guid=a3c0993f820d90d4eacd0421109db66b&type=3#icnocobase');
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+}
+
+.btn-image:hover {
+    width: 58px;
+    height: 58px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.15);
+    left: 78px;
+    position: absolute;
+    background-image: url('project://database/Assets/VtubeAssets/icnocobase.png?fileID=2800000&guid=a3c0993f820d90d4eacd0421109db66b&type=3#icnocobase');
+    -unity-background-image-tint-color: rgb(159, 159, 159);
+}
+
+.btn-image-green {
+    width: 58px;
+    height: 58px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    background-color: rgb(51, 243, 0);
+    left: 156px;
+    position: absolute;
+}
+
+.btn-image-green:hover {
+    width: 58px;
+    height: 58px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    background-color: rgb(30, 144, 0);
+    left: 156px;
+    position: absolute;
+}

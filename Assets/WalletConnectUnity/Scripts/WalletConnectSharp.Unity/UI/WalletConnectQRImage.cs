@@ -73,7 +73,7 @@ public class WalletConnectQRImage : BindableMonoBehavior
         //hide the QRcode, show the loader, then wait a sec and then do the inverse
         _image.enabled = false;
         loader.SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.25f);
         _image.enabled = true;
         loader.SetActive(false);
     }
