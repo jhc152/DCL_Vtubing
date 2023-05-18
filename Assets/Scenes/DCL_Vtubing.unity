@@ -9863,6 +9863,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7674237215201431265, guid: e34edc1c7c2bd9c4f9cc6bb7ef427ae2, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674237215201431265, guid: e34edc1c7c2bd9c4f9cc6bb7ef427ae2, type: 3}
       propertyPath: m_AABB.m_Center.x
       value: -0.0000049620867
       objectReference: {fileID: 0}
@@ -13710,6 +13714,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3840394562969064526, guid: 32e66da3044252644bf1e8afdfa1867b, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840394562969064526, guid: 32e66da3044252644bf1e8afdfa1867b, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840394562969064526, guid: 32e66da3044252644bf1e8afdfa1867b, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840394562969064526, guid: 32e66da3044252644bf1e8afdfa1867b, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840394562969064526, guid: 32e66da3044252644bf1e8afdfa1867b, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 55
       objectReference: {fileID: 0}
@@ -13977,7 +13997,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.8
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -14034,14 +14054,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1415536118}
-  m_LocalRotation: {x: 0.91302603, y: -0.08447676, z: 0.24464455, w: 0.31527162}
+  m_LocalRotation: {x: -0.94534224, y: 0.078551866, z: -0.026206883, w: -0.31539002}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 141.9, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 143.1, y: 0, z: -1070.5}
 --- !u!4 &1422833421 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2929017370084874164, guid: e108f6f1146789c44a85f7d0b945413f, type: 3}

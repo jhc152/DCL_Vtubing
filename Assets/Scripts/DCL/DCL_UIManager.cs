@@ -80,13 +80,33 @@ namespace HardCoded.VRigUnity
 
         public Transform parentMeshesVRM;
 
+        
+
         void Awake()
         {
             Instance = this;
 
+          
+            
+        }
+
+       
+
+
+        public IEnumerator Start()
+        {
+            currentAlpha = 1f;
+            fadeSpeed = 1f / fadeOutDuration;
+            
+            
+            
             guiMain = GameObject.FindObjectOfType<GUIMain>();
 
             imageSource = SolutionUtils.GetImageSource();
+
+            yield return null;
+
+
             _solution = SolutionUtils.GetSolution();
 
             rootUI = UIpanel.rootVisualElement;
@@ -117,18 +137,12 @@ namespace HardCoded.VRigUnity
 
 
             UpdateSources();
-            UpdateResolutions();
-            
-        }
+            StartCoroutine(UpdateResolutions());
 
-
-        public IEnumerator Start()
-        {
-            currentAlpha = 1f;
-            fadeSpeed = 1f / fadeOutDuration;
             yield return StartCoroutine(FadeCanvasOut());
             canvasGroup.blocksRaycasts = false;
             OnClickWalletConnect.Invoke();
+
         }
 
         private IEnumerator FadeCanvasOut()
@@ -288,7 +302,7 @@ namespace HardCoded.VRigUnity
 
         private void UpdateSources()
         {
-            var imageSource = SolutionUtils.GetImageSource();
+           // WebCamSource imageSource = SolutionUtils.GetImageSource();
             var sourceNames = imageSource.SourceCandidateNames;
             int sourceId = imageSource.SelectSourceFromName(Settings.CameraName);
 
@@ -316,7 +330,7 @@ namespace HardCoded.VRigUnity
         }
 
 
-        private void UpdateResolutions()
+        private IEnumerator UpdateResolutions()
         {
             //var imageSource = SolutionUtils.GetImageSource();
             //var sourceNames = imageSource.SourceCandidateNames;
@@ -324,7 +338,9 @@ namespace HardCoded.VRigUnity
 
 
             var imageSource = SolutionUtils.GetImageSource();
-            var resolutions = imageSource.AvailableResolutions;
+            yield return imageSource.UpdateSources();
+         
+           var resolutions = imageSource.AvailableResolutions;
             int resolutionId = imageSource.SelectResolutionFromString(Settings.CameraResolution);
 
             var options = resolutions.ToList().Select(option => option.ToString()).ToList();
