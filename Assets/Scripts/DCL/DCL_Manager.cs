@@ -11,6 +11,8 @@ using VRM.RuntimeExporterSample;
 using System.Threading.Tasks;
 using TMPro;
 
+using UnityEngine.UIElements;
+
 using System.IO;
 using UnityEditor;
 
@@ -66,6 +68,10 @@ public class DCL_Manager : MonoBehaviour
 
     [HideInInspector]
     public JSONNode dataProfileAvatarWearables;
+
+
+    [HideInInspector]
+    public string snapshoot_face256, snapshoot_body256;
 
     /*almacena la info del avatar*/
     public AvatarInfo avatarInfo = new AvatarInfo();
@@ -139,7 +145,7 @@ public class DCL_Manager : MonoBehaviour
 
 
     public bool loadingProfile = false;
-
+    public UIDocument UIpanel;
     public void Awake()
     {
         Instance = this;
@@ -312,6 +318,12 @@ public class DCL_Manager : MonoBehaviour
             dataProfileAvatar = dataProfile["avatars"][0]["avatar"];
             dataProfileAvatarWearables = dataProfile["avatars"][0]["avatar"]["wearables"];
 
+            snapshoot_face256 = dataProfile["avatars"][0]["avatar"]["snapshots"]["face256"];
+            snapshoot_body256 = dataProfile["avatars"][0]["avatar"]["snapshots"]["body"];
+
+
+            StartCoroutine(LoadImageProfile());
+
 
             userId = dataProfile["avatars"][0]["userId"];
             unclaimedName = dataProfile["avatars"][0]["name"];
@@ -433,7 +445,7 @@ public class DCL_Manager : MonoBehaviour
             //leyendo los wearables elegibles
             if (!CheckWearableString (wearableCurrent))
             {
-                Debug.Log(API_DCL_WEARABLE_POINTER+wearableCurrent);
+               // Debug.Log(API_DCL_WEARABLE_POINTER+wearableCurrent);
                 WearablesEncontrado newWearable = new WearablesEncontrado();
                 newWearable.wearablePointer = wearableCurrent;              
                 WearableListProfiles.Add(newWearable);                            
@@ -561,17 +573,17 @@ public class DCL_Manager : MonoBehaviour
             glbLoaderObj.info_category = metadataWearableCurrent["category"];
 
 
-            Debug.Log("<color=green>info_category :  </color>" + glbLoaderObj.info_category);
+           // Debug.Log("<color=green>info_category :  </color>" + glbLoaderObj.info_category);
 
-            for (int i = 0; i < metadataWearableCurrent["hides"].Count; i++)
-            {
-                Debug.Log(i + " H: " + metadataWearableCurrent["hides"][i]);
-            }
+            //for (int i = 0; i < metadataWearableCurrent["hides"].Count; i++)
+            //{
+            //    Debug.Log(i + " H: " + metadataWearableCurrent["hides"][i]);
+            //}
 
-            for (int i = 0; i < metadataWearableCurrent["replaces"].Count; i++)
-            {
-                Debug.Log(i + " R: " + metadataWearableCurrent["replaces"][i]);
-            }
+            //for (int i = 0; i < metadataWearableCurrent["replaces"].Count; i++)
+            //{
+            //    Debug.Log(i + " R: " + metadataWearableCurrent["replaces"][i]);
+            //}
 
             string category_cur = metadataWearableCurrent["category"];
 
@@ -648,7 +660,7 @@ public class DCL_Manager : MonoBehaviour
                 //es glb buscar el hash para la textura
                 if (mainFile.Contains(".glb") || mainFile.Contains(".gltf"))
             {
-                Debug.Log("<color=yellow>mainFile::</color>" + mainFile); 
+               // Debug.Log("<color=yellow>mainFile::</color>" + mainFile); 
                 glbLoaderObj.hashTexture =  FindHashTextureWearableByFile();
             }           
 
@@ -870,24 +882,12 @@ public class DCL_Manager : MonoBehaviour
                     // Cambiar el color del material
                     materialsInMeshCurrent[i].color = avatarInfo.hair;
                 }
-
-
-
                 //materialsInMeshCurrent[i].SetFloat("_Mode", 2f);
 
                 //// Establecer el valor de Cutoff para definir el umbral de transparencia
                 //float cutoffValue = 0.5f; // por ejemplo, un valor de 0.5f para un umbral de transparencia del 50%
                 //materialsInMeshCurrent[i].SetFloat("_Cutoff", cutoffValue);
-
-
-
                  materialsInMeshCurrent[i].SetOverrideTag("RenderType", "Cutout");
-
-
-
-
-
-
             }
 
             // Asignar los materiales modificados al SkinnedMeshRenderer
@@ -993,10 +993,58 @@ public class DCL_Manager : MonoBehaviour
 
         vrm_head.enabled = show_head;
 
-
-
-
     }
+
+
+
+
+
+
+    /****************************************/
+
+    private IEnumerator LoadImageProfile()
+    {
+        
+        UnityWebRequest request = UnityWebRequest.Get(snapshoot_face256);
+        request.SetRequestHeader("Accept-Encoding", "identity");
+        yield return request.SendWebRequest();
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            byte[] glbData = request.downloadHandler.data;        
+            RenderImageProfile(glbData);
+
+        }
+        else
+        {
+            Debug.LogError(request.error);
+        }
+    }
+
+
+    void RenderImageProfile(byte[] bytes)
+    {
+
+
+        // Crea una nueva textura y carga los bytes de la imagen en ella
+        Texture2D texture = new Texture2D(2, 2);
+        texture.LoadImage(bytes);       
+
+        StyleBackground stylBG = new StyleBackground(texture);
+
+        VisualElement rootUI;
+        rootUI = UIpanel.rootVisualElement;
+        rootUI.Q<VisualElement>("SNAPSHOTLittle").style.backgroundImage = stylBG;
+        rootUI.Q<VisualElement>("SNAPSHOTBig").style.backgroundImage = stylBG;
+        Debug.Log("profile creado");
+    }
+
+
+
+
+
+
+
+
 
 
 

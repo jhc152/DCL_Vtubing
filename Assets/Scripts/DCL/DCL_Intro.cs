@@ -68,7 +68,7 @@ public class DCL_Intro : MonoBehaviour
         {
            
             currentAlpha -= fadeSpeed * Time.deltaTime;
-            Debug.Log("currentAlpha " + currentAlpha);
+           
             canvasGroup.alpha = currentAlpha;
             yield return null;
         }

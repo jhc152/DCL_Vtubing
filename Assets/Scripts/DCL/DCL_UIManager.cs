@@ -227,6 +227,7 @@ namespace HardCoded.VRigUnity
         public void WalletOnConnected()
         {
 
+            rootUI.Q<VisualElement>("btnAvatar").style.display = DisplayStyle.Flex;
             rootUI.Q<VisualElement>("selectorAvatar").style.display = DisplayStyle.Flex;
             rootUI.Q<VisualElement>("selectorMale").style.display = DisplayStyle.None;
             rootUI.Q<VisualElement>("selectorFemale").style.display = DisplayStyle.None;
@@ -275,6 +276,9 @@ namespace HardCoded.VRigUnity
 
         void LogoutOnClick()
         {
+
+            rootUI.Q<VisualElement>("btnAvatar").style.display = DisplayStyle.None;
+
             WalletOnDisconnected();
             OnClickLogout.Invoke();
         }
@@ -596,6 +600,16 @@ namespace HardCoded.VRigUnity
                 rootUI.Q<VisualElement>("selectorFemale").style.display = DisplayStyle.Flex;
                 SetMaleFemaleVrm(false);
             }));
+
+
+            VisualElement btnAvatar = rootUI.Q<VisualElement>("btnAvatar");
+            btnAvatar.AddManipulator(new Clickable(evt => {
+                RefreshOnClick();
+            }));
+
+
+            
+
         }
 
 

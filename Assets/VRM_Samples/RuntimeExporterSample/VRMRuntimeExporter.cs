@@ -47,7 +47,7 @@ namespace VRM.RuntimeExporterSample
         public VRMMesehesObjects vrmsVtubing;
         public VRMMesehesObjects vrmsToExport;
 
-
+        string newLayer = "NoShowToCamera";
         void OnGUI()
         {
             //if (GUILayout.Button("Cargame un vrm"))
@@ -373,7 +373,7 @@ namespace VRM.RuntimeExporterSample
         }
 
 
-         string newLayer = "NoShowToCamera";
+        
         GameObject CopyObjectRecursively(GameObject source, Transform parent)
         {
             // Crea una copia del GameObject fuente y establece su padre en el GameObject de destino
