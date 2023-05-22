@@ -133,8 +133,8 @@ namespace WalletConnectSharp.Unity.Network
 
         private async void FlushQueue()
         {
-            Debug.Log("[WebSocket] Flushing Queue");
-            Debug.Log("[WebSocket] Queue Count: " + _queuedMessages.Count);
+            //Debug.Log("[WebSocket] Flushing Queue");
+            //Debug.Log("[WebSocket] Queue Count: " + _queuedMessages.Count);
             while (_queuedMessages.Count > 0)
             {
                 var msg = _queuedMessages.Dequeue();

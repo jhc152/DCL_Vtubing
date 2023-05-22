@@ -94,7 +94,7 @@ public class DCL_GLBLoader : MonoBehaviour
                 //seteo del nuevo material
                 meshRenderer[i].material = SetMaterialMToon(meshRenderer[i]);
             }           
-            skinnedMEshBones.InicioUpdateBones();  
+           skinnedMEshBones.InicioUpdateBones();  
         }
         else
         {
@@ -191,7 +191,9 @@ public class DCL_GLBLoader : MonoBehaviour
             RenderTexture.ReleaseTemporary(tmp);
 
             newMaterial.mainTexture = myTexture2D;//(Texture2D)meshRenderer[i].material.mainTexture;
-                                                  // 
+
+            newMaterial.SetTexture("_ShadeTexture", myTexture2D);
+            // 
         }
 
 

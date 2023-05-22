@@ -73,11 +73,24 @@ public class WalletConnectQRImage : BindableMonoBehavior
         //hide the QRcode, show the loader, then wait a sec and then do the inverse
         _image.enabled = false;
         loader.SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.25f);
         _image.enabled = true;
         loader.SetActive(false);
     }
-    private void GenerateQrCode()
+
+    public void GenerateQrCodeWait()
+    {
+        StartCoroutine(_GenerateQrCode());
+    }
+
+    IEnumerator _GenerateQrCode()
+    {
+        yield return new WaitForSeconds(1);
+        GenerateQrCode();
+    }
+
+
+    public void GenerateQrCode()
     {
         // Grab the WC URL and generate a QR code for it. Note: The ECCLevel is the "Error Correction Code" level which
         // is basically how much checksum data to add to the code - the more checksum data the more likely the code can

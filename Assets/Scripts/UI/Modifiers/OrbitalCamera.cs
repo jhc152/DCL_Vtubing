@@ -72,7 +72,7 @@ namespace HardCoded.VRigUnity {
 				}
 
 
-				if (Input.GetMouseButtonDown(2))
+				if (Input.GetMouseButtonDown(1))
 				{
 
 					dragType = Type.Panning;
@@ -106,7 +106,7 @@ namespace HardCoded.VRigUnity {
 
             //button wheel
 
-            if (Input.GetMouseButtonUp(2))
+            if (Input.GetMouseButtonUp(1))
             {
                 dragType = Type.None;
             }

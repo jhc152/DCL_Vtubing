@@ -1,0 +1,32 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Gradients" style="width: 1920px; height: 1080px; position: absolute; background-color: rgba(0, 0, 0, 0.15); top: 0; background-image: url(&apos;project://database/Assets/VtubeAssets/gradiente.png?fileID=2800000&amp;guid=930bd9987fd0c4c4aa552fe3f0272c71&amp;type=3#gradiente&apos;);" />
+    <ui:VisualElement name="CameraCTA" style="width: 190px; position: absolute; top: 1015px; left: 865px; height: 46px; background-color: rgb(255, 255, 255); border-top-left-radius: 12px; border-bottom-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px;">
+        <ui:VisualElement style="width: 25px; height: 25px; left: 22.5px; top: 10.5px; background-image: url(&apos;project://database/Assets/VtubeAssets/CameraStartIcn.png?fileID=2800000&amp;guid=a1f7928a583778047a2c6bf675c97c4a&amp;type=3#CameraStartIcn&apos;); -unity-background-image-tint-color: rgb(0, 0, 0);" />
+        <ui:Label text="START CAMERA" display-tooltip-when-elided="true" style="-unity-font-style: bold; color: rgb(0, 0, 0); width: 110px; height: 25px; -unity-font: url(&apos;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=03ed25cacc8eb8840acf5234b4163b1f&amp;type=3#NotInter-Regular&apos;); top: 7px; left: 57.5px; position: absolute;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="Commands" style="position: absolute; width: 689px; height: 20px; left: 1221px; top: 1041px;">
+        <ui:VisualElement name="FrameEnter" style="width: 165px; height: 19px; top: 0; position: absolute; left: -7px;">
+            <ui:VisualElement name="CONenter" style="width: 42px; height: 19px; position: absolute; background-image: none; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-top-left-radius: 6px; border-bottom-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; -unity-text-align: middle-left; justify-content: center; font-size: 12px; -unity-font-style: bold;">
+                <ui:Label text="Enter" display-tooltip-when-elided="true" name="Enter" style="color: rgb(255, 255, 255); width: 34px; height: 8px; position: absolute; top: 0; left: 0;" />
+                <ui:Label text="Starts/stops camera" display-tooltip-when-elided="true" name="Starts" style="position: absolute; width: 119px; height: 10px; left: 46px; top: 0; -unity-text-align: middle-left; font-size: 12px; color: rgb(255, 255, 255); -unity-font-style: bold;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Clicks" style="height: 19px; top: 0; position: absolute; left: 171px; width: 151px;">
+            <ui:VisualElement style="position: absolute; width: 20px; height: 20px; background-image: url(&apos;project://database/Assets/VtubeAssets/LeftClickIcn.png?fileID=2800000&amp;guid=93ac20f0da9ef4c4f96279329ac7899f&amp;type=3#LeftClickIcn&apos;);" />
+            <ui:Label text="Click hides/shows UI" display-tooltip-when-elided="true" name="Clocks" style="position: absolute; width: 119px; height: 10px; left: 21px; top: 0; -unity-text-align: middle-left; font-size: 12px; color: rgb(255, 255, 255); -unity-font-style: bold;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Anddrag" style="height: 19px; top: 0.5px; position: absolute; left: 326px; width: 151px;">
+            <ui:VisualElement style="position: absolute; width: 20px; height: 20px; background-image: url(&apos;project://database/Assets/VtubeAssets/LeftClickIcn.png?fileID=2800000&amp;guid=93ac20f0da9ef4c4f96279329ac7899f&amp;type=3#LeftClickIcn&apos;);" />
+            <ui:Label text="and drag to rotate" display-tooltip-when-elided="true" name="drag" style="position: absolute; width: 119px; height: 10px; left: 21px; top: 0; -unity-text-align: middle-left; font-size: 12px; color: rgb(255, 255, 255); -unity-font-style: bold;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Andtopan" style="height: 19px; top: 0.5px; position: absolute; left: 464px; width: 121px;">
+            <ui:VisualElement style="position: absolute; width: 20px; height: 20px; background-image: url(&apos;project://database/Assets/VtubeAssets/RightClickIcn.png?fileID=2800000&amp;guid=59b1a0a7c7a1b7c44a812196e3b796cf&amp;type=3#RightClickIcn&apos;);" />
+            <ui:Label text="and drag to pan" display-tooltip-when-elided="true" name="drag" style="position: absolute; width: 95px; height: 10px; left: 21px; top: 0; -unity-text-align: middle-left; font-size: 12px; color: rgb(255, 255, 255); -unity-font-style: bold;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Zoom" style="height: 19px; top: 0.5px; position: absolute; left: 593px; width: 99px;">
+            <ui:VisualElement style="position: absolute; width: 20px; height: 20px; background-image: url(&apos;project://database/Assets/VtubeAssets/WheelIcn.png?fileID=2800000&amp;guid=01992128fbb5042429316c08c1d7d183&amp;type=3#WheelIcn&apos;);" />
+            <ui:Label text="Zoom in/out" display-tooltip-when-elided="true" name="drag" style="position: absolute; width: 95px; height: 10px; left: 21px; top: 0; -unity-text-align: middle-left; font-size: 12px; color: rgb(255, 255, 255); -unity-font-style: bold;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="Closed" style="width: 25px; height: 25px; left: 10px; top: 10px; background-image: url(&apos;project://database/Assets/VtubeAssets/SettingsIcon.png?fileID=2800000&amp;guid=0864ead6a8c9e3d49a0a96a33da7e3bb&amp;type=3#SettingsIcon&apos;); position: absolute;" />
+</ui:UXML>

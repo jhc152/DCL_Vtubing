@@ -1,0 +1,99 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Comands.uss?fileID=7433441132597879392&amp;guid=a60c2c9541d38664b977d09cc88b2ae8&amp;type=3#Comands" />
+    <ui:VisualElement name="Gradients" style="width: 1920px; height: 1080px; position: absolute; background-color: rgba(0, 0, 0, 0.15); top: 0; background-image: url(&apos;project://database/Assets/VtubeAssets/gradiente.png?fileID=2800000&amp;guid=930bd9987fd0c4c4aa552fe3f0272c71&amp;type=3#gradiente&apos;);" />
+    <ui:VisualElement name="GuestScene" style="width: 1920px; height: 1080px;">
+        <ui:VisualElement name="MenuComponents" style="width: 400px; height: 1080px; flex-direction: column; background-color: rgba(0, 0, 0, 0.6); justify-content: center; align-items: center;">
+            <ui:VisualElement name="Tittle" style="width: 400px; height: 46px; align-items: center; justify-content: center; position: absolute; top: 0; flex-shrink: 0; -unity-text-align: middle-center;">
+                <ui:VisualElement name="DeleteCTA" style="width: 28px; height: 28px; left: 363px; position: absolute; top: 9px; background-color: rgb(0, 0, 0); border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; align-items: center; justify-content: center;">
+                    <ui:VisualElement name="CloseIcon" style="width: 16px; height: 16px; align-items: center; justify-content: center; background-image: url(&apos;project://database/Assets/VtubeAssets/CloseIcn.png?fileID=2800000&amp;guid=a8fc18438486005459afddb7b004bfd4&amp;type=3#CloseIcn&apos;);" />
+                </ui:VisualElement>
+                <ui:Label text="SETTINGS" display-tooltip-when-elided="true" name="Settings" style="-unity-font-style: bold; font-size: 14px; width: 70px; height: 17px; color: rgb(252, 252, 252); position: absolute; top: 14px; left: 165px; align-items: center; justify-content: center; -unity-text-align: middle-left;" />
+                <ui:VisualElement name="Linea1" style="position: absolute; width: 400px; background-color: rgba(255, 255, 255, 0.3); top: 46px; height: 1px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Wallet" style="width: 346px; height: 114px; top: 66px; left: 27px; border-top-left-radius: 12px; border-bottom-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px; position: absolute; align-items: center; justify-content: center; flex-basis: 0;">
+                <ui:VisualElement name="Wallet" style="width: 344px; height: 17px; left: 1px; top: 1px; position: absolute; justify-content: space-between;">
+                    <ui:Label text="WALLET" display-tooltip-when-elided="true" name="WALLET" style="font-size: 14px; color: rgb(252, 252, 252); -unity-font-style: bold; align-items: center; justify-content: center; -unity-text-align: middle-left;" />
+                    <ui:Label text="To use your Decentraland identity you must connect the Dapp with the same wallet address." display-tooltip-when-elided="true" name="Touse" style="font-size: 14px; width: 344px; height: 31px; flex-wrap: nowrap; white-space: normal; position: absolute; left: 0; top: 28px; align-items: flex-start; justify-content: flex-start; color: rgb(255, 255, 255); -unity-text-align: lower-left; flex-basis: 0; flex-shrink: 1; flex-direction: column;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="CTABoton" style="width: 346px; height: 38px; top: 75px; position: absolute; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; background-color: rgb(255, 45, 85); align-items: center; justify-content: center; -unity-text-align: middle-center; left: 0; flex-direction: row;">
+                    <ui:VisualElement name="WalletIcon" style="width: 20.91px; height: 20.91px; top: 8.55px; left: 70.55px; position: absolute; background-image: url(&apos;project://database/Assets/VtubeAssets/WalletIcn.png?fileID=2800000&amp;guid=c8a1835f4eb41bc4c845d8de8a1099e5&amp;type=3#WalletIcn&apos;); align-items: center; justify-content: center;" />
+                    <ui:Label text="CONNECT YOUR WALLET" display-tooltip-when-elided="true" name="CONNECT" style="font-size: 14px; -unity-font-style: bold; color: rgb(252, 252, 252); width: 174px; height: 12px; top: 10.5px; left: 101.45px; position: absolute; align-items: stretch; justify-content: space-between; -unity-text-align: middle-center; flex-basis: 0;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Tabs" style="width: 400px; height: 35px; top: 200px; position: absolute;">
+                <ui:VisualElement name="Linea2" style="position: absolute; width: 400px; background-color: rgba(255, 255, 255, 0.3); top: 0; height: 1px;" />
+                <ui:VisualElement name="Frame" style="width: 344px; height: 17px; position: absolute; align-items: center; justify-content: center; top: 9px; left: 27.5px; flex-direction: row;">
+                    <ui:Label text="SCENE" display-tooltip-when-elided="true" style="font-size: 14px; color: rgb(255, 255, 255); -unity-font-style: bold; width: 172px; height: 17px; -unity-text-align: upper-center; position: absolute; left: 0; top: 0;" />
+                    <ui:Label text="VIDEO" display-tooltip-when-elided="true" name="VIDEO" style="font-size: 14px; color: rgb(255, 255, 255); -unity-font-style: normal; width: 172px; height: 17px; -unity-text-align: upper-center; position: absolute; left: 172px; top: 0;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Lunea4" style="position: absolute; width: 400px; background-color: rgba(255, 255, 255, 0.3); top: 35px; height: 1px;" />
+                <ui:VisualElement name="Linea3" style="width: 172px; height: 3px; background-color: rgb(255, 45, 85); position: absolute; left: 27px; top: 35px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="AVATAR" style="width: 344px; height: 17px; top: 255px; position: absolute; left: 28px; right: 1px; flex-direction: row;">
+                <ui:Label text="AVATAR" display-tooltip-when-elided="true" name="AVATAR" style="color: rgb(255, 255, 255); -unity-font-style: bold; width: 55px; height: 17px; position: absolute; left: 0; top: 0; bottom: 0; right: 0; -unity-text-align: middle-left;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="AvatarStyle" style="width: 189px; height: 92px; top: 292px; position: absolute; left: 105.5px;">
+                <ui:VisualElement name="AB" style="width: 186px; height: 86px; left: 3px; top: 3px;">
+                    <ui:VisualElement name="DefaultB" style="width: 80px; height: 80px; position: absolute; top: 3px; background-image: none; background-color: rgba(255, 255, 255, 0.15); border-top-left-radius: 12px; border-bottom-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px; left: 106px;">
+                        <ui:VisualElement name="DefaultB" style="width: 80px; height: 80px; position: absolute; top: 0; background-image: url(&apos;project://database/Assets/VtubeAssets/image%2054.png?fileID=2800000&amp;guid=34df628fb72f26c45a7ad2cb9de4e814&amp;type=3#image 54&apos;); background-color: rgba(255, 255, 255, 0.15); border-top-left-radius: 12px; border-bottom-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="DefaultA" style="width: 80px; height: 80px; position: absolute; top: 3px; background-image: none; background-color: rgba(255, 255, 255, 0.15); border-top-left-radius: 12px; border-bottom-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px;">
+                        <ui:VisualElement name="DefaultA" style="width: 80px; height: 80px; position: absolute; top: 0; background-image: url(&apos;project://database/Assets/VtubeAssets/Avatar.png?fileID=2800000&amp;guid=d8d0b43a268fb944e8ce599c8d8b8597&amp;type=3#Avatar&apos;); background-color: rgba(255, 255, 255, 0.15); border-top-left-radius: 12px; border-bottom-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="DefaultON" style="width: 86px; height: 85px; background-image: url(&apos;project://database/Assets/VtubeAssets/StrokeRainbowSmall.png?fileID=2800000&amp;guid=283b855e4f9d987488ceb6a36e2b0d5e&amp;type=3#StrokeRainbowSmall&apos;); position: absolute; top: 4px;">
+                    <ui:VisualElement style="position: absolute; width: 20px; height: 20px; top: 56px; left: 8px; background-image: url(&apos;project://database/Assets/VtubeAssets/CheckGreenIcn.png?fileID=2800000&amp;guid=41ae9ac93e9f7d446aa00cbd0c73464c&amp;type=3#CheckGreenIcn&apos;);" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="ExportVRM" style="width: 344px; height: 92px; left: 28px; top: 404px; position: absolute;">
+                <ui:VisualElement name="ExportCTA" style="width: 344px; height: 38px; background-color: rgb(255, 255, 255); border-top-left-radius: 19px; border-bottom-left-radius: 19px; border-top-right-radius: 19px; border-bottom-right-radius: 19px;">
+                    <ui:VisualElement name="ExportICon" style="width: 20px; height: 20px; position: absolute; left: 93.5px; top: 9px; background-image: url(&apos;project://database/Assets/VtubeAssets/ExportIcn.png?fileID=2800000&amp;guid=050ed80ddd4ae984f9dd86bbd08d4599&amp;type=3#ExportIcn&apos;); -unity-background-image-tint-color: rgb(0, 0, 0);" />
+                    <ui:Label text="Export VRM Avatar" display-tooltip-when-elided="true" style="width: 128px; height: 29px; left: 119.5px; top: 2px; -unity-font-style: bold; position: absolute;" />
+                </ui:VisualElement>
+                <ui:Label text="VRM is a standard file format for 3D avatar data that offers cross-platform support and includes the required 3D meshes, textures, skeletons, and metadata." display-tooltip-when-elided="true" style="width: 346px; height: 33px; white-space: normal; font-size: 12px; color: rgb(255, 255, 255); top: 52px; position: absolute; -unity-text-align: middle-left;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Linea5" style="position: absolute; width: 400px; background-color: rgba(255, 255, 255, 0.3); top: 516px; height: 1px;" />
+            <ui:VisualElement name="Background" style="width: 344px; height: 101px; top: 536px; position: absolute;">
+                <ui:Label text="BACKGROUND" display-tooltip-when-elided="true" name="BACKGROUND" style="-unity-font-style: bold; color: rgb(255, 255, 255); height: 11px; justify-content: center; -unity-text-align: middle-left; position: absolute;" />
+                <ui:VisualElement name="Frame" style="width: 214px; height: 58px; top: 37px; position: absolute;">
+                    <ui:VisualElement name="CUstom" style="width: 58px; height: 58px; border-top-left-radius: 12px; border-bottom-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px; background-color: rgba(255, 255, 255, 0.15);">
+                        <ui:VisualElement name="CUstom" style="width: 25px; height: 25px; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; background-color: rgba(255, 255, 255, 0.15); background-image: url(&apos;project://database/Assets/VtubeAssets/ImageIcn.png?fileID=2800000&amp;guid=9db493911e26f3347be22d91d964fe60&amp;type=3#ImageIcn&apos;); left: 17px; top: 17px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Default" style="width: 58px; height: 58px; border-top-left-radius: 12px; border-bottom-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px; background-color: rgba(255, 255, 255, 0.15); left: 78px; position: absolute; background-image: url(&apos;project://database/Assets/VtubeAssets/icnocobase.png?fileID=2800000&amp;guid=a3c0993f820d90d4eacd0421109db66b&amp;type=3#icnocobase&apos;);" />
+                    <ui:VisualElement name="GreenScreen" style="width: 58px; height: 58px; border-top-left-radius: 12px; border-bottom-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px; background-color: rgb(51, 243, 0); left: 156px; position: absolute;" />
+                    <ui:VisualElement name="Active" style="width: 60px; height: 57px; max-width: -1px; position: absolute; background-image: url(&apos;project://database/Assets/VtubeAssets/StrokeRainbowBig.png?fileID=2800000&amp;guid=b6c8f440a2e33f347a702859da1a5f66&amp;type=3#StrokeRainbowBig&apos;);">
+                        <ui:VisualElement style="position: absolute; width: 18px; height: 18px; top: 34px; left: 5px; background-image: url(&apos;project://database/Assets/VtubeAssets/CheckGreenIcn.png?fileID=2800000&amp;guid=41ae9ac93e9f7d446aa00cbd0c73464c&amp;type=3#CheckGreenIcn&apos;);" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="CameraCTA" style="width: 190px; position: absolute; top: 1015px; left: 865px; height: 46px; background-color: rgb(255, 255, 255); border-top-left-radius: 12px; border-bottom-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px;">
+        <ui:VisualElement style="width: 25px; height: 25px; left: 22.5px; top: 10.5px; background-image: url(&apos;project://database/Assets/VtubeAssets/CameraStartIcn.png?fileID=2800000&amp;guid=a1f7928a583778047a2c6bf675c97c4a&amp;type=3#CameraStartIcn&apos;); -unity-background-image-tint-color: rgb(0, 0, 0);" />
+        <ui:Label text="START CAMERA" display-tooltip-when-elided="true" style="-unity-font-style: bold; color: rgb(0, 0, 0); width: 110px; height: 25px; -unity-font: url(&apos;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=03ed25cacc8eb8840acf5234b4163b1f&amp;type=3#NotInter-Regular&apos;); top: 7px; left: 57.5px; position: absolute;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="Commands" style="position: absolute; width: 689px; height: 20px; left: 1221px; top: 1041px;">
+        <ui:VisualElement name="FrameEnter" style="width: 165px; height: 19px; top: 0; position: absolute; left: -7px;">
+            <ui:VisualElement name="CONenter" style="width: 42px; height: 19px; position: absolute; background-image: none; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-top-left-radius: 6px; border-bottom-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; -unity-text-align: middle-left; justify-content: center; font-size: 12px; -unity-font-style: bold;">
+                <ui:Label text="Enter" display-tooltip-when-elided="true" name="Enter" style="color: rgb(255, 255, 255); width: 34px; height: 8px; position: absolute; top: 0; left: 0;" />
+                <ui:Label text="Starts/stops camera" display-tooltip-when-elided="true" name="Starts" style="position: absolute; width: 119px; height: 10px; left: 46px; top: 0; -unity-text-align: middle-left; font-size: 12px; color: rgb(255, 255, 255); -unity-font-style: bold;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Clicks" style="height: 19px; top: 0; position: absolute; left: 171px; width: 151px;">
+            <ui:VisualElement style="position: absolute; width: 20px; height: 20px; background-image: url(&apos;project://database/Assets/VtubeAssets/LeftClickIcn.png?fileID=2800000&amp;guid=93ac20f0da9ef4c4f96279329ac7899f&amp;type=3#LeftClickIcn&apos;);" />
+            <ui:Label text="Click hides/shows UI" display-tooltip-when-elided="true" name="Clocks" style="position: absolute; width: 119px; height: 10px; left: 21px; top: 0; -unity-text-align: middle-left; font-size: 12px; color: rgb(255, 255, 255); -unity-font-style: bold;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Anddrag" style="height: 19px; top: 0.5px; position: absolute; left: 326px; width: 151px;">
+            <ui:VisualElement style="position: absolute; width: 20px; height: 20px; background-image: url(&apos;project://database/Assets/VtubeAssets/LeftClickIcn.png?fileID=2800000&amp;guid=93ac20f0da9ef4c4f96279329ac7899f&amp;type=3#LeftClickIcn&apos;);" />
+            <ui:Label text="and drag to rotate" display-tooltip-when-elided="true" name="drag" style="position: absolute; width: 119px; height: 10px; left: 21px; top: 0; -unity-text-align: middle-left; font-size: 12px; color: rgb(255, 255, 255); -unity-font-style: bold;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Andtopan" style="height: 19px; top: 0.5px; position: absolute; left: 464px; width: 121px;">
+            <ui:VisualElement style="position: absolute; width: 20px; height: 20px; background-image: url(&apos;project://database/Assets/VtubeAssets/RightClickIcn.png?fileID=2800000&amp;guid=59b1a0a7c7a1b7c44a812196e3b796cf&amp;type=3#RightClickIcn&apos;);" />
+            <ui:Label text="and drag to pan" display-tooltip-when-elided="true" name="drag" style="position: absolute; width: 95px; height: 10px; left: 21px; top: 0; -unity-text-align: middle-left; font-size: 12px; color: rgb(255, 255, 255); -unity-font-style: bold;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Zoom" style="height: 19px; top: 0.5px; position: absolute; left: 593px; width: 99px;">
+            <ui:VisualElement style="position: absolute; width: 20px; height: 20px; background-image: url(&apos;project://database/Assets/VtubeAssets/WheelIcn.png?fileID=2800000&amp;guid=01992128fbb5042429316c08c1d7d183&amp;type=3#WheelIcn&apos;);" />
+            <ui:Label text="Zoom in/out" display-tooltip-when-elided="true" name="drag" style="position: absolute; width: 95px; height: 10px; left: 21px; top: 0; -unity-text-align: middle-left; font-size: 12px; color: rgb(255, 255, 255); -unity-font-style: bold;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
