@@ -264,6 +264,8 @@ namespace VRM.RuntimeExporterSample
 
         static void ExportUser(GameObject model, bool useNormalize)
         {
+
+            #if UNITY_STANDALONE_WIN
             var path = FileDialogForWindows.SaveDialog("save VRM", Application.dataPath + "/DCL_vrm.vrm");
             if (string.IsNullOrEmpty(path))
             {
@@ -273,6 +275,7 @@ namespace VRM.RuntimeExporterSample
             var bytes = useNormalize ? ExportCustom(model) : ExportSimple(model);
             File.WriteAllBytes(path, bytes);
             Debug.LogFormat("export to {0}", path);
+            #endif
         }
 
 

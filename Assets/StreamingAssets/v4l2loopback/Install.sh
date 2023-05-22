@@ -1,14 +1,28 @@
 #!/bin/bash
 
-if [ $(id -u) != 0 ]; then
-    echo "This Install script requires root permissions"
-    sudo "$0" "$@"
-    exit
+# Check if Homebrew is installed
+# if test ! $(which brew); then
+#   echo "Installing Homebrew..."
+#   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# fi
+
+if test ! $(which brew); then
+  echo "Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# TODO: Ask the user if v4l2loopback is installed
+# Install dependencies
+brew install v4l2loopback
 
-# Register virtual camera device
-modprobe v4l2loopback \
-    exclusive_caps=1 \
-    card_label="DCL Vtubing Camera"
+# Load the v4l2loopback kernel module
+//sudo kextload /usr/local/opt/v4l2loopback/v4l2loopback.kext
+sudo -S kextload /usr/local/opt/v4l2loopback/v4l2loopback.kext
+
+# Register the virtual camera device
+sudo modprobe v4l2loopback \
+  video_nr=10 \
+  card_label="DCL Vtubing Camera" \
+  exclusive_caps=1 \
+  max_buffers=2
+
+echo "Virtual camera installed successfully."
