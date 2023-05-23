@@ -18,6 +18,7 @@ using UnityEditor;
 
 using Newtonsoft.Json;
 
+
 [Serializable]
 public class WearablesEncontrado
 {
@@ -902,11 +903,11 @@ public class DCL_Manager : MonoBehaviour
         // Verificar si el objeto fue encontrado
         if (vrmLoaded != null)
         {
-            Debug.Log("Se encontró el objeto: " + vrmLoaded.name);
+            Debug.Log("Se encontrï¿½ el objeto: " + vrmLoaded.name);
         }
         else
         {
-            Debug.Log("No se encontró el objeto");
+            Debug.Log("No se encontrï¿½ el objeto");
         }
 
 
