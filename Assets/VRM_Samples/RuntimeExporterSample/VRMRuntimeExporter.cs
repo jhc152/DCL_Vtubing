@@ -7,12 +7,8 @@ using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
 
-
-
 namespace VRM.RuntimeExporterSample
 {
-
-   // using SFB;
 
     [System.Serializable]
     public struct VRMMesehesObjects
@@ -279,67 +275,7 @@ namespace VRM.RuntimeExporterSample
             var bytes = useNormalize ? ExportCustom(model) : ExportSimple(model);
             File.WriteAllBytes(path, bytes);
             Debug.LogFormat("export to {0}", path);
-            #elif UNITY_STANDALONE_OSX
-                //   var path = StandaloneFileBrowser.SaveFilePanel("Save VRM", defaultPath, "", "vrm");
-                // if (string.IsNullOrEmpty(path))
-                // {
-                //     return;
-                // }
-
-                // var bytes = useNormalize ? ExportCustom(model) : ExportSimple(model);
-                // System.IO.File.WriteAllBytes(path, bytes);
-                // Debug.LogFormat("Exported to {0}", path);
-
-                
-                //  SaveFileDialog saveFileDialog = new SaveFileDialog();
-                // saveFileDialog.Filter = "VRM Files (*.vrm)|*.vrm";
-                // saveFileDialog.Title = "Export VRM";
-
-                // if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                // {
-                //     string filePath = saveFileDialog.FileName;
-                //     var bytes = useNormalize ? ExportCustom(model) : ExportSimple(model);
-                //     File.WriteAllBytes(filePath, bytes);
-                //     Debug.LogFormat("export to {0}", filePath);
-                    
-                //     // Abrir la carpeta contenedora después de guardar el archivo
-                //     string folderPath = System.IO.Path.GetDirectoryName(filePath);
-                //     Process.Start("open", folderPath);
-                // }
-
-                 //var path = Application.dataPath + "/Export/DCL_vrm.vrm";
-
-                 var path = Application.dataPath + "/../../DCL_vrm.vrm";
-
-                  if (string.IsNullOrEmpty(path))
-                    {
-                        return;
-                    }
-
-                    var bytes = useNormalize ? ExportCustom(model) : ExportSimple(model);
-                    File.WriteAllBytes(path, bytes);
-                    Debug.LogFormat("export to {0}", path);
-                 
-                
-            #elif UNITY_STANDALONE_LINUX
-               
-
-                var path = StandaloneFileBrowser.SaveFilePanel("Save VRM", defaultPath, "", "vrm");
-                if (string.IsNullOrEmpty(path))
-                {
-                    return;
-                }
-
-                var bytes = useNormalize ? ExportCustom(model) : ExportSimple(model);
-                System.IO.File.WriteAllBytes(path, bytes);
-                Debug.LogFormat("Exported to {0}", path);
             #endif
-
-
-
-
-
-
         }
 
 
@@ -379,13 +315,13 @@ namespace VRM.RuntimeExporterSample
             yield return new WaitForSeconds(.1f);
 
 
-            // SkinnedMeshRenderer[] meshRenderer = vrmsToExport.wearablesParent.GetComponentsInChildren<SkinnedMeshRenderer>();
-            // for (int i = 0; i < meshRenderer.Length; i++)
-            // {
-            //     InicioUpdateBonesVRMtoVRM(meshRenderer[i].transform, meshRenderer[i], vrmsToExport.vrm_hips.transform);
+            SkinnedMeshRenderer[] meshRenderer = vrmsToExport.wearablesParent.GetComponentsInChildren<SkinnedMeshRenderer>();
+            for (int i = 0; i < meshRenderer.Length; i++)
+            {
+                InicioUpdateBonesVRMtoVRM(meshRenderer[i].transform, meshRenderer[i], vrmsToExport.vrm_hips.transform);
 
-            //     meshRenderer[i].gameObject.layer = LayerMask.NameToLayer(newLayer);
-            // }
+                meshRenderer[i].gameObject.layer = LayerMask.NameToLayer(newLayer);
+            }
 
             yield return new WaitForSeconds(.5f);
 
