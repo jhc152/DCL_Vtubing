@@ -390,13 +390,13 @@ namespace VRM.RuntimeExporterSample
             yield return new WaitForSeconds(.1f);
 
 
-            // SkinnedMeshRenderer[] meshRenderer = vrmsToExport.wearablesParent.GetComponentsInChildren<SkinnedMeshRenderer>();
-            // for (int i = 0; i < meshRenderer.Length; i++)
-            // {
-            //     InicioUpdateBonesVRMtoVRM(meshRenderer[i].transform, meshRenderer[i], vrmsToExport.vrm_hips.transform);
+            SkinnedMeshRenderer[] meshRenderer = vrmsToExport.wearablesParent.GetComponentsInChildren<SkinnedMeshRenderer>();
+            for (int i = 0; i < meshRenderer.Length; i++)
+            {
+                InicioUpdateBonesVRMtoVRM(meshRenderer[i].transform, meshRenderer[i], vrmsToExport.vrm_hips.transform);
 
-            //     meshRenderer[i].gameObject.layer = LayerMask.NameToLayer(newLayer);
-            // }
+                meshRenderer[i].gameObject.layer = LayerMask.NameToLayer(newLayer);
+            }
 
             yield return new WaitForSeconds(.5f);
 
@@ -428,11 +428,11 @@ namespace VRM.RuntimeExporterSample
             }
 
             // Recorre los hijos del GameObject fuente y los copia al nuevo GameObject de manera recursiva
-            for (int i = 0; i < source.transform.childCount; i++)
-            {
-                GameObject childObject = source.transform.GetChild(i).gameObject;
-                CopyObjectRecursively(childObject, newObject.transform);
-            }
+            //for (int i = 0; i < source.transform.childCount; i++)
+            //{
+            //    GameObject childObject = source.transform.GetChild(i).gameObject;
+            //    CopyObjectRecursively(childObject, newObject.transform);
+            //}
 
             return newObject;
         }
@@ -504,7 +504,7 @@ namespace VRM.RuntimeExporterSample
                 string boneName = _targetSkin.bones[i].name;
                 // Debug.Log("finding " + boneName);
 
-                boneName = ReturnEquparableName(boneName);
+                //boneName = ReturnEquparableName(boneName);
                     
                    
                 
