@@ -829,7 +829,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: 1ca8f635c50104243a8e1a6b238bf8d2, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 5e059ed371ddcf3409d42ec4322bbac7, type: 2}
   m_Bones:
   - {fileID: 8111112970325224710}
   - {fileID: 7536984506845175310}
@@ -2894,7 +2894,6 @@ GameObject:
   - component: {fileID: 3611147270592571787}
   - component: {fileID: 5114971884416866076}
   - component: {fileID: 5078042416208685849}
-  - component: {fileID: 8382424564299073610}
   m_Layer: 0
   m_Name: export
   m_TagString: Untagged
@@ -3028,7 +3027,7 @@ MonoBehaviour:
   DrawGizmo: 1
   UpdateType: 1
   Target: {fileID: 0}
-  Head: {fileID: 7050834609628252805}
+  Head: {fileID: 0}
   m_yaw: 0
   m_pitch: 0
 --- !u!114 &5078042416208685849
@@ -3190,18 +3189,6 @@ MonoBehaviour:
       m_RotationOrder: 4
     CurveXRangeDegree: 90
     CurveYRangeDegree: 10
---- !u!114 &8382424564299073610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5207550419434061434}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 423fb0cccbe420047ac28163cce68db4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5377848762284535158
 GameObject:
   m_ObjectHideFlags: 0
