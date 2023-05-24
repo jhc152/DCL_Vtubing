@@ -324,15 +324,26 @@ namespace VRM.RuntimeExporterSample
             #elif UNITY_STANDALONE_LINUX
                
 
-                var path = StandaloneFileBrowser.SaveFilePanel("Save VRM", defaultPath, "", "vrm");
-                if (string.IsNullOrEmpty(path))
-                {
-                    return;
-                }
+                // var path = StandaloneFileBrowser.SaveFilePanel("Save VRM", defaultPath, "", "vrm");
+                // if (string.IsNullOrEmpty(path))
+                // {
+                //     return;
+                // }
 
-                var bytes = useNormalize ? ExportCustom(model) : ExportSimple(model);
-                System.IO.File.WriteAllBytes(path, bytes);
-                Debug.LogFormat("Exported to {0}", path);
+                // var bytes = useNormalize ? ExportCustom(model) : ExportSimple(model);
+                // System.IO.File.WriteAllBytes(path, bytes);
+                // Debug.LogFormat("Exported to {0}", path);
+
+                 var path = Application.dataPath + "/../../DCL_vrm.vrm";
+
+                  if (string.IsNullOrEmpty(path))
+                    {
+                        return;
+                    }
+
+                    var bytes = useNormalize ? ExportCustom(model) : ExportSimple(model);
+                    File.WriteAllBytes(path, bytes);
+                    Debug.LogFormat("export to {0}", path);
             #endif
 
 
