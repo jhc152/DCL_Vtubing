@@ -13803,11 +13803,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1323280456}
   m_CullTransparentMesh: 1
---- !u!1 &1328664108 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 305672549400610299, guid: e34edc1c7c2bd9c4f9cc6bb7ef427ae2, type: 3}
-  m_PrefabInstance: {fileID: 1758537126}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1332201674
 GameObject:
   m_ObjectHideFlags: 0
@@ -19327,7 +19322,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   vrmVtubing: {fileID: 0}
-  vrmToExport: {fileID: 1328664108}
+  vrmToExport: {fileID: 587842794}
   vrmsVtubing:
     vrm_hair_male: {fileID: 1364064977}
     vrm_lower_body_male: {fileID: 700652646}
