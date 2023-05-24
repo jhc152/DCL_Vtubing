@@ -148,6 +148,12 @@ public class DCL_Manager : MonoBehaviour
 
     public bool loadingProfile = false;
     public UIDocument UIpanel;
+
+    public Transform auxPost;
+
+    public Camera cameraToRemoveLayerFrom;
+    public string layerNameToRemove;
+
     public void Awake()
     {
         Instance = this;
@@ -163,6 +169,36 @@ public class DCL_Manager : MonoBehaviour
         LoadProfile();
     }
 
+
+    public void TurnOffLAyerOnCamera()
+    {
+        int layerMask = cameraToRemoveLayerFrom.cullingMask;
+        int layerToRemove = LayerMask.NameToLayer(layerNameToRemove);
+
+        // Verificar si el layer existe en la culling mask actual
+        if ((layerMask & (1 << layerToRemove)) != 0)
+        {
+            // Quitar el layer de la culling mask
+            cameraToRemoveLayerFrom.cullingMask &= ~(1 << layerToRemove);
+        }
+    }
+
+    public void TurnOnLayerOnCamera()
+    {
+        int layerMask = cameraToRemoveLayerFrom.cullingMask;
+        int layerToAdd = LayerMask.NameToLayer(layerNameToRemove);
+
+        // Verificar si el layer no está en la culling mask actual
+        if ((layerMask & (1 << layerToAdd)) == 0)
+        {
+            // Agregar el layer a la culling mask
+            cameraToRemoveLayerFrom.cullingMask |= (1 << layerToAdd);
+        }
+    }
+
+
+
+
      
     //////////////////////////////// ------------------------             PASO 1               ----------------------------------------------
     
@@ -172,6 +208,9 @@ public class DCL_Manager : MonoBehaviour
     public void LoadProfile()
 
     {
+
+        auxPost.gameObject.SetActive(true);
+        TurnOffLAyerOnCamera();
         //reseteo paraemeters
         show_hair = true;
         show_head = true;
@@ -289,6 +328,10 @@ public class DCL_Manager : MonoBehaviour
     public void CompleteProfileAvatar()
     {
         loadingProfile = false;
+
+       
+
+        StartCoroutine(CompleteVRMReadyToUse());
     }
 
 
@@ -1027,6 +1070,23 @@ public class DCL_Manager : MonoBehaviour
         vrm_head.enabled = show_head;
 
     }
+
+
+
+
+
+
+
+
+    private IEnumerator CompleteVRMReadyToUse()
+    {
+
+        yield return new WaitForSeconds(1);
+        auxPost.gameObject.SetActive(false);
+        TurnOnLayerOnCamera();
+    }
+
+
 
 
 

@@ -15076,6 +15076,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6447137187830256559, guid: 32e66da3044252644bf1e8afdfa1867b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 6447137188268379328, guid: 32e66da3044252644bf1e8afdfa1867b, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -17425,6 +17429,9 @@ MonoBehaviour:
   updateSkinnedMesh: {fileID: 2085102752}
   loadingProfile: 0
   UIpanel: {fileID: 1917539044}
+  auxPost: {fileID: 1297965810}
+  cameraToRemoveLayerFrom: {fileID: 1816765728}
+  layerNameToRemove: Default
   userId: 
   unclaimedName: 
   WearableToRemove: []
@@ -20727,6 +20734,11 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!20 &1816765728 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3840394562969064526, guid: 32e66da3044252644bf1e8afdfa1867b, type: 3}
+  m_PrefabInstance: {fileID: 1393820230}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1823346984 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8287934599587266986, guid: e108f6f1146789c44a85f7d0b945413f, type: 3}
@@ -23762,7 +23774,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.85
+  m_Intensity: 0.65
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
