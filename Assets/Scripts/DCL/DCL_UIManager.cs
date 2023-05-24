@@ -20,6 +20,8 @@ namespace HardCoded.VRigUnity
         public SkinnedMeshRenderer vrm_feet;
         public SkinnedMeshRenderer vrm_head;
 
+        public SkinnedMeshRenderer vrm_facial_hair;
+
     }
 
     public class DCL_UIManager : MonoBehaviour
@@ -706,6 +708,8 @@ namespace HardCoded.VRigUnity
             meshesMale.vrm_upper_body.enabled = showMale;
             meshesMale.vrm_feet.enabled = showMale;
             meshesMale.vrm_head.enabled = true;
+
+            meshesMale.vrm_facial_hair.enabled = (showMale)?true:false;
 
 
             meshesFemale.vrm_hair.enabled = showFemale;

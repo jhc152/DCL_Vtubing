@@ -117,6 +117,8 @@ public class DCL_Manager : MonoBehaviour
     public SkinnedMeshRenderer vrm_feet_female;
     public SkinnedMeshRenderer vrm_head;
 
+    public SkinnedMeshRenderer vrm_facial_hair;
+
 
 
 
@@ -178,6 +180,8 @@ public class DCL_Manager : MonoBehaviour
         show_lower_body = true;
         show_upper_body = true;
         show_feet = true;
+
+        vrm_facial_hair.enabled = false;
 
         hideFull = new List<string>();
         replaceFull = new List<string>();
@@ -909,6 +913,7 @@ public class DCL_Manager : MonoBehaviour
                 {
                     // Cambiar el color del material
                     materialsInMeshCurrent[i].color = avatarInfo.hair;
+                    materialsInMeshCurrent[i].SetColor("_ShadeColor", avatarInfo.hair);
                 }
                 //materialsInMeshCurrent[i].SetFloat("_Mode", 2f);
 

@@ -28,6 +28,8 @@ namespace VRM.RuntimeExporterSample
         public SkinnedMeshRenderer vrm_feet_female;
         public SkinnedMeshRenderer vrm_head;
 
+        public SkinnedMeshRenderer vrm_facial_hair;
+
         public GameObject wearablesParent;
         public GameObject vrm_hips;
     }
@@ -373,6 +375,8 @@ namespace VRM.RuntimeExporterSample
             vrmsToExport.vrm_lower_body_male.enabled = vrmsVtubing.vrm_lower_body_male.enabled;
             vrmsToExport.vrm_upper_body_male.enabled = vrmsVtubing.vrm_upper_body_male.enabled;
             vrmsToExport.vrm_feet_male.enabled = vrmsVtubing.vrm_feet_male.enabled;
+           
+            vrmsToExport.vrm_facial_hair.enabled = vrmsVtubing.vrm_facial_hair.enabled;
 
             vrmsToExport.vrm_hair_female.enabled = vrmsVtubing.vrm_hair_female.enabled;
             vrmsToExport.vrm_lower_body_female.enabled = vrmsVtubing.vrm_lower_body_female.enabled;
