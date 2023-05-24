@@ -209,6 +209,9 @@ public class DCL_GLBLoader : MonoBehaviour
         newMaterial.color = baseColor;
 
 
+        newMaterial.SetColor("_ShadeColor", baseColor);
+
+
 
         /******sacando mas parametros del original****/
 

@@ -445,7 +445,7 @@ public class DCL_Manager : MonoBehaviour
             //leyendo los wearables elegibles
             if (!CheckWearableString (wearableCurrent))
             {
-               // Debug.Log(API_DCL_WEARABLE_POINTER+wearableCurrent);
+                Debug.Log(API_DCL_WEARABLE_POINTER+wearableCurrent);
                 WearablesEncontrado newWearable = new WearablesEncontrado();
                 newWearable.wearablePointer = wearableCurrent;              
                 WearableListProfiles.Add(newWearable);                            
@@ -462,10 +462,10 @@ public class DCL_Manager : MonoBehaviour
         }
 
 
-       
+
 
         /*instanciar lo wearabls que si pasaron a ser cargados*/
-
+        skinExist = false;
         Quaternion rotat = new Quaternion(0, 0, 0, 0);
         for (int i = 0; i < WearableListProfiles.Count; i++)
         {
@@ -503,6 +503,8 @@ public class DCL_Manager : MonoBehaviour
         //    }
         //}
     }
+
+    private bool skinExist = false;
 
     List<string> skinHides = new List<string> { "upper_body", "feet", "lower_body", "head", "helmet", "mask", "facial_hair", "mouth", "eyes", "eyewear", "earrings" };
 
@@ -590,7 +592,18 @@ public class DCL_Manager : MonoBehaviour
             if (category_cur == "skin")
             {
                 hideFull.AddRange(skinHides);
+                skinExist = true;
             }
+
+            for (int i = 0; i < metadataWearableCurrent["hides"].Count; i++)
+            {
+                string hideTmp = metadataWearableCurrent["hides"][i];
+                hideFull.Add(hideTmp);                
+                Debug.Log("-----hideTmp " + hideTmp);
+
+            }
+
+
 
             glbLoaderObj.mainFile = mainFile;
             glbLoaderObj.idWearable = hashWearable;
@@ -610,50 +623,7 @@ public class DCL_Manager : MonoBehaviour
                 {
                     glbLoaderObj.wearableBase = true;
                 }
-            }
-
-
-            //verifica si la categoria es wearable base
-
-            //for (int i = 0; i < metadataWearableCurrent["hides"].Count; i++)
-            //{
-            //    hideCurrent = metadataWearableCurrent["hides"][i];
-            //    //Debug.Log("h___ "+ hideCurrent);
-
-            //    hideFull.Add(hideCurrent);
-            //    if (hideCurrent ==  "head")
-            //    {
-            //        Debug.Log("<color=yellow>Debe ocultar la cabeza</color>");
-            //        show_head = false;
-            //    }
-
-            //    if (hideCurrent == "hair")
-            //    {
-            //        Debug.Log("<color=yellow>Debe ocultar el pelo</color>");
-            //        show_hair = false;
-            //    }
-            //}
-
-
-
-                //for (int i = 0; i < metadataWearableCurrent["replaces"].Count; i++)
-                //{
-                //    hideCurrent = metadataWearableCurrent["replaces"][i];
-                //    //Debug.Log("r___ " + hideCurrent);
-
-                //    replaceFull.Add(hideCurrent);
-                //    if (hideCurrent == "head")
-                //    {
-                //        Debug.Log("<color=yellow>Debe ocultar la cabeza</color>");
-                //        show_head = false;
-                //    }
-
-                //    if (hideCurrent == "hair")
-                //    {
-                //        Debug.Log("<color=yellow>Debe ocultar el pelo</color>");
-                //        show_hair = false;
-                //    }
-                //}
+            }            
 
 
                 //analizar wearables por caragar    
@@ -705,10 +675,47 @@ public class DCL_Manager : MonoBehaviour
                 {                   
                     wearableToRemove.Add(obj);
                 }
+
+                if(skinExist && categoryCurr == "hair")
+                {
+                    wearableToRemove.Add(obj);
+                }
             }
         }
+
         
-        WearableListProfiles.RemoveAll(obj => wearableToRemove.Contains(obj));
+       WearableListProfiles.RemoveAll(obj => wearableToRemove.Contains(obj));
+
+
+
+
+        //hide entre ellos
+       // wearableToRemove = new List<WearablesEncontrado>();
+
+
+        foreach (var hide in hideFull)
+        {
+            Debug.Log("<color=cyan>hideFull</color> " + hide);
+            foreach (WearablesEncontrado obj in WearableListProfiles)
+            {
+                glbLoaderObj = obj.WearableContent.transform.GetComponent<DCL_GLBLoader>();
+                categoryCurr = glbLoaderObj.info_category;
+                if (categoryCurr == hide)
+                {
+                    wearableToRemove.Add(obj);
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
 
         //ahora si con los finales cargarle su glb
         string mainFileCurr = "";
@@ -756,6 +763,16 @@ public class DCL_Manager : MonoBehaviour
                     show_hair = false;
                 }
 
+                if (categoryCurr == "skin")
+                {
+                    show_feet = false;
+                    show_lower_body = false;
+                    show_upper_body = false;
+                    show_head = false;
+                    show_hair = false;
+                    
+                }
+
                 glbLoaderObj.StartGLBLoader();
             }
             else
@@ -787,12 +804,12 @@ public class DCL_Manager : MonoBehaviour
             fileName = dataWearablePointer[0]["content"][i]["file"];            
             if (fileName == mainfile)
             {
-                Debug.Log(dataWearablePointer[0]["content"][i]["hash"]);
+               // Debug.Log(dataWearablePointer[0]["content"][i]["hash"]);
                 hashToReturn = dataWearablePointer[0]["content"][i]["hash"];
                 break;
             }
         }
-        Debug.Log("_________________________________");
+       // Debug.Log("_________________________________");
         return hashToReturn;
     }
 
@@ -807,14 +824,23 @@ public class DCL_Manager : MonoBehaviour
             fileName = dataWearablePointer[0]["content"][i]["file"];
             if (!fileName.Contains("thumbnail") && !fileName.Contains("glb") && !fileName.Contains("gltf"))
             {
-                Debug.Log("<color=red>file::</color> " + dataWearablePointer[0]["content"][i]["file"]);
+                //Debug.Log("<color=red>file::</color> " + dataWearablePointer[0]["content"][i]["file"]);
                 hashToReturn = dataWearablePointer[0]["content"][i]["hash"];
                 break;
             }
         }
-        Debug.Log("_________________________________");
+       // Debug.Log("_________________________________");
         return hashToReturn;
     }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -873,6 +899,8 @@ public class DCL_Manager : MonoBehaviour
                 {
                     // Cambiar el color del material
                     materialsInMeshCurrent[i].color = avatarInfo.skin;
+                     
+                    materialsInMeshCurrent[i].SetColor("_ShadeColor", avatarInfo.skin);
 
                 }
 
