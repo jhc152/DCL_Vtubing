@@ -14310,6 +14310,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1929086815447080916, guid: 4f08f32c41bdeae4b9367e651bcad0f7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1952138217859553959, guid: 4f08f32c41bdeae4b9367e651bcad0f7, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -14511,6 +14515,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3942348907868636242, guid: 4f08f32c41bdeae4b9367e651bcad0f7, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942348907868636242, guid: 4f08f32c41bdeae4b9367e651bcad0f7, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942348907868636242, guid: 4f08f32c41bdeae4b9367e651bcad0f7, type: 3}
       propertyPath: m_AABB.m_Center.x
       value: -0.0000037550926
       objectReference: {fileID: 0}
@@ -14533,6 +14545,14 @@ PrefabInstance:
     - target: {fileID: 3942348907868636242, guid: 4f08f32c41bdeae4b9367e651bcad0f7, type: 3}
       propertyPath: m_AABB.m_Extent.z
       value: 0.15998843
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942348907868636242, guid: 4f08f32c41bdeae4b9367e651bcad0f7, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942348907868636242, guid: 4f08f32c41bdeae4b9367e651bcad0f7, type: 3}
+      propertyPath: m_SkinnedMotionVectors
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3956253512672497284, guid: 4f08f32c41bdeae4b9367e651bcad0f7, type: 3}
       propertyPath: m_Enabled

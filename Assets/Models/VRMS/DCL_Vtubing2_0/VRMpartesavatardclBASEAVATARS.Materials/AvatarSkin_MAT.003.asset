@@ -45,11 +45,19 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MatcapTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OutlineWidthTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -65,7 +73,15 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _RimTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _RimTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ShadeTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -77,7 +93,15 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ShadingShiftTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SphereAdd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UvAnimMaskTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -85,8 +109,13 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - baseColorTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AlphaMode: 0
     - _AlphaToMask: 0
     - _BlendMode: 0
     - _BumpScale: 1
@@ -94,13 +123,22 @@ Material:
     - _Cutoff: 0.5
     - _DebugMode: 0
     - _DetailNormalMapScale: 1
+    - _DoubleSided: 0
     - _DstBlend: 0
+    - _GiEqualization: 0.9
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
     - _IndirectLightIntensity: 0.1
     - _LightColorAttenuation: 0
     - _MToonVersion: 39
+    - _M_AlphaToMask: 0
+    - _M_CullMode: 2
+    - _M_DebugMode: 0
+    - _M_DstBlend: 0
+    - _M_EditMode: 0
+    - _M_SrcBlend: 1
+    - _M_ZWrite: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -112,24 +150,38 @@ Material:
     - _OutlineWidthMode: 0
     - _Parallax: 0.02
     - _ReceiveShadowRate: 1
+    - _RenderQueueOffset: 0
     - _RimFresnelPower: 1
     - _RimLift: 0
     - _RimLightingMix: 0
     - _ShadeShift: 0
     - _ShadeToony: 0.122
     - _ShadingGradeRate: 1
+    - _ShadingShiftFactor: 0
+    - _ShadingShiftTexScale: 1
+    - _ShadingToonyFactor: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _TransparentWithZWrite: 0
     - _UVSec: 0
     - _UvAnimRotation: 0
+    - _UvAnimRotationSpeed: 0
     - _UvAnimScrollX: 0
+    - _UvAnimScrollXSpeed: 0
     - _UvAnimScrollY: 0
+    - _UvAnimScrollYSpeed: 0
+    - _VColBlendMode: 0
     - _ZWrite: 1
+    - alphaCutoff: 0.5
+    - baseColorTexture_texCoord: 0
     m_Colors:
     - _Color: {r: 0.7372549, g: 0.5686275, b: 0.44705883, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _MatcapColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShadeColor: {r: 0.96999997, g: 0.81, b: 0.86, a: 1}
+    - _ShadeColor: {r: 0.8396226, g: 0.6534799, b: 0.70932275, a: 1}
+    - baseColorFactor: {r: 0.7372549, g: 0.5686275, b: 0.44705883, a: 1}
+    - baseColorTexture_Rotation: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
