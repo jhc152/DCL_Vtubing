@@ -104,10 +104,10 @@ public class DCL_GLBLoader : MonoBehaviour
         }
     }
 
+    //0x7e22d9514a99793E80D4FB5E3A9Dfd4931F47c4c
 
 
-
-
+    //0x7e22d9514a99793E80D4FB5E3A9Dfd4931F47c4c
 
 
 
@@ -372,9 +372,14 @@ public class DCL_GLBLoader : MonoBehaviour
         Texture2D myTexture2D;
         Texture2D myTexture2DEmmissive;
 
-       //Material newMaterial = new Material(Shader.Find("UniGLTF/UniUnlit"));
+        //Material newMaterial = new Material(Shader.Find("UniGLTF/UniUnlit"));
 
-       Material newMaterial = new Material(Shader.Find("VRM/MToon"));
+
+        
+
+
+
+        Material newMaterial = new Material(Shader.Find("VRM/MToon"));
         //Material newMaterial = new Material(customShader);
         newMaterial.name = meshRenderer.material.name;
 
@@ -449,13 +454,19 @@ public class DCL_GLBLoader : MonoBehaviour
 
 
 
-
         //get color base
 
         Color baseColor = meshRenderer.material.GetColor("baseColorFactor");
+
+
+        if (meshRenderer.material.name.Contains("Skin"))
+        {
+            // Cambiar el color del material
+            baseColor=DCL_Manager.Instance.avatarInfo.skin;
+
+        }
+      
         newMaterial.color = baseColor;
-
-
         newMaterial.SetColor("_ShadeColor", baseColor);
 
 
@@ -565,8 +576,10 @@ public class DCL_GLBLoader : MonoBehaviour
                                 texture2DEmmisisve.width,
                                 texture2DEmmisisve.height,
                                 0,
-                                RenderTextureFormat.Default,
-                                RenderTextureReadWrite.Linear);
+                                RenderTextureFormat.ARGB32,
+                            RenderTextureReadWrite.sRGB);
+
+
 
 
             // Blit the pixels on texture to the RenderTexture

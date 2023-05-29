@@ -17,6 +17,7 @@ using System.IO;
 using UnityEditor;
 
 using Newtonsoft.Json;
+using HardCoded.VRigUnity;
 
 [Serializable]
 public class WearablesEncontrado
@@ -152,7 +153,22 @@ public class DCL_Manager : MonoBehaviour
     public Transform auxPost;
 
     public Camera cameraToRemoveLayerFrom;
+    public Camera cameraToStream;
     public string layerNameToRemove;
+
+
+
+    /**CAMARA ROTACION***/
+    private Quaternion initialRotation;
+    private Vector3 initialPosition;
+
+   
+    private Vector3 initialPositionMainCam;
+    private Vector3 initialPositionStreamCam;
+
+    public OrbitalCamera orbitalCamera; 
+
+
 
     public void Awake()
     {
@@ -161,6 +177,14 @@ public class DCL_Manager : MonoBehaviour
 
     private void Start()
     {
+        // Guardar la rotación inicial
+        initialRotation = orbitalCamera.transform.rotation;
+        initialPosition = orbitalCamera.transform.position;
+
+
+        initialPositionMainCam = cameraToRemoveLayerFrom.transform.localPosition;
+        initialPositionStreamCam = cameraToStream.transform.localPosition;
+
         //LoadProfile();
     }
 
@@ -180,6 +204,7 @@ public class DCL_Manager : MonoBehaviour
         {
             // Quitar el layer de la culling mask
             cameraToRemoveLayerFrom.cullingMask &= ~(1 << layerToRemove);
+            cameraToStream.cullingMask &= ~(1 << layerToRemove);
         }
     }
 
@@ -193,6 +218,7 @@ public class DCL_Manager : MonoBehaviour
         {
             // Agregar el layer a la culling mask
             cameraToRemoveLayerFrom.cullingMask |= (1 << layerToAdd);
+            cameraToStream.cullingMask |= (1 << layerToAdd);
         }
     }
 
@@ -641,6 +667,15 @@ public class DCL_Manager : MonoBehaviour
                 hideFull.AddRange(skinHides);
                 skinExist = true;
             }
+
+
+            if (category_cur == "hair")
+            {
+               
+                show_hair = false;
+            }
+
+            
 
             for (int i = 0; i < metadataWearableCurrent["hides"].Count; i++)
             {
@@ -1134,11 +1169,29 @@ public class DCL_Manager : MonoBehaviour
 
 
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+
+            //orbitalCamera.transform.rotation = initialRotation;
+            //orbitalCamera.transform.position = initialPosition;
+
+
+            //cameraToRemoveLayerFrom.transform.localPosition = initialPositionMainCam;
+            //cameraToStream.transform.localPosition = initialPositionStreamCam  ;
+
+
+            //Debug.Log("positions ");
+            //Debug.Log(initialPositionMainCam);
+            //Debug.Log(initialPositionStreamCam);
+
+        }
+    }
 
 
 
-
-
+     
 
 
 }

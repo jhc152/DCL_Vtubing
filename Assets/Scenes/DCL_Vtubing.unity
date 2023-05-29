@@ -8921,6 +8921,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -5214676868685883568, guid: e108f6f1146789c44a85f7d0b945413f, type: 3}
   m_PrefabInstance: {fileID: 1362947726}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &982736100 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5681779864366846084, guid: 32e66da3044252644bf1e8afdfa1867b, type: 3}
+  m_PrefabInstance: {fileID: 1393820230}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 846356929ca0b8a4e96f8eaca0c13b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &988602973
 GameObject:
   m_ObjectHideFlags: 0
@@ -11503,6 +11514,11 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!20 &1144846713 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6447137187830256545, guid: 32e66da3044252644bf1e8afdfa1867b, type: 3}
+  m_PrefabInstance: {fileID: 1393820230}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1145912995
 GameObject:
   m_ObjectHideFlags: 0
@@ -17451,7 +17467,9 @@ MonoBehaviour:
   UIpanel: {fileID: 1917539044}
   auxPost: {fileID: 1297965810}
   cameraToRemoveLayerFrom: {fileID: 1816765728}
+  cameraToStream: {fileID: 1144846713}
   layerNameToRemove: Default
+  orbitalCamera: {fileID: 982736100}
   userId: 
   unclaimedName: 
   WearableToRemove: []
