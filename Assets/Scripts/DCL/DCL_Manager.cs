@@ -665,6 +665,9 @@ public class DCL_Manager : MonoBehaviour
             if (category_cur == "skin")
             {
                 hideFull.AddRange(skinHides);
+
+                Debug.Log("<color=magenta>HUBO SKIN</color>");
+               
                 skinExist = true;
             }
 
@@ -754,11 +757,19 @@ public class DCL_Manager : MonoBehaviour
                 glbLoaderObj = obj.WearableContent.transform.GetComponent<DCL_GLBLoader>();
                 categoryCurr = glbLoaderObj.info_category;  
                 if (categoryCurr == hide)
-                {                   
-                    wearableToRemove.Add(obj);
+                {
+                    if (skinExist && categoryCurr != "skin")
+                    {
+                        wearableToRemove.Add(obj);
+                    }
                 }
 
                 if(skinExist && categoryCurr == "hair")
+                {
+                    wearableToRemove.Add(obj);
+                }
+
+                if (skinExist && categoryCurr != "skin")
                 {
                     wearableToRemove.Add(obj);
                 }
@@ -795,7 +806,7 @@ public class DCL_Manager : MonoBehaviour
 
 
 
-
+        Debug.Log("<color=yellow>A mostrar WearableListProfiles </color>: " + WearableListProfiles.Count);
 
 
 
