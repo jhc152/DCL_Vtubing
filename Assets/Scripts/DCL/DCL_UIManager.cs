@@ -521,6 +521,23 @@ namespace HardCoded.VRigUnity
 
 
 
+
+            VisualElement btnTwTony = rootUI.Q<VisualElement>("btnTwTony");
+            btnTwTony.AddManipulator(new Clickable(evt => {
+                string url = "https://twitter.com/TonyDarko_eth";
+                Application.OpenURL(url);
+            }));
+
+
+            VisualElement btnTwJhoico = rootUI.Q<VisualElement>("btnTwJhoico");
+            btnTwJhoico.AddManipulator(new Clickable(evt => {
+                string url = "https://twitter.com/jhoico152";
+                Application.OpenURL(url);
+            }));
+
+
+
+
         }
 
 

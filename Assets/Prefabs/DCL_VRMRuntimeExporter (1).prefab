@@ -1,0 +1,279 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1083834847167162103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5591962059210449672}
+  - component: {fileID: 6022138389704362862}
+  m_Layer: 0
+  m_Name: DCL_VRMRuntimeExporter (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5591962059210449672
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083834847167162103}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6022138389704362862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083834847167162103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2228c0f2d73b1c54b82488d4f2504222, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseNormalize: 1
+  m_model: {fileID: 0}
+  m_model_import: {fileID: 0}
+  OnCompleteLoadVRM:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DCL_Manager, Assembly-CSharp
+        m_MethodName: VRMLoadComplete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  vrmVtubing: {fileID: 0}
+  vrmToExport: {fileID: 0}
+  vrmsVtubing:
+    vrm_hair_male: {fileID: 0}
+    vrm_lower_body_male: {fileID: 0}
+    vrm_upper_body_male: {fileID: 0}
+    vrm_feet_male: {fileID: 0}
+    vrm_hair_female: {fileID: 0}
+    vrm_lower_body_female: {fileID: 0}
+    vrm_upper_body_female: {fileID: 0}
+    vrm_feet_female: {fileID: 0}
+    vrm_head: {fileID: 0}
+    vrm_facial_hair: {fileID: 0}
+    wearablesParent: {fileID: 0}
+    vrm_hips: {fileID: 0}
+  vrmsToExport:
+    vrm_hair_male: {fileID: 0}
+    vrm_lower_body_male: {fileID: 0}
+    vrm_upper_body_male: {fileID: 0}
+    vrm_feet_male: {fileID: 0}
+    vrm_hair_female: {fileID: 0}
+    vrm_lower_body_female: {fileID: 0}
+    vrm_upper_body_female: {fileID: 0}
+    vrm_feet_female: {fileID: 0}
+    vrm_head: {fileID: 0}
+    vrm_facial_hair: {fileID: 0}
+    wearablesParent: {fileID: 0}
+    vrm_hips: {fileID: 0}
+  namesBones:
+  - i: 5
+    nameDCL: Avatar_Head
+    nameVRM: head
+  - i: 6
+    nameDCL: Avatar_Hips
+    nameVRM: hips
+  - i: 7
+    nameDCL: Avatar_LeftArm
+    nameVRM: upper_arm.L
+  - i: 8
+    nameDCL: Avatar_LeftFoot
+    nameVRM: foot.L
+  - i: 9
+    nameDCL: Avatar_LeftForeArm
+    nameVRM: lower_arm.L
+  - i: 10
+    nameDCL: Avatar_LeftHand
+    nameVRM: hand.L
+  - i: 11
+    nameDCL: Avatar_LeftHandIndex1
+    nameVRM: index.proximal.L
+  - i: 12
+    nameDCL: Avatar_LeftHandIndex2
+    nameVRM: Index.intermediate.L
+  - i: 13
+    nameDCL: Avatar_LeftHandIndex3
+    nameVRM: index.distal.L
+  - i: 14
+    nameDCL: Avatar_LeftHandIndex4
+    nameVRM: index.distal.L_end
+  - i: 15
+    nameDCL: Avatar_LeftHandMiddle1
+    nameVRM: middle.proximal.L
+  - i: 16
+    nameDCL: Avatar_LeftHandMiddle2
+    nameVRM: middle.intermediate.L
+  - i: 17
+    nameDCL: Avatar_LeftHandMiddle3
+    nameVRM: middle.distal.L
+  - i: 18
+    nameDCL: Avatar_LeftHandMiddle4
+    nameVRM: middle.distal.L_end
+  - i: 19
+    nameDCL: Avatar_LeftHandPinky1
+    nameVRM: little.proximal.L
+  - i: 20
+    nameDCL: Avatar_LeftHandPinky2
+    nameVRM: little.intermediate.L
+  - i: 21
+    nameDCL: Avatar_LeftHandPinky3
+    nameVRM: little.distal.L
+  - i: 22
+    nameDCL: Avatar_LeftHandPinky4
+    nameVRM: little.distal.L_end
+  - i: 23
+    nameDCL: Avatar_LeftHandRing1
+    nameVRM: ring.proximal.L
+  - i: 24
+    nameDCL: Avatar_LeftHandRing2
+    nameVRM: ring.intermediate.L
+  - i: 25
+    nameDCL: Avatar_LeftHandRing3
+    nameVRM: ring.distal.L
+  - i: 26
+    nameDCL: Avatar_LeftHandRing4
+    nameVRM: ring.distal.L_end
+  - i: 27
+    nameDCL: Avatar_LeftHandThumb1
+    nameVRM: thumb.proximal.L
+  - i: 28
+    nameDCL: Avatar_LeftHandThumb2
+    nameVRM: thumb.intermediate.L
+  - i: 29
+    nameDCL: Avatar_LeftHandThumb3
+    nameVRM: thumb.distal.L
+  - i: 30
+    nameDCL: Avatar_LeftHandThumb4
+    nameVRM: thumb.distal.L_end
+  - i: 31
+    nameDCL: Avatar_LeftLeg
+    nameVRM: lower_leg.L
+  - i: 32
+    nameDCL: Avatar_LeftShoulder
+    nameVRM: shoulder.L
+  - i: 33
+    nameDCL: Avatar_LeftToeBase
+    nameVRM: toes.L
+  - i: 34
+    nameDCL: Avatar_LeftUpLeg
+    nameVRM: upper_leg.L
+  - i: 35
+    nameDCL: Avatar_Neck
+    nameVRM: neck
+  - i: 36
+    nameDCL: Avatar_RightArm
+    nameVRM: upper_arm.R
+  - i: 37
+    nameDCL: Avatar_RightFoot
+    nameVRM: foot.R
+  - i: 38
+    nameDCL: Avatar_RightForeArm
+    nameVRM: lower_arm.R
+  - i: 39
+    nameDCL: Avatar_RightHand
+    nameVRM: hand.R
+  - i: 40
+    nameDCL: Avatar_RightHandIndex1
+    nameVRM: index.proximal.R
+  - i: 41
+    nameDCL: Avatar_RightHandIndex2
+    nameVRM: index.intermediate.R
+  - i: 42
+    nameDCL: Avatar_RightHandIndex3
+    nameVRM: index.distal.R
+  - i: 43
+    nameDCL: Avatar_RightHandIndex4
+    nameVRM: index.distal.R_end
+  - i: 44
+    nameDCL: Avatar_RightHandMiddle1
+    nameVRM: middle.proximal.R
+  - i: 45
+    nameDCL: Avatar_RightHandMiddle2
+    nameVRM: middle.intermediate.R
+  - i: 46
+    nameDCL: Avatar_RightHandMiddle3
+    nameVRM: middle.distal.R
+  - i: 47
+    nameDCL: Avatar_RightHandMiddle4
+    nameVRM: middle.distal.R_end
+  - i: 48
+    nameDCL: Avatar_RightHandPinky1
+    nameVRM: little.proximal.R
+  - i: 49
+    nameDCL: Avatar_RightHandPinky2
+    nameVRM: little.intermediate.R
+  - i: 50
+    nameDCL: Avatar_RightHandPinky3
+    nameVRM: little.distal.R
+  - i: 51
+    nameDCL: Avatar_RightHandPinky4
+    nameVRM: little.distal.R_end
+  - i: 52
+    nameDCL: Avatar_RightHandRing1
+    nameVRM: ring.proximal.R
+  - i: 53
+    nameDCL: Avatar_RightHandRing2
+    nameVRM: ring.intermediate.R
+  - i: 54
+    nameDCL: Avatar_RightHandRing3
+    nameVRM: ring.distal.R
+  - i: 55
+    nameDCL: Avatar_RightHandRing4
+    nameVRM: ring.distal.R_end
+  - i: 56
+    nameDCL: Avatar_RightHandThumb1
+    nameVRM: thumb.proximal.R
+  - i: 57
+    nameDCL: Avatar_RightHandThumb2
+    nameVRM: thumb.intermediate.R
+  - i: 58
+    nameDCL: Avatar_RightHandThumb3
+    nameVRM: thumb.distal.R
+  - i: 59
+    nameDCL: Avatar_RightHandThumb4
+    nameVRM: thumb.distal.R_end
+  - i: 60
+    nameDCL: Avatar_RightLeg
+    nameVRM: lower_leg.R
+  - i: 61
+    nameDCL: Avatar_RightShoulder
+    nameVRM: shoulder.R
+  - i: 62
+    nameDCL: Avatar_RightToeBase
+    nameVRM: toes.R
+  - i: 63
+    nameDCL: Avatar_RightUpLeg
+    nameVRM: upper_leg.R
+  - i: 64
+    nameDCL: Avatar_Spine
+    nameVRM: spine
+  - i: 65
+    nameDCL: Avatar_Spine1
+    nameVRM: chest
+  - i: 66
+    nameDCL: Avatar_Spine2
+    nameVRM: chest_end

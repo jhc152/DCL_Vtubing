@@ -203,6 +203,14 @@
                 <ui:VisualElement name="Lunea4" style="position: absolute; width: 400px; background-color: rgba(255, 255, 255, 0.3); top: 35px; height: 1px;" />
             </ui:VisualElement>
         </ui:VisualElement>
+        <ui:Label text="0.1.7" display-tooltip-when-elided="true" name="version" style="-unity-font-style: bold; color: rgb(255, 255, 255); height: 11px; justify-content: center; -unity-text-align: middle-left; position: absolute; left: 30px; bottom: 20px;" />
+        <ui:Label text="FOLLOW US" display-tooltip-when-elided="true" name="follow" style="-unity-font-style: bold; color: rgb(255, 255, 255); height: 11px; justify-content: center; -unity-text-align: middle-left; position: absolute; left: auto; bottom: 20px; right: 90px;" />
+        <ui:VisualElement name="btnTwTony" class="btn-close-menu" style="background-color: rgb(0, 0, 0); left: auto; top: auto; right: 20px; bottom: 15px;">
+            <ui:VisualElement name="tw" picking-mode="Ignore" style="width: 16px; height: 16px; align-items: center; justify-content: center; background-image: url(&apos;project://database/Assets/VtubeAssets/TwitterVtubing.png?fileID=2800000&amp;guid=f00eae1de0c9eed40ad4ae4c8777a6ab&amp;type=3#TwitterVtubing&apos;); top: 0.5px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="btnTwJhoico" class="btn-close-menu" style="background-color: rgb(0, 0, 0); left: auto; top: auto; right: 55px; bottom: 15px;">
+            <ui:VisualElement name="tw" picking-mode="Ignore" style="width: 16px; height: 16px; align-items: center; justify-content: center; background-image: url(&apos;project://database/Assets/VtubeAssets/TwitterVtubing.png?fileID=2800000&amp;guid=f00eae1de0c9eed40ad4ae4c8777a6ab&amp;type=3#TwitterVtubing&apos;); top: 0.5px;" />
+        </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement name="Gradients" style="width: 1920px; height: 1080px; position: absolute; background-color: rgba(0, 0, 0, 0.15); top: 0; background-image: url(&apos;project://database/Assets/VtubeAssets/gradiente.png?fileID=2800000&amp;guid=930bd9987fd0c4c4aa552fe3f0272c71&amp;type=3#gradiente&apos;); overflow: hidden; visibility: hidden; display: none;" />
     <ui:VisualElement name="StartCameraOff" style="width: 190px; position: absolute; top: 1015px; left: 865px; height: 46px; background-color: rgb(255, 255, 255); border-top-left-radius: 12px; border-bottom-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px; display: flex;">

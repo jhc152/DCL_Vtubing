@@ -70,6 +70,13 @@ public class DCL_Manager : MonoBehaviour
     [HideInInspector]
     public JSONNode dataProfileAvatarWearables;
 
+    [HideInInspector]
+    public JSONNode dataProfileAvatarForceRender;
+
+
+    [HideInInspector]
+    public List<string> dataProfileAvatarForceRenderStrings = new List<string>() ;
+
 
     [HideInInspector]
     public string snapshoot_face256, snapshoot_body256;
@@ -382,6 +389,8 @@ public class DCL_Manager : MonoBehaviour
 
         UnityWebRequest www = UnityWebRequest.Get( API_DCL_PROFILE + address);
         yield return www.SendWebRequest();
+        dataProfileAvatarForceRenderStrings = new List<string>();
+
         if (www.result == UnityWebRequest.Result.Success)
         {           
            // string responseText = www.downloadHandler.text;
@@ -390,6 +399,26 @@ public class DCL_Manager : MonoBehaviour
             dataProfile = JSON.Parse(System.Text.Encoding.UTF8.GetString(www.downloadHandler.data));
             dataProfileAvatar = dataProfile["avatars"][0]["avatar"];
             dataProfileAvatarWearables = dataProfile["avatars"][0]["avatar"]["wearables"];
+
+            dataProfileAvatarForceRender = dataProfile["avatars"][0]["avatar"]["forceRender"];
+
+
+            string forceRendereCurrent = "";
+            for (int i = 0; i < dataProfileAvatarForceRender.Count; i++)
+            {
+                forceRendereCurrent = dataProfileAvatarForceRender[i];
+                dataProfileAvatarForceRenderStrings.Add(forceRendereCurrent);
+            }
+
+
+            Debug.Log("<color=yellow> ------------------------------------  </color>");
+            for (int i = 0; i < dataProfileAvatarForceRenderStrings.Count; i++)
+            {               
+                Debug.Log("<color=yellow> "+ dataProfileAvatarForceRenderStrings [i]+ "  </color>");
+            }
+
+            Debug.Log("<color=yellow>----------------------------------   </color>");
+
 
             snapshoot_face256 = dataProfile["avatars"][0]["avatar"]["snapshots"]["face256"];
             snapshoot_body256 = dataProfile["avatars"][0]["avatar"]["snapshots"]["body"];
@@ -665,16 +694,13 @@ public class DCL_Manager : MonoBehaviour
             if (category_cur == "skin")
             {
                 hideFull.AddRange(skinHides);
-
-                Debug.Log("<color=magenta>HUBO SKIN</color>");
-               
+                Debug.Log("<color=magenta>HUBO SKIN</color>");               
                 skinExist = true;
             }
 
 
             if (category_cur == "hair")
-            {
-               
+            {               
                 show_hair = false;
             }
 
@@ -685,9 +711,7 @@ public class DCL_Manager : MonoBehaviour
                 string hideTmp = metadataWearableCurrent["hides"][i];
                 hideFull.Add(hideTmp);                
                 Debug.Log("-----hideTmp " + hideTmp);
-
             }
-
 
 
             glbLoaderObj.mainFile = mainFile;
@@ -695,11 +719,7 @@ public class DCL_Manager : MonoBehaviour
 
             /*checando los hide de cabeza y o pelo*/
             string hideCurrent = "";
-
-
-
             glbLoaderObj.wearableBase = false;
-
 
             string tagCurr = "";
             for (int i = 0; i < metadataWearableCurrent["tags"].Count; i++) {
@@ -711,9 +731,9 @@ public class DCL_Manager : MonoBehaviour
             }            
 
 
-                //analizar wearables por caragar    
-                //es glb buscar el hash para la textura
-                if (mainFile.Contains(".glb") || mainFile.Contains(".gltf"))
+            //analizar wearables por caragar    
+            //es glb buscar el hash para la textura
+            if (mainFile.Contains(".glb") || mainFile.Contains(".gltf"))
             {
                // Debug.Log("<color=yellow>mainFile::</color>" + mainFile); 
                 glbLoaderObj.hashTexture =  FindHashTextureWearableByFile();
@@ -748,6 +768,7 @@ public class DCL_Manager : MonoBehaviour
         string categoryCurr = "";
         List<WearablesEncontrado> wearableToRemove = new List<WearablesEncontrado>();
 
+        bool wearableToHide = false;
         //buscar lo objetos que seran hide y quitarlos de la lista original para no cargara realmente el glb
         foreach (var hide in hideFull)
         {
@@ -755,24 +776,50 @@ public class DCL_Manager : MonoBehaviour
             foreach (WearablesEncontrado obj in WearableListProfiles)
             {
                 glbLoaderObj = obj.WearableContent.transform.GetComponent<DCL_GLBLoader>();
-                categoryCurr = glbLoaderObj.info_category;  
+                categoryCurr = glbLoaderObj.info_category;
+                wearableToHide = false;
                 if (categoryCurr == hide)
                 {
                     if (skinExist && categoryCurr != "skin")
                     {
-                        wearableToRemove.Add(obj);
+                       // wearableToRemove.Add(obj);
+                       wearableToHide = true;
+                    }
+
+                    if(!skinExist)
+                    {
+                       // wearableToRemove.Add(obj);
+                       wearableToHide = true;
                     }
                 }
 
                 if(skinExist && categoryCurr == "hair")
                 {
-                    wearableToRemove.Add(obj);
+                   // wearableToRemove.Add(obj);
+                   wearableToHide = true;
                 }
 
                 if (skinExist && categoryCurr != "skin")
                 {
-                    wearableToRemove.Add(obj);
+                   // wearableToRemove.Add(obj);
+                    wearableToHide = true;
                 }
+
+
+                if (wearableToHide)
+                {
+                    //revision wp2_0
+
+                    if (!dataProfileAvatarForceRenderStrings.Contains(categoryCurr))
+                    {
+                        Debug.Log("El string no existe en la lista");
+                        wearableToRemove.Add(obj);
+                    }
+                   
+                }
+
+
+
             }
         }
 
